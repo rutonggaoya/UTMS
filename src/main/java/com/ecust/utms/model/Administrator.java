@@ -65,4 +65,17 @@ public class Administrator {
     public void setDeptID(Integer deptID) {
         DeptID = deptID;
     }
+
+//    @Override
+//    public String toString() {
+//        return "Administrator{" +
+//                "TID='" + TID + '\'' +
+//                ", Name='" + Name + '\'' +
+//                ", Gender=" + Gender +
+//                ", Passwd='" + Passwd + '\'' +
+//                ", Tel='" + Tel + '\'' +
+//                ", Email='" + Email + '\'' +
+//                ", DeptID=" + DeptID +
+//                '}';
+//    }
 }
