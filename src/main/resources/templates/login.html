@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -24,19 +24,18 @@
 </div>
 
 
-<form class="form-signin" style="margin-top: 20px;">
+<form class="form-signin" style="margin-top: 20px;" action="message.html" th:action="@{/user/login}" method="post">
     <div align="center">
         <h2 class="h3 mb-3 font-weight-normal">Please sign in</h2>
         <label class="sr-only col-md-5" for="username">username</label>
-        <input style="text-align:center;" class="form-control col-md-3" id="username" autofocus="" required=""
-               type="username" placeholder="Username">
+        <input style="text-align:center;" class="form-control col-md-3" id="username" name="username" placeholder="Username" required="" autofocus="">
     </div>
     <div align="center" style="margin-top: 10px;">
         <label class="sr-only" for="inputPassword">Password</label>
-        <input style="text-align:center;" class="form-control col-md-3" id="inputPassword" required="" type="password"
-               placeholder="Password">
+        <input style="text-align:center;" class="form-control col-md-3" id="inputPassword" name="inputPassword" type="password" placeholder="Password" required="">
     </div>
     <div class="checkbox mb-3" style="margin-top: 10px;">
+        <p style="color:red" th:text="${msg}" th:if="${not#strings.isEmpty(msg)}"></p>
 
         <input type="radio" value="Student" name="user" checked="checked"> Student
         <input type="radio" value="Teacher" name="user"> Teacher
