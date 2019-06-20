@@ -1,14 +1,14 @@
 package com.ecust.utms.model;
 
+public class SuperAdministrator {
 
-public class Administrator {
-    private String TID;//管理员ID
-    private String Name;//管理员姓名
-    private Integer Gender;//管理员性别
-    private String Passwd;//管理员密码
-    private String Tel;//管理员电话号码
-    private String Email;//管理员邮箱
-    private Integer DeptID;//管理员学院ID
+    private String TID;//教职工ID
+    private String Name;//姓名
+    private Integer Gender;//性别
+    private String Passwd;//密码
+    private String Tel;//手机号码
+    private String Email;//邮箱
+    private Integer DeptID;//院系ID
 
     public String getTID() {
         return TID;
@@ -65,17 +65,4 @@ public class Administrator {
     public void setDeptID(Integer deptID) {
         DeptID = deptID;
     }
-
-//    @Override
-//    public String toString() {
-//        return "Administrator{" +
-//                "TID='" + TID + '\'' +
-//                ", Name='" + Name + '\'' +
-//                ", Gender=" + Gender +
-//                ", Passwd='" + Passwd + '\'' +
-//                ", Tel='" + Tel + '\'' +
-//                ", Email='" + Email + '\'' +
-//                ", DeptID=" + DeptID +
-//                '}';
-//    }
 }
