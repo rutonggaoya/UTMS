@@ -1,0 +1,54 @@
+
+     
+    body{
+    margin: 0;
+    background:url(../../static/img/背景1.png);
+    }  
+    .nav li a{
+    font-size: 18px;
+    font-weight: 3px;
+    color:#2e442f;/*导航栏文字颜色*/ 
+    } 
+   .nav li a:hover{
+    background-color: rgb(187,189,139);/*鼠标选择后颜色*/ 
+    }
+    .active {
+    background-color: rgba(187,189,139,0.5);/*鼠标选择后颜色*/ 
+    }
+    .theadcenter tr th{
+      text-align: center;
+      background-color:rgba(62,100,47,0.8);/*表头颜色*/ 
+    }
+    .table-striped tbody tr td{
+      background-color: rgba(185,209,157,0.7);/*表格颜色*/ 
+    }
+ 
+    .send{
+      background-color: rgba(126, 158, 88, 0.74);
+    }
+    .send:hover{
+      background-color:rgba(62,100,47,0.8);
+      color:white;
+    }
+    ul.pagination1{
+      display: inline-block;
+    padding: 0;
+    margin: 0;
+    
+    }
+    ul.pagination1 li {display: inline;}
+    ul.pagination1 li a {
+      background-color: rgb(168, 192, 141);
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    }
+    ul.pagination1 li a.active {
+    background-color:rgba(42, 68, 32, 0.877);
+    color: white;
+    }
+    ul.pagination1 li a:hover:not(.active) {
+      background-color:rgba(62,100,47,0.8);
+      }
+ 

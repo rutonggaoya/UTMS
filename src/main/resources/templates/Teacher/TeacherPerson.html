@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../static/css/my1.css">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>个人中心</title>
+    <style type="text/css">
+     
+   
+    .addbackgroundimg{
+      background:url(../../static/img/on.png); 
+    }
+    .col-1{
+      float:left;width:30%;
+      margin-top:5px;
+    }
+    .col-2{
+      float:right;width:70%;
+      margin-top:5px;
+    }
+    .buttonchange{
+      background-color: rgba(255, 255, 255, 1);
+      font-weight:800;
+      color:rgba(62,100,47,0.8);
+      border:none;
+    }
+    .buttonchange:hover{
+      background-color:rgba(62,100,47,0.8);
+      border:none;
+      color:white;
+    }
+    </style>
+    }
+  </head>
+  <body >
+        
+   <div class="col-md-12 column" style="margin-top: 20px; font-family: 华文行楷; font-size:25px;"> 
+     <h1>华东理工大学论文系统</h1>
+   </div>
+
+
+   <div style="margin-left: 2%;">
+     <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" ><a href="TeacherSubject.html" >课题（Topic）</a></li>
+       <li role="presentation"><a href="TeacherThesis.html">论文（Thesis）</a></li>
+       <li role="presentation"><a href="Teachermessage.html">消息（Messages）</a></li>
+        <li role="presentation"><a href="Teacherquestion.html">问题（Question）</a></li>
+       <li role="presentation"><a href="TeacherPerson.html" class="active">XXXX老师（Teacher）</a></li>
+      </ul>
+  </div>
+
+  <div class="container addbackgroundimg" > 
+    <div>
+      <table  class="table">
+      <tr>
+        <td width="20%"></td>
+        <td width="60%"> <p ><img src="../../static/img/qx.jpg" class="img-circle center-block" 
+          style="margin-top: 30px;" width=150;></p></td>
+        <td width="20%">       
+          <button class="btn btn-default buttonchange" type="button" 
+          onclick="window.location.href = 'TeacherEditInfo.html'"style="margin-top:75px" >
+             <span>更改信息</span>
+        </button> </td>
+       </tr>
+      </table>
+      <div style="margin-top: 18px; font-size: 18px;">
+
+      <div style=" margin-bottom: 10px;" class="text-center"> 
+        <p> 张价铜 </p>
+        <p> 110161825 </p>
+      </div>
+     <div style="margin-left: 25%;">  
+
+      <div class="col-1 ">  <p> 性别</p></div>     
+         <div  class="col-2 ">
+            <label class="radio-inline">
+                <input type="radio" value="radio" name="1" disabled checked/>女
+            </label>                  
+          <label class="radio-inline">
+              <input type="radio" value="radio" name="1" disabled/>男
+          </label>         
+         </div>
+         <div class="col-md-12 col-xs-12"></div>
+        <div class="col-1">  <p> 院系</p></div> 
+        <div  class="col-2">   
+          <p><span>信息科学与工程</span></p>
+       </div>
+       <div class="col-1"> <p> 职称</p></div> 
+       <div  class="col-2">   
+          <p><span>副教授</span></p>
+       </div>   
+
+      </div>       
+      <hr class="featurette-divider col-md-6 col-md-push-3" > 
+         <div class="col-md-10"></div>
+     <div style="margin-left: 25%">  
+        <div class="col-1"><p> 手机号</p></div> 
+        <div  class="col-2">   
+          <p><span>65534280</span></p>
+       </div>
+       <div class="col-1">  <p> 邮箱</p>  </div> 
+       <div  class="col-2">   
+          <p><span>jtzhang@ecust.edu.cn</span></p>
+       </div>   
+        
+        
+       
+     </div>
+     </div>
+     
+      </div>
+    </div>
+
+
+  </div>
+  
+  
+
+
+   
+
+   <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
