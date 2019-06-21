@@ -6,6 +6,8 @@ import com.ecust.utms.mapper.TeacherMapper;
 import com.ecust.utms.model.Administrator;
 import com.ecust.utms.model.Student;
 import com.ecust.utms.model.Teacher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +27,7 @@ public class LoginController {
     TeacherMapper teacherMapper;
 
 
-    @PostMapping(value = "/user/login")
+    @PostMapping(value = "/login")
     public String login(@RequestParam("username") String username,
                         @RequestParam("inputPassword") String inputPassword,
                         @RequestParam("user") String usertype,
