@@ -1,24 +1,68 @@
 <!doctype html>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<html lang="en">
+  <head>
+=======
+>>>>>>> f0f3399fab466a2ac84b320d92a9bd4e7a02245a
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+>>>>>>> ddb0597e5462763c0789eee1d721ff7a011b6321
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../../static/css/my1.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>登陆</title>
     <style type="text/css">
-        body {
-            margin: 0;
-            background: url(static/img/xigua.jpg) no-repeat fixed;
-            background-size: cover;
-        }
+      body{
+                margin: 0;
+                background: url(../static/img/xigua.jpg) no-repeat fixed;
+                background-size: cover;
+            }
     </style>
-</head>
-<body class="text-center">
+  </head>
+  <body class="text-center">
+   
+   <div class="col-md-12 column" style="margin-top: 80px; font-family: 华文行楷"> 
+     <h1>华东理工大学论文系统</h1>
+   </div>
+    
+  
+   <form  class="form-signin" style="margin-top: 20px;" >
+        <div align="center">
+         <h2 class="h3 mb-3 font-weight-normal">Please sign in</h2>
+         <label class="sr-only col-md-5" for="username">username</label>
+         <input style="text-align:center;" class="form-control col-md-3" id="username" autofocus="" required="" type="username" placeholder="Username">  
+         </div>
+          <div align="center" style="margin-top: 10px;">
+         <label class="sr-only" for="inputPassword">Password</label>
+         <input style="text-align:center;" class="form-control col-md-3" id="inputPassword" required="" type="password" placeholder="Password">
+         </div>
+         <div class="checkbox mb-3"  style="margin-top: 10px;">
+          
+             <input type="radio" value="Student" name="user" checked="checked"> Student
+             <input type="radio" value="Teacher" name="user"> Teacher
+             <input type="radio" value="Administrator" name="user"> Administrator
+           
+         </div>
+         <div align="center">
+         <button class="btn btn-lg btn-primary btn-block col-md-3" type="submit">Sign in</button>
+         <p class="mt-5 mb-3 text-muted">@2019/06</p>
+         </div>
+    </form>
 
+<<<<<<< HEAD
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+=======
 <div class="col-md-12 column" style="margin-top: 110px; font-family: 华文行楷">
     <h1>华东理工大学论文系统</h1>
 </div>
@@ -26,6 +70,7 @@
 
 <form class="form-signin" style="margin-top: 20px;" action="message.html" th:action="@{/user/login}" method="post">
     <div align="center">
+<<<<<<< HEAD
         <h2 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h2>
         <label class="sr-only col-md-5" for="username" th:text="#{login.username}">username</label>
         <input style="text-align:center;" class="form-control col-md-3" id="username" name="username" placeholder="Username" th:placeholder="#{login.username}" required="" autofocus="">
@@ -33,6 +78,15 @@
     <div align="center" style="margin-top: 10px;">
         <label class="sr-only" for="inputPassword" th:text="#{login.password}">Password</label>
         <input style="text-align:center;" class="form-control col-md-3" id="inputPassword" name="inputPassword" type="password" placeholder="Password" th:placeholder="#{login.password}" required="">
+=======
+        <h2 class="h3 mb-3 font-weight-normal">Please sign in</h2>
+        <label class="sr-only col-md-5" for="username">username</label>
+        <input style="text-align:center;" class="form-control col-md-3" id="username" name="username" placeholder="Username" required="" autofocus="">
+    </div>
+    <div align="center" style="margin-top: 10px;">
+        <label class="sr-only" for="inputPassword">Password</label>
+        <input style="text-align:center;" class="form-control col-md-3" id="inputPassword" name="inputPassword" type="password" placeholder="Password" required="">
+>>>>>>> f0f3399fab466a2ac84b320d92a9bd4e7a02245a
     </div>
     <div class="checkbox mb-3" style="margin-top: 10px;">
         <p style="color:red" th:text="${msg}" th:if="${not#strings.isEmpty(msg)}"></p>
@@ -64,4 +118,5 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 </body>
+>>>>>>> ddb0597e5462763c0789eee1d721ff7a011b6321
 </html>
