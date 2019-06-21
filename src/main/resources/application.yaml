@@ -1,13 +1,23 @@
+
 spring:
+  thymeleaf:
+    cache: false
+  mvc:
+    # 数据源基本配置
+    date-format: yyyy-MM-dd
+    # 配置静态css/img/js文件的访问路径。
+    # 当访问static/img/image.jpg时会去classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/下查找文件
+    static-path-pattern: /static/**
   datasource:
-    #   数据源基本配置
     url: jdbc:mysql://101.132.154.2:3306/UTMS?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: utms
     password: utms
     driver-class-name: com.mysql.cj.jdbc.Driver
     initialization-mode: always
+    type: com.alibaba.druid.pool.DruidDataSource
 
 mybatis:
   configuration:
     #配置项：开启下划线到驼峰的自动转换. 作用：将数据库字段根据驼峰规则自动注入到对象属性。
     map-underscore-to-camel-case: true
+

@@ -1,6 +1,11 @@
 <!doctype html>
+<<<<<<< HEAD
 <html lang="en">
   <head>
+=======
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+>>>>>>> ddb0597e5462763c0789eee1d721ff7a011b6321
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -47,10 +52,54 @@
          </div>
     </form>
 
+<<<<<<< HEAD
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
+=======
+<div class="col-md-12 column" style="margin-top: 110px; font-family: 华文行楷">
+    <h1>华东理工大学论文系统</h1>
+</div>
+
+
+<form class="form-signin" style="margin-top: 20px;" action="message.html" th:action="@{/user/login}" method="post">
+    <div align="center">
+        <h2 class="h3 mb-3 font-weight-normal">Please sign in</h2>
+        <label class="sr-only col-md-5" for="username">username</label>
+        <input style="text-align:center;" class="form-control col-md-3" id="username" name="username" placeholder="Username" required="" autofocus="">
+    </div>
+    <div align="center" style="margin-top: 10px;">
+        <label class="sr-only" for="inputPassword">Password</label>
+        <input style="text-align:center;" class="form-control col-md-3" id="inputPassword" name="inputPassword" type="password" placeholder="Password" required="">
+    </div>
+    <div class="checkbox mb-3" style="margin-top: 10px;">
+        <p style="color:red" th:text="${msg}" th:if="${not#strings.isEmpty(msg)}"></p>
+
+        <input type="radio" value="Student" name="user" checked="checked"> Student
+        <input type="radio" value="Teacher" name="user"> Teacher
+        <input type="radio" value="Administrator" name="user"> Administrator
+
+    </div>
+    <div align="center">
+        <button class="btn btn-lg btn-primary btn-block col-md-3" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">@2019/06</p>
+    </div>
+</form>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+>>>>>>> ddb0597e5462763c0789eee1d721ff7a011b6321
 </html>
