@@ -1,7 +1,9 @@
 package com.ecust.utms.config;
 
-import com.ecust.utms.Component.LoginHandlerInterceptor;
+import com.ecust.utms.component.MyLocaleResolver;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
@@ -18,6 +20,11 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/").setViewName("login");
         registry.addViewController("/index.html").setViewName("login");
         registry.addViewController("/main.html").setViewName("message");
+    }
+
+    @Bean
+    public LocaleResolver localeResolver(){
+        return new MyLocaleResolver();
     }
 
 //    @Override

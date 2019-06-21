@@ -1,4 +1,4 @@
-package com.ecust.utms.Component;
+package com.ecust.utms.component;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

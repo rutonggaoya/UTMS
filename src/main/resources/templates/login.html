@@ -26,25 +26,29 @@
 
 <form class="form-signin" style="margin-top: 20px;" action="message.html" th:action="@{/user/login}" method="post">
     <div align="center">
-        <h2 class="h3 mb-3 font-weight-normal">Please sign in</h2>
-        <label class="sr-only col-md-5" for="username">username</label>
-        <input style="text-align:center;" class="form-control col-md-3" id="username" name="username" placeholder="Username" required="" autofocus="">
+        <h2 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h2>
+        <label class="sr-only col-md-5" for="username" th:text="#{login.username}">username</label>
+        <input style="text-align:center;" class="form-control col-md-3" id="username" name="username" placeholder="Username" th:placeholder="#{login.username}" required="" autofocus="">
     </div>
     <div align="center" style="margin-top: 10px;">
-        <label class="sr-only" for="inputPassword">Password</label>
-        <input style="text-align:center;" class="form-control col-md-3" id="inputPassword" name="inputPassword" type="password" placeholder="Password" required="">
+        <label class="sr-only" for="inputPassword" th:text="#{login.password}">Password</label>
+        <input style="text-align:center;" class="form-control col-md-3" id="inputPassword" name="inputPassword" type="password" placeholder="Password" th:placeholder="#{login.password}" required="">
     </div>
     <div class="checkbox mb-3" style="margin-top: 10px;">
         <p style="color:red" th:text="${msg}" th:if="${not#strings.isEmpty(msg)}"></p>
 
-        <input type="radio" value="Student" name="user" checked="checked"> Student
-        <input type="radio" value="Teacher" name="user"> Teacher
-        <input type="radio" value="Administrator" name="user"> Administrator
+        <input type="radio" value="Student" name="user" checked="checked"/> [[#{login.student}]]
+        <input type="radio" value="Teacher" name="user"/> [[#{login.teacher}]]
+        <input type="radio" value="Administrator" name="user"/> [[#{login.administrator}]]
 
     </div>
     <div align="center">
-        <button class="btn btn-lg btn-primary btn-block col-md-3" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block col-md-3" type="submit" th:text="#{login.btn}">Sign in</button>
         <p class="mt-5 mb-3 text-muted">@2019/06</p>
+    </div>
+    <div align="center">
+        <a class="btn btn-small" th:href="@{/index.html(l='zh_CN')}">切换中文</a>
+        <a class="btn btn-small" th:href="@{/index.html(l='en_US')}">English</a>
     </div>
 </form>
 

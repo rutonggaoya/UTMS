@@ -8,6 +8,8 @@ spring:
     # 配置静态css/img/js文件的访问路径。
     # 当访问static/img/image.jpg时会去classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/下查找文件
     static-path-pattern: /static/**
+  messages:
+    basename: i18n.login
   datasource:
     url: jdbc:mysql://101.132.154.2:3306/UTMS?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: utms
