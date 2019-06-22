@@ -36,41 +36,41 @@ public class LoginController {
             Student stu = studentMapper.getStu(username);
             if(stu==null){
                 map.put("msg","用户名为空");
-                return "login.html";
+                return "login";
             }
             else if(stu.getSID().equals(username) && stu.getPasswd().equals(inputPassword)){
                 session.setAttribute("loginuser",username);
                 return "redirect:/main.html";
             }else {
                 map.put("msg","用户名或密码错误");
-                return "login.html";
+                return "login";
             }
         }
         else if("Teacher".equals(usertype)){
             Teacher tea = teacherMapper.getTea(username);
             if(tea==null){
                 map.put("msg","用户名为空");
-                return "login.html";
+                return "login";
             }
             else if(tea.getTID().equals(username) && tea.getPasswd().equals(inputPassword)){
                 session.setAttribute("loginuser",username);
                 return "redirect:/main.html";
             }else {
                 map.put("msg","用户名或密码错误");
-                return "login.html";
+                return "login";
             }
         }else{
             Administrator ad = administratorMapper.getAd(username);
             if(ad==null){
                 map.put("msg","用户名为空");
-                return "login.html";
+                return "login";
             }
             else if(ad.getTID().equals(username) && ad.getPasswd().equals(inputPassword)){
                 session.setAttribute("loginuser",username);
                 return "redirect:/main.html";
             }else {
                 map.put("msg","用户名或密码错误");
-                return "login.html";
+                return "login";
             }
         }
 
