@@ -7,19 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-     <link rel="stylesheet" type="text/css" href="../../static/css/my1.css">
+    
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-
+     <link rel="stylesheet" type="text/css" href="../../static/css/my1.css">
     <title>个人中心</title>
-    <style type="text/css">
- body{
-    margin: 0;
-    background:url(../../static/img/beijing2.png);
-    }  
-    </style>
-
   </head>
-  <body class="text-center">
+  <body>
 
         
    <div class="col-md-12 column" style="margin-top: 20px; font-family: 华文行楷; font-size:25px;"> 
@@ -37,36 +30,88 @@
       </ul>
   </div>
 
-  <div class="container" style="position: relative;">
-    <img src="../../static/img/on.png"  style="margin-top: 25px; " class="col-md-12" >
+  <div class="container addbackgroundimg" > 
+    <div>
+      <table  class="table">
+      <tr>
+        <td width="20%"></td>
+        <td width="60%"> <p ><img src="../../static/img/qx.jpg" class="img-circle center-block" 
+          style="margin-top: 30px;" width=150;></p></td>
+        <td width="20%">       
+          <button class="btn btn-default buttonchange" type="button" 
+          onclick="window.location.href = 'StudentEditInfo.html'"style="margin-top:75px" >
+             <span>更改信息</span>
+        </button> </td>
+       </tr>
+      </table>
+      <div style="margin-top: 18px; font-size: 18px;">
+
+      <div style=" margin-bottom: 10px;" class="text-center"> 
+        <p> 张价铜 </p>
+        <p> 110161825 </p>
+      </div>
+     <div style="margin-left: 25%;">  
+
+      <div class="col-1 ">  <p> 性别</p></div>     
+         <div  class="col-2 ">
+            <label class="radio-inline">
+                <input type="radio" value="radio" name="1" disabled checked/>女
+            </label>                  
+          <label class="radio-inline">
+              <input type="radio" value="radio" name="1" disabled/>男
+          </label>         
+         </div>
+         <div class="col-md-12 col-xs-12"></div>
+        <div class="col-1">  <p> 院系</p></div> 
+        <div  class="col-2">   
+          <p><span>信息科学与工程</span></p>
+       </div>
+       <div class="col-1"> <p> 专业</p></div> 
+       <div  class="col-2">   
+          <p><span>软件工程</span></p>
+       </div>   
+
+      </div>      
+      <hr class="featurette-divider col-md-6 col-md-push-3" > 
+      <div class="col-md-10"></div>
+  <div style="margin-left: 25%">  
+     <div class="col-1"><p> 课题名称</p></div> 
+     <div  class="col-2">   
+       <p><span>基于芭拉芭拉芭</span></p>
+    </div>
+    <div class="col-1">  <p> 指导老师</p>  </div> 
+    <div  class="col-2">   
+       <p><span>张海腾</span></p>
+    </div>   
+    <div class="col-1">  <p> 论文成绩</p>  </div> 
+    <div  class="col-2">   
+       <p><span>无</span></p>
+    </div>   
+    <div class="col-1">  <p> 评价老师</p>  </div> 
+    <div class="col-2"> <p><span>100</span></p> </div>
+    <textarea  readonly class="col-3" >该老师评价认真负责...........................................
+      .......................................对我的毕业论文提供了非常大的帮助。。。。。。。。。。。。。。。。。。。。。。。。。。。
+    </textarea>   
+  </div>
+ 
+      <hr class="featurette-divider col-md-6 col-md-push-3" > 
+         <div class="col-md-10"></div>
+         <div style="margin-left: 25%">  
     
-    <div style="position: absolute;" >
-      <p ><img src="../../static/img/qx.jpg" class="img-circle" style="margin-top: 30px; margin-left: 480px; " width=150;></p>
+        <div class="col-1"><p> 手机号</p></div> 
+        <div  class="col-2">   
+          <p><span>65534280</span></p>
+       </div>
+       <div class="col-1">  <p> 邮箱</p>  </div> 
+       <div  class="col-2">   
+          <p><span>jtzhang@ecust.edu.cn</span></p>
+       </div>                 
+     </div>
 
-      <div style="margin-top: 18px; font-size: 18px; color:#2e442f;">
-
-      <div style="margin-left: 480px; margin-bottom: 10px;"> <p> 姓名  学号  </p></div>
      
-      <p> 性别</p>
-      <p> 专业  院系</p>
-      
-       <hr class="featurette-divider col-md-12 col-md-push-5" >
-      <p> 课题名称</p>
-      <p> 指导老师</p>
-      <p> 论文成绩</p>
-      <p> 评价老师</p>
-       <hr class="featurette-divider  col-md-12 col-md-push-5"> 
-       <p> 密码</p>   
-      <p> 手机号</p>
-      <p> 邮箱</p> 
       </div>
     </div>
-
-
   </div>
-  
-  
-
 
    
 
