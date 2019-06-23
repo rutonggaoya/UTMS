@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container" style="margin-top: 20px;" th:fragment="top-bar">
+    <div style="margin-left: 2%;" id="d3">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" >
+                <a href="/Student/topic" th:class="${activeUri=='Student/topic'?'active':''}">
+                    <i class="fa fa-book" aria-hidden="true"></i>&nbsp; 课题（Topic）
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="/Student/dissertation" th:class="${activeUri=='Student/dissertation'?'active':''}">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; 论文（Dissertation）
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="/Student/message" th:class="${activeUri=='Student/message'?'active':''}">
+                    <i class="fa fa-comments" aria-hidden="true"></i>&nbsp; 消息（Messages）
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="/Student/question" th:class="${activeUri=='Student/question'?'active':''}">
+                    <i class="fa fa-question-circle" aria-hidden="true"></i>&nbsp; 问题（Question）
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="/Student/person" th:class="${activeUri=='Student/person'?'active':''}">
+                    <i class="fa fa-user" aria-hidden="true"></i>&nbsp; [[${loginuser}]]同学（Person）
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
