@@ -19,6 +19,8 @@ import java.util.Map;
 @Controller
 public class LoginController {
 
+    Logger logger = LoggerFactory.getLogger(getClass());
+
     @Autowired
     AdministratorMapper administratorMapper;
     @Autowired
@@ -40,7 +42,7 @@ public class LoginController {
             }
             else if(stu.getSID().equals(username) && stu.getPasswd().equals(inputPassword)){
                 session.setAttribute("loginuser",username);
-                return "redirect:/main.html";
+                return "redirect:/Student/message";
             }else {
                 map.put("msg","用户名或密码错误");
                 return "login";

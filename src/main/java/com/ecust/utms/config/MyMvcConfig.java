@@ -20,8 +20,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
         //super.addViewControllers(registry);
         registry.addViewController("/").setViewName("login");
         registry.addViewController("/index.html").setViewName("login");
-        registry.addViewController("/main.html").setViewName("Student/message");
-        registry.addViewController("/person.html").setViewName("Student/person");
+        registry.addViewController("/main.html").setViewName("Student/message");  // 访问main.html时也会显示message.html页面
     }
 
     @Bean
