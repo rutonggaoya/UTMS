@@ -1,5 +1,6 @@
 package com.ecust.utms.config;
 
+import com.ecust.utms.component.LoginHandlerInterceptor;
 import com.ecust.utms.component.MyLocaleResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +20,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
         //super.addViewControllers(registry);
         registry.addViewController("/").setViewName("login");
         registry.addViewController("/index.html").setViewName("login");
-        registry.addViewController("/main.html").setViewName("Student/message");
+        registry.addViewController("/main.html").setViewName("Student/message");  // 访问main.html时也会显示message.html页面
     }
 
     @Bean
@@ -27,10 +28,10 @@ public class MyMvcConfig implements WebMvcConfigurer {
         return new MyLocaleResolver();
     }
 
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-//                .excludePathPatterns("/index.html","/","/user/login","/asserts/**","/webjars/**");
-//    }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
+                .excludePathPatterns("/", "/index.html","/static/**","/login","/webjars/**");
+    }
 }
 
