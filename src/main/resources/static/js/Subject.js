@@ -20,4 +20,10 @@ $(document).ready(function(){
     var val_limit = txt_limit.innerHTML;
     var val_Intro = txt_Intro.innerHTML;
   };
+  $("#stu_subj").live('click',function () {
+    //学生端查看课题
+    alert("a");
+    $('#Modal_stusubj').modal();
+    });
+   
 });
