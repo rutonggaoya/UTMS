@@ -7,41 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../../static/css/my1.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="../../static/css/my1.css">
     <title>老师课题</title>
-    <style type="text/css">
-
-        .cancel {
-            background: rgba(11, 158, 31, 0);
-        }
-
-        .cancel:hover {
-            background: rgba(62, 100, 47, 0.8);
-        }
-
-        .createSubj {
-            background: rgba(62, 100, 47, 0.7);
-        }
-
-        .createSubj:hover {
-            background: rgba(62, 100, 47, 0.9);
-        }
-
-    </style>
-    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
-    </script>
-    <script>
-        $(document).ready(function () {
-            $("#create-Subject").click(function () {
-                $("#myModalLabel").text("新增");
-                $('#myModal').modal();
-            });
-        });
-    </script>
-</head>
-<body class="text-center">
+     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+     <script type="text/JavaScript" src="../../static/js/Subject.js"></script>
+  </head>
+  <body class="text-center">
 
 <!--引入TOPBAR-->
 <div th:replace="~{Teacher/topbar::bar(activeurl='subjects')}"></div>
@@ -125,6 +100,44 @@
     </div>
 </div>
 
+
+<div class="modal fade" id="Modal_info" tabindex="-1" role="dialog" aria-labelledby="ModalLabel_info">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="ModalLabel_info">查看</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group col-md-10">
+                    <label>课题名称</label>
+                    <textarea class="form-control" id="txt_subjname" readonly>施工工人安全系数调研</textarea>
+
+
+                </div>
+                <div class="form-group col-md-2">
+                    <label >限选人数</label>
+                    <textarea type="text" class="form-control " readOnly id="txt_limitnum" >1</textarea>
+                </div>
+                <div class="form-group">
+                    <label>简介</label>
+                    <textarea  class="form-control" readOnly id="txt_intro"rows="5" placeholder="300字以内">项目背景项目前景项目计划
+                              </textarea>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" id="btn_change" class="btn btn-primary">更改</button>
+                <button type="button" id="btn_change" class="btn btn-primary"  data-dismiss="modal">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     $(".deleteBtn").click(function(){//删除时增加确认框
         var d = confirm("确认删除");
@@ -146,9 +159,6 @@
 </script>
 
 
-<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-</body>
+
+  </body>
 </html>
