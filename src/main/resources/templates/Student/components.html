@@ -10,27 +10,27 @@
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" >
                 <a href="/Student/topic" th:class="${activeUri=='Student/topic'?'active':''}">
-                    <i class="fa fa-book" aria-hidden="true"></i>&nbsp; 课题（Topic）
+                    <i class="fa fa-book" aria-hidden="true"></i>&nbsp; 课题(Topic)
                 </a>
             </li>
             <li role="presentation">
                 <a href="/Student/dissertation" th:class="${activeUri=='Student/dissertation'?'active':''}">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; 论文（Dissertation）
+                    <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; 论文(Dissertation)
                 </a>
             </li>
             <li role="presentation">
                 <a href="/Student/message" th:class="${activeUri=='Student/message'?'active':''}">
-                    <i class="fa fa-comments" aria-hidden="true"></i>&nbsp; 消息（Messages）
+                    <i class="fa fa-comments" aria-hidden="true"></i>&nbsp; 消息(Messages)
                 </a>
             </li>
             <li role="presentation">
                 <a href="/Student/question" th:class="${activeUri=='Student/question'?'active':''}">
-                    <i class="fa fa-question-circle" aria-hidden="true"></i>&nbsp; 问题（Question）
+                    <i class="fa fa-question-circle" aria-hidden="true"></i>&nbsp; 问题(Question)
                 </a>
             </li>
             <li role="presentation">
                 <a href="/Student/person" th:class="${activeUri=='Student/person'?'active':''}">
-                    <i class="fa fa-user" aria-hidden="true"></i>&nbsp; [[${loginuser}]]同学（Person）
+                    <i class="fa fa-user" aria-hidden="true"></i>&nbsp; [[${session.loginuser.Name}]]同学(Personal Center)
                 </a>
             </li>
         </ul>

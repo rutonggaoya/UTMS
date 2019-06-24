@@ -28,4 +28,11 @@ public interface SubjectMapper {
 
 //    @Update("update administrator set Name=#{Name},Gender=#{Gender},Passwd=#{Passwd},Tel=#{Tel},Email=#{Email},DeptID=#{DeptID} where TID={#TID}")
 //    int updateAd(Administrator administrator);
+
+    @Select("select * from subject as s, teacher as t where s.TID = t.TID and t.DeptID=#{DeptID}")
+    List<Subject> getSubListByDept(String DeptID);
+
+    @Select("select s.SubjID, s.Name, s.Intro, s.LimitNum, s.SelectNum, s.Status, s.TID from subject as s, selectsubject as ss " +
+            "where ss.SID=#{SID} and ss.SubjID = s.SubjID")
+    Subject getStuSub(String SID);
 }

@@ -18,6 +18,7 @@ public interface ThesisMapper {
             "and a.TID=#{TID}")
     List<ThesisPageData> getAllTPD(String TID);
 
-
+    @Select("select * from thesis where SID=#{SID} ")
+    List<Thesis> getThesisListByStuID(String SID);
 
 }

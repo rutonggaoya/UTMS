@@ -1,227 +1,175 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-     <link rel="stylesheet" type="text/css" href="../../static/css/my1.css">
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-      <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../static/css/my1.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <script type="text/JavaScript" src="../../static/js/Subject.js"></script>
     <script>
 
-    $("#stu_subj").click(function () {
-    //学生端查看课题
-    alert("a");
-    $('#Modal_stusubj').modal();
-    });
+        $("#stu_subj").click(function () {
+            //学生端查看课题
+            alert("a");
+            $('#Modal_stusubj').modal();
+        });
 
 
     </script>
     <title>课题</title>
 
-  </head>
-  <body class="text-center">
-
-        
-   <div class="col-md-12 column" style="margin-top: 20px; font-family: 华文行楷; font-size:25px;"> 
-     <h1>华东理工大学论文系统</h1>
-   </div>
+</head>
+<body class="text-center">
 
 
-   <!--引入top-bar-->
-   <div th:replace="Student/components :: top-bar(activeUri='Student/topic')"></div>
-  
+<div class="col-md-12 column" style="margin-top: 20px; font-family: 华文行楷; font-size:25px;">
+    <h1>华东理工大学论文系统</h1>
+</div>
 
- <div class="container" style="margin-top: 20px;">
 
-  <div style="height: 100px;">
-    <div class="col-xs-3 " style="margin-top: 40px;">
-        <ul class="nav nav-tab vertical-tab" role="tablist" id="vtab">
-            <li role="presentation" class="active">
-                <a href="#tab1" aria-controls="home" role="tab"
-                   data-toggle="tab">选择课题</a>
-            </li>
-            <li role="presentation" >
-                <a href="#tab2" aria-controls="inbox" role="tab"
-                   data-toggle="tab">我的课题</a>
-            </li>
+<!--引入top-bar-->
+<div th:replace="Student/components :: top-bar(activeUri='Student/topic')"></div>
 
-            <li role="presentation" style="font-size: 20px;">
-                <form class="form-inline my-2 my-lg-0">
-                  <input class="form-control mr-sm-0" type="search"  aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-             </li>
-        </ul>
-    </div>
-      <div class="tab-content vertical-tab-content col-xs-8">
+
+<div class="container" style="margin-top: 20px;">
+
+    <div style="height: 100px;">
+        <div class="col-xs-3 " style="margin-top: 40px;">
+            <ul class="nav nav-tab vertical-tab" role="tablist" id="vtab">
+                <li role="presentation" class="active">
+                    <a href="#tab1" aria-controls="home" role="tab"
+                       data-toggle="tab">选择课题</a>
+                </li>
+                <li role="presentation">
+                    <a href="#tab2" aria-controls="inbox" role="tab"
+                       data-toggle="tab">我的课题</a>
+                </li>
+
+                <li role="presentation" style="font-size: 20px;">
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-0" type="search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content vertical-tab-content col-xs-8">
             <div role="tabpanel" class="tab-pane active" id="tab1">
                 <table class="table table-striped">
                     <caption style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>华东理工大学论文课题表</b>
-                     <!-- Split button -->
+                        <!-- Split button -->
                         <div class="btn-group" style="float: right;">
-                           <button type="button" class="btn btn-danger">请选择学院</button>
-                           <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             <span class="caret"></span>
-                             <span class="sr-only">Toggle Dropdown</span>
-                           </button>
-                           <ul class="dropdown-menu">
-                              <li><a href="#">信息学院</a></li>
-                              <li><a href="#">商学院</a></li>
-                              <li><a href="#">化学院</a></li>
-                           </ul>
+                            <button type="button" class="btn btn-danger" th:text="${currentDept} + '学院'">请选择学院</button>
+                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li th:each="dept: ${allDept}">
+                                    <a href="#" th:text="${dept.getName()} + '学院'"
+                                       th:href="'topic?DeptID=' + ${dept.getDeptID()}">信息学院</a>
+                                </li>
+                            </ul>
                         </div>
-                   </caption>
+                    </caption>
 
-                     <thead class="theadcenter">
-                       <tr>
-                         <th>课题名称</th>
-                         <th>限制人数</th>
-                         <th>已选人数</th>
-                         <th>第一志愿</th>
-                         <th>第二志愿</th>
-                         <th>第三志愿</th>
-                       </tr>
-                     </thead>
-                     <tbody>
-                       <tr>
-                         <td>0001名称</td>
-                         <td>3</td>
-                         <td>1</td>
-                         <td> <input type="radio" value="1" name="0001名称"> </td>
-                         <td> <input type="radio" value="2" name="0001名称"> </td>
-                         <td> <input type="radio" value="3" name="0001名称"> </td>
-                       </tr>
-                       <tr>
-                         <td>0002名称</td>
-                         <td>3</td>
-                         <td>1</td>
-                         <td> <input type="radio" value="1" name="0002名称"> </td>
-                         <td> <input type="radio" value="2" name="0002名称"> </td>
-                         <td> <input type="radio" value="3" name="0002名称"> </td>
-                       </tr>
-                       <tr>
-                         <td>0003名称</td>
-                         <td>3</td>
-                         <td>1</td>
-                         <td> <input type="radio" value="1" name="0003名称"> </td>
-                         <td> <input type="radio" value="2" name="0003名称"> </td>
-                         <td> <input type="radio" value="3" name="0003名称"> </td>
-                       </tr>
-                        <tr>
-                         <td>0004名称</td>
-                         <td>3</td>
-                         <td>1</td>
-                         <td> <input type="radio" value="1" name="0004名称"> </td>
-                         <td> <input type="radio" value="2" name="0004名称"> </td>
-                         <td> <input type="radio" value="3" name="0004名称"> </td>
-                          <tr>
-                         <td>0005名称</td>
-                         <td>2</td>
-                         <td>0</td>
-                         <td> <input type="radio" value="1" name="0005名称"> </td>
-                         <td> <input type="radio" value="2" name="0005名称"> </td>
-                         <td> <input type="radio" value="3" name="0005名称"> </td>
-                       </tr>
-                        <tr>
-                         <td>0006名称</td>
-                         <td>3</td>
-                         <td>0</td>
-                         <td> <input type="radio" value="1" name="0006名称"> </td>
-                         <td> <input type="radio" value="2" name="0006名称"> </td>
-                         <td> <input type="radio" value="3" name="0006名称"> </td>
-                       </tr>
-                        <tr>
-                         <td>0007名称</td>
-                         <td>2</td>
-                         <td>1</td>
-                         <td> <input type="radio" value="1" name="0007名称"> </td>
-                         <td> <input type="radio" value="2" name="0007名称"> </td>
-                         <td> <input type="radio" value="3" name="0007名称"> </td>
-                       </tr>
-                       </tr>
-                     </tbody>
+
+                    <thead class="theadcenter">
+                    <tr>
+                        <th>课题名称</th>
+                        <th>限制人数</th>
+                        <th>已选人数</th>
+                        <th>第一志愿</th>
+                        <th>第二志愿</th>
+                        <th>第三志愿</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="subject: ${allSub}">
+                        <td th:text="${subject.getName()}"></td>
+                        <td th:text="${subject.getLimitNum()}"></td>
+                        <td th:text="${subject.getSelectNum()}"></td>
+                        <td><input type="radio" value="1" name="0001名称" th:name="${subject.getName()}"></td>
+                        <td><input type="radio" value="2" name="0001名称" th:name="${subject.getName()}"></td>
+                        <td><input type="radio" value="3" name="0001名称" th:name="${subject.getName()}"></td>
+                    </tr>
+                    </tbody>
                 </table>
-              <button id="fat-btn" class="btn btn-primary" data-loading-text="Loading..."
-                type="button" style="background-color:rgb(62,100,47);"> 确定
-               </button>
+                <button id="fat-btn" class="btn btn-primary" data-loading-text="Loading..."
+                        type="button" style="background-color:rgb(62,100,47);"> 确定
+                </button>
             </div>
 
             <div role="tabpanel" class="tab-pane" id="tab2">
                 <table class="table table-striped">
                     <caption style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>华东理工大学论文课题表</b>
-                     <!-- Split button -->
-                        <div class="btn-group" style="float: right;">
-                           <button type="button" class="btn btn-danger">请选择学院</button>
-                           <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             <span class="caret"></span>
-                             <span class="sr-only">Toggle Dropdown</span>
-                           </button>
-                           <ul class="dropdown-menu">
-                              <li><a href="#">信息学院</a></li>
-                              <li><a href="#">商学院</a></li>
-                              <li><a href="#">化学院</a></li>
-                           </ul>
-                        </div>
-                   </caption>
 
-                     <thead class="theadcenter">
-                       <tr>
-                         <th>课题名称</th>
-                         <th>老师</th>
-                       </tr>
-                     </thead>
-                     <tbody>
-                       <tr  id="stu_subj">
-                         <td>0001名称</td>
-                         <td>张海腾</td>
-                       </tr>
-                     </tbody>
+                    </caption>
+
+                    <thead class="theadcenter">
+                    <tr>
+                        <th>课题名称</th>
+                        <th>老师</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="stu_subj">
+                        <td>[[${mySub.Name}]]</td>
+                        <td>[[${myTeacher.Name}]]</td>
+                    </tr>
+                    </tbody>
                 </table>
             </div>
-      </div>
- </div>
-
- <div class="modal fade" id="Modal_stusubj" tabindex="-1" role="dialog" aria-labelledby="ModalLabel_stusubj">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                 </button>
-                <h2 class="modal-title" id="ModalLabel_stusubj">课题名称</h4>
-            </div>
-            <div class="modal-body">
-
-               <div class="form-group">
-
-                   <input type="text" class="form-control" id="txt_departmentname" placeholder="收信人">
-               </div>
-               <div class="form-group ">
-                   <textarea  type="text" class="form-control" id="txt_parentdepartment" rows="5"  placeholder="私信内容300字以内">
-                     </textarea>
-               </div>
-
-           </div>
-           <div class="modal-footer">
-               <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
-               <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>发送</button>
-           </div>
-       </div>
+        </div>
     </div>
-</div>
+
+    <div class="modal fade" id="Modal_stusubj" tabindex="-1" role="dialog" aria-labelledby="ModalLabel_stusubj">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="ModalLabel_stusubj">课题名称</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+
+                        <input type="text" class="form-control" id="txt_departmentname" placeholder="收信人">
+                    </div>
+                    <div class="form-group ">
+                   <textarea type="text" class="form-control" id="txt_parentdepartment" rows="5"
+                             placeholder="私信内容300字以内">
+                     </textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span
+                            class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                    </button>
+                    <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span
+                            class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>发送
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 </div>
 
-  </body>
+</body>
 </html>
