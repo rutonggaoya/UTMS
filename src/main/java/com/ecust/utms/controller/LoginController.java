@@ -21,6 +21,8 @@ import java.util.Map;
 @Controller
 public class LoginController {
 
+    Logger logger = LoggerFactory.getLogger(getClass());
+
     @Autowired
     AdministratorMapper administratorMapper;
     @Autowired
@@ -40,14 +42,14 @@ public class LoginController {
             Student stu = studentMapper.getStu(username);
             if(stu==null){
                 map.put("msg","用户名为空");
-                return "login.html";
+                return "login";
             }
             else if(stu.getSID().equals(username) && stu.getPasswd().equals(inputPassword)){
                 session.setAttribute("loginuser",stu);
-                return "redirect:/main_S.html";
+                return "redirect:/Student/message";
             }else {
                 map.put("msg","用户名或密码错误");
-                return "login.html";
+                return "login";
             }
         }
         else if("Teacher".equals(usertype)){
@@ -56,7 +58,7 @@ public class LoginController {
 //            System.out.println(dept.getName());
             if(tea==null){
                 map.put("msg","用户名为空");
-                return "login.html";
+                return "login";
             }
             else if(tea.getTID().equals(username) && tea.getPasswd().equals(inputPassword)){
                 session.setAttribute("loginuser",tea);
@@ -64,20 +66,20 @@ public class LoginController {
                 return "redirect:/main_T.html";
             }else {
                 map.put("msg","用户名或密码错误");
-                return "login.html";
+                return "login";
             }
         }else{
             Administrator ad = administratorMapper.getAd(username);
             if(ad==null){
                 map.put("msg","用户名为空");
-                return "login.html";
+                return "login";
             }
             else if(ad.getTID().equals(username) && ad.getPasswd().equals(inputPassword)){
                 session.setAttribute("loginuser",ad);
                 return "redirect:/main_T.html";
             }else {
                 map.put("msg","用户名或密码错误");
-                return "login.html";
+                return "login";
             }
         }
 

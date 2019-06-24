@@ -26,5 +26,5 @@ public class ThesisController {
         return "Teacher/TeacherThesis";
     }
 
-    
+
 }
