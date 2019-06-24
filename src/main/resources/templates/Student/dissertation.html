@@ -45,16 +45,22 @@
             <td th:text="${thesis.getName()}">0001名称</td>
             <td th:text="${thesis.getDateTime()}">3</td>
             <td>
-                <a th:href="${thesis.getTPath()}" target="_blank">下载&nbsp;</a>
-                <div class="btn-small btn-danger delete-files-button" th:name="'/Student/Files/delete?FilePath=' +  ${thesis.getTPath()}">删除</div>
+                <!--<div class="btn-small btn-default"><a th:href=" '/Student/Files/download?path=' + ${thesis.getTPath()}">下载&nbsp;</a></div>-->
+                <!--<div class="btn-small btn-danger delete-files-button" th:name="'/Student/Files/delete?FilePath=' +  ${thesis.getTPath()}">删除</div>-->
+                <a th:href=" '/Student/Files/download?path=' + ${thesis.getTPath()}">下载&nbsp;</a>
+                <a class="delete-files-button" th:name="'/Student/Files/delete?FilePath=' +  ${thesis.getTPath()}">删除</a>
             </td>
         </tr>
         </tbody>
     </table>
-    <form id="callDeteleMethod" hidden></form>
 </div>
+
 <script type="text/javascript">
+
+    // 删除文件功能
     $(".delete-files-button").click(function (event) {
+        if(!confirm("确定要删除"+""+"吗？"))
+            return;
         console.log(event.target.attributes['name'].nodeValue);
         var url = event.target.attributes['name'].nodeValue;
         $.ajax({
@@ -88,12 +94,15 @@
         </tr>
     </table>
     <div style="margin-top: 25px;">
-        <button id="on-btn" class="btn btn-primary" data-loading-text="Loading..."
-                type="button" style="background-color:rgb(62,100,47); margin-right: 20px;"> 上传
-        </button>
-        <button id="on2-btn" class="btn btn-primary" data-loading-text="Loading..."
-                type="button" style="background-color:rgb(62,100,47);"> 上传为最终版
-        </button>
+        <form method="post" action="/Student/Files/upload" enctype="multipart/form-data" id="file-upload-form">
+            <input id="input-file" type="file" name="file" /><br/><br/>
+            <button id="on-btn" class="btn btn-primary" data-loading-text="Loading..."
+                    type="submit" style="background-color:rgb(62,100,47); margin-right: 20px;">上传
+            </button>
+            <button id="on2-btn" class="btn btn-primary" data-loading-text="Loading..."
+                    type="button" style="background-color:rgb(62,100,47);"> 上传为最终版
+            </button>
+        </form>
     </div>
 </div>
 

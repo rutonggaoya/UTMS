@@ -24,4 +24,7 @@ public interface ThesisMapper {
     @Delete("delete from thesis where TPath=#{TPath}")
     Boolean deleteFileByPath(String TPath);
 
+    @Insert("insert into thesis (Name, TPath, DateTime, SID) values(#{Name}, #{TPath}, now(), #{SID})")
+    Boolean uploadStuFile(@Param("Name")String Name, @Param("TPath")String TPath, @Param("SID")String SID);
+
 }
