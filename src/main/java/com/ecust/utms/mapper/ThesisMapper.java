@@ -21,4 +21,7 @@ public interface ThesisMapper {
     @Select("select * from thesis where SID=#{SID} ")
     List<Thesis> getThesisListByStuID(String SID);
 
+    @Delete("delete from thesis where TPath=#{TPath}")
+    Boolean deleteFileByPath(String TPath);
+
 }
