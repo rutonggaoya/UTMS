@@ -7,7 +7,7 @@ public class Subject {
     private String Intro;//简介
     private Integer Status;//状态
     private Integer LimitNum;//限选人数
-    private Integer SeleteNum;//已选人数
+    private Integer SelectNum;//已选人数
     private String TID;//教师ID
 
     public Integer getSubjID() {
@@ -50,19 +50,32 @@ public class Subject {
         LimitNum = limitNum;
     }
 
-    public Integer getSeleteNum() {
-        return SeleteNum;
-    }
-
-    public void setSeleteNum(Integer seleteNum) {
-        SeleteNum = seleteNum;
-    }
-
     public String getTID() {
         return TID;
     }
 
     public void setTID(String TID) {
         this.TID = TID;
+    }
+
+    public Integer getSelectNum() {
+        return SelectNum;
+    }
+
+    public void setSelectNum(Integer selectNum) {
+        SelectNum = selectNum;
+    }
+
+    @Override
+    public String toString() {
+        return "Subject{" +
+                "SubjID=" + SubjID +
+                ", Name='" + Name + '\'' +
+                ", Intro='" + Intro + '\'' +
+                ", Status=" + Status +
+                ", LimitNum=" + LimitNum +
+                ", SelectNum=" + SelectNum +
+                ", TID='" + TID + '\'' +
+                '}';
     }
 }

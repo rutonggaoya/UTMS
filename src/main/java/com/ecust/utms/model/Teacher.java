@@ -76,4 +76,18 @@ public class Teacher {
     public void setDeptID(Integer deptID) {
         DeptID = deptID;
     }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "TID='" + TID + '\'' +
+                ", Title='" + Title + '\'' +
+                ", Name='" + Name + '\'' +
+                ", Gender=" + Gender +
+                ", Passwd='" + Passwd + '\'' +
+                ", Tel='" + Tel + '\'' +
+                ", Email='" + Email + '\'' +
+                ", DeptID=" + DeptID +
+                '}';
+    }
 }

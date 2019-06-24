@@ -49,4 +49,15 @@ public class Thesis {
     public void setSID(String SID) {
         this.SID = SID;
     }
+
+    @Override
+    public String toString() {
+        return "Thesis{" +
+                "ThesisID=" + ThesisID +
+                ", Name='" + Name + '\'' +
+                ", TPath='" + TPath + '\'' +
+                ", DateTime=" + DateTime +
+                ", SID='" + SID + '\'' +
+                '}';
+    }
 }

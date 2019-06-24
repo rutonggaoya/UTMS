@@ -1,9 +1,11 @@
 package com.ecust.utms.controller;
 
 import com.ecust.utms.mapper.AdministratorMapper;
+import com.ecust.utms.mapper.DepartmentMapper;
 import com.ecust.utms.mapper.StudentMapper;
 import com.ecust.utms.mapper.TeacherMapper;
 import com.ecust.utms.model.Administrator;
+import com.ecust.utms.model.Department;
 import com.ecust.utms.model.Student;
 import com.ecust.utms.model.Teacher;
 import org.slf4j.Logger;
@@ -25,6 +27,8 @@ public class LoginController {
     StudentMapper studentMapper;
     @Autowired
     TeacherMapper teacherMapper;
+    @Autowired
+    DepartmentMapper departmentMapper;
 
 
     @PostMapping(value = "/login")
@@ -39,8 +43,8 @@ public class LoginController {
                 return "login.html";
             }
             else if(stu.getSID().equals(username) && stu.getPasswd().equals(inputPassword)){
-                session.setAttribute("loginuser",username);
-                return "redirect:/main.html";
+                session.setAttribute("loginuser",stu);
+                return "redirect:/main_S.html";
             }else {
                 map.put("msg","用户名或密码错误");
                 return "login.html";
@@ -48,13 +52,16 @@ public class LoginController {
         }
         else if("Teacher".equals(usertype)){
             Teacher tea = teacherMapper.getTea(username);
+            Department dept = departmentMapper.getDept(tea.getDeptID());
+//            System.out.println(dept.getName());
             if(tea==null){
                 map.put("msg","用户名为空");
                 return "login.html";
             }
             else if(tea.getTID().equals(username) && tea.getPasswd().equals(inputPassword)){
-                session.setAttribute("loginuser",username);
-                return "redirect:/main.html";
+                session.setAttribute("loginuser",tea);
+                session.setAttribute("dept",dept);
+                return "redirect:/main_T.html";
             }else {
                 map.put("msg","用户名或密码错误");
                 return "login.html";
@@ -66,8 +73,8 @@ public class LoginController {
                 return "login.html";
             }
             else if(ad.getTID().equals(username) && ad.getPasswd().equals(inputPassword)){
-                session.setAttribute("loginuser",username);
-                return "redirect:/main.html";
+                session.setAttribute("loginuser",ad);
+                return "redirect:/main_T.html";
             }else {
                 map.put("msg","用户名或密码错误");
                 return "login.html";

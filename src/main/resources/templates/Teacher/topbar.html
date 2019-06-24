@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:fragment="bar">
+<div class="col-md-12 column" style="margin-top: 20px; font-family: 华文行楷; font-size:25px;">
+    <h1 class="text-center">华东理工大学论文系统</h1>
+</div>
+
+
+<div style="margin-left: 2%;">
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" ><a href="TeacherSubject.html" th:href="@{/subjects}" th:class="${activeurl=='subjects'?'active':''}">课题（Topic）</a></li>
+        <li role="presentation"><a href="TeacherThesis.html" th:href="@{/thesises}" th:class="${activeurl=='thesises'?'active':''}">论文（Thesis）</a></li>
+        <li role="presentation"><a href="Teachermessage.html">消息（Messages）</a></li>
+        <li role="presentation"><a href="Teacherquestion.html" >问题（Question）</a></li>
+        <li role="presentation"><a href="TeacherPerson.html" th:href="@{/main_T.html}" class="active" th:class="${activeurl=='teachers'?'active':''}">个人中心（Personal Center）</a></li>
+    </ul>
+</div>
+</div>
+</body>
+</html>
