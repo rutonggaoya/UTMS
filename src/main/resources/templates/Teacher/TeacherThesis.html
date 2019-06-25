@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="../../static/css/my1.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     <title>论文</title>
     <style type="text/css">
@@ -67,9 +68,9 @@
             <td th:text="${tpd.SubName}">基于机器学习的XXX</td>
             <td th:text="${tpd.ThesisName}">0001名称</td>
             <td th:text="${tpd.StuName}">蒋小花</td>
-            <td th:text="${#dates.format(tpd.DateTime,'yyyy-MM-dd')}">1</td>
-            <td th:href="${tpd.TPath}">下载</td>
-            <td>评论</td>
+            <td th:text="${#dates.format(tpd.DateTime,'yyyy-MM-dd HH:mm:ss')}">1</td>
+            <td><a th:href="${tpd.TPath}">下载</a></td>
+            <td><a href="#">评论</a></td>
         </tr>
         </tbody>
     </table>

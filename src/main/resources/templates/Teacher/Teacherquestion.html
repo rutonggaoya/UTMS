@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="../../static/css/my1.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     <title>问题</title>
     <style type="text/css">
@@ -35,21 +36,9 @@
 </head>
 <body class="text-center">
 
+<!--引入TOPBAR-->
+<div th:replace="~{Teacher/topbar::bar(activeurl='questions')}"></div>
 
-<div class="col-md-12 column" style="margin-top: 20px; font-family: 华文行楷; font-size:25px;">
-    <h1>华东理工大学论文系统</h1>
-</div>
-
-
-<div style="margin-left: 2%;" id="d3">
-    <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation"><a href="TeacherSubject.html">课题（Topic）</a></li>
-        <li role="presentation"><a href="TeacherThesis.html">论文（Thesis）</a></li>
-        <li role="presentation"><a href="Teachermessage.html">消息（Messages）</a></li>
-        <li role="presentation"><a href="Teacherquestion.html" class="active">问题（Question）</a></li>
-        <li role="presentation"><a href="TeacherPerson.html">XXXX老师（Teacher）</a></li>
-    </ul>
-</div>
 <div style="height: 100px;">
     <div class="col-xs-3 " style="margin-top: 40px;">
         <ul class="nav nav-tab vertical-tab" role="tablist" id="vtab">
@@ -66,7 +55,7 @@
                    data-toggle="tab">问题动态</a>
             </li>
             <li role="presentation" style="font-size: 20px;">
-                <form class="form-inline my-2 my-lg-0">
+                <form class="form-inline my-2 my-lg-0" style="margin-top: 10px">
                     <input class="form-control mr-sm-0" type="search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
@@ -76,48 +65,20 @@
     <div class="tab-content vertical-tab-content col-xs-8">
         <div role="tabpanel" class="tab-pane active" id="tab1">
             <h2 id="d2" style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>我的回答</b></h2>
+            <div class="list-group">
+                <div style="width:100%" class="col-md-9 list-group-item" th:each="myans:${myanss}">
+                    <div class="col-md-3" style="margin-top: 10px">
+                        <img class="featurette-image img-responsive center-block round" src="../../static/img/miao.jpg"
+                             alt="Generic placeholder image">
+                    </div>
+                    <div class="col-md-9" style="margin-top: 10px">
+                        <p style="text-align:left; font-size: 22px; font-weight: bold" th:text="${myans.QueContent}"> 1、问题标题</p>
+                        <p style="text-align:left" class="overfl" th:text="${'回答内容：'}+${myans.AnsContent}">
+                            回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容.</p>
+                        <p style="text-align:right;" th:text="${'回答时间：'}+${#dates.format(myans.DateTime,'yyyy-MM-dd HH:mm')}">热度111  分享</p>
+                    </div>
+                </div>
 
-            <hr class="featurette-divider">
-            <div class="row featurette">
-
-                <div class="col-md-3">
-                    <img class="featurette-image img-responsive center-block round" src="../../static/img/miao.jpg"
-                         alt="Generic placeholder image">
-                </div>
-                <div class="col-md-9">
-                    <p style="text-align:left; font-size: 15px;"> 1、问题标题</p>
-                    <p class="overfl">
-                        回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容.</p>
-                    <p style="text-align:left;">&nbsp;&nbsp;热度111 &nbsp;&nbsp;&nbsp; 分享</p>
-                </div>
-            </div>
-            <hr class="featurette-divider">
-            <div class="row featurette">
-
-                <div class="col-md-3">
-                    <img class="featurette-image img-responsive center-block round" src="../../static/img/miao.jpg"
-                         alt="Generic placeholder image">
-                </div>
-                <div class="col-md-9">
-                    <p style="text-align:left; font-size: 15px;"> 2、问题标题</p>
-                    <p class="overfl">
-                        回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述述.</p>
-                    <p style="text-align:left;">&nbsp;&nbsp;热度222 &nbsp;&nbsp;&nbsp; 分享</p>
-                </div>
-            </div>
-            <hr class="featurette-divider">
-            <div class="row featurette">
-
-                <div class="col-md-3">
-                    <img class="featurette-image img-responsive center-block round" src="../../static/img/miao.jpg"
-                         alt="Generic placeholder image">
-                </div>
-                <div class="col-md-9">
-                    <p style="text-align:left; font-size: 15px;"> 3、问题标题</p>
-                    <p class="overfl">
-                        回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回问题描述问题描述问题描述问题描述问题描述问题描述问题描述述.</p>
-                    <p style="text-align:left;">&nbsp;&nbsp;热度333 &nbsp;&nbsp;&nbsp; 分享</p>
-                </div>
             </div>
         </div>
         <div role="tabpanel" class="tab-pane" id="tab2">
@@ -182,63 +143,22 @@
         </div>
         <div role="tabpanel" class="tab-pane active" id="tab3">
             <h2 style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>问题动态</b></h2>
-
-            <hr class="featurette-divider">
-            <div class="row featurette">
-
-                <div class="col-md-3">
-                    <img class="featurette-image img-responsive center-block round" src="../../static/img/miao.jpg"
-                         alt="Generic placeholder image">
+            <div class="list-group">
+                <div style="width:100%" class="col-md-9 list-group-item" th:each="que:${ques}">
+                    <div class="col-md-3" style="margin-top: 10px">
+                        <img class="featurette-image img-responsive center-block round" src="../../static/img/miao.jpg"
+                             alt="Generic placeholder image">
+                    </div>
+                    <div class="col-md-9" style="margin-top: 10px">
+                        <p style="text-align:left; font-size: 22px; font-weight: bold" th:text="${que.Content}"> 1、问题标题</p>
+                        <p style="text-align:left" th:text="${que.Desc}">
+                            回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容.</p>
+                        <p style="text-align:right;" th:text="${'提问时间：'}+${#dates.format(que.DateTime,'yyyy-MM-dd HH:mm')}">热度111  分享</p>
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    <p style="text-align:left; font-size: 15px;"> 1、问题标题</p>
-                    <p class="overfl">
-                        回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容.</p>
-                    <p style="text-align:left;">&nbsp;&nbsp;热度111 &nbsp;&nbsp;&nbsp; 分享</p>
-                </div>
+
             </div>
-            <hr class="featurette-divider">
-            <div class="row featurette">
 
-                <div class="col-md-3">
-                    <img class="featurette-image img-responsive center-block round" src="../../static/img/miao.jpg"
-                         alt="Generic placeholder image">
-                </div>
-                <div class="col-md-9">
-                    <p style="text-align:left; font-size: 15px;"> 2、问题标题</p>
-                    <p class="overfl">
-                        回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述述.</p>
-                    <p style="text-align:left;">&nbsp;&nbsp;热度222 &nbsp;&nbsp;&nbsp; 分享</p>
-                </div>
-            </div>
-            <hr class="featurette-divider">
-            <div class="row featurette">
-
-                <div class="col-md-3">
-                    <img class="featurette-image img-responsive center-block round" src="../../static/img/miao.jpg"
-                         alt="Generic placeholder image">
-                </div>
-                <div class="col-md-9">
-                    <p style="text-align:left; font-size: 15px;"> 3、问题标题</p>
-                    <p class="overfl">
-                        回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回问题描述问题描述问题描述问题描述问题描述问题描述问题描述述.</p>
-                    <p style="text-align:left;">&nbsp;&nbsp;热度333 &nbsp;&nbsp;&nbsp; 分享</p>
-                </div>
-            </div>
-            <hr class="featurette-divider">
-            <div class="row featurette">
-
-                <div class="col-md-3">
-                    <img class="featurette-image img-responsive center-block round" src="../../static/img/miao.jpg"
-                         alt="Generic placeholder image">
-                </div>
-                <div class="col-md-9">
-                    <p style="text-align:left; font-size: 15px;"> 4、问题标题</p>
-                    <p class="overfl">回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答
-                        内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回问题描述问题描述问题描述问题描述问题描述问题描述问题描述述.</p>
-                    <p style="text-align:left;">&nbsp;&nbsp;热度333 &nbsp;&nbsp;&nbsp; 分享</p>
-                </div>
-            </div>
         </div>
     </div>
 </div>

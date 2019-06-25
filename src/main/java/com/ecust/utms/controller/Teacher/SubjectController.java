@@ -1,4 +1,4 @@
-package com.ecust.utms.controller;
+package com.ecust.utms.controller.Teacher;
 
 import com.ecust.utms.mapper.SubjectMapper;
 import com.ecust.utms.model.Subject;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @Controller
+@RequestMapping("/teacher")
 public class SubjectController {
 
     @Autowired

@@ -1,4 +1,4 @@
-package com.ecust.utms.controller;
+package com.ecust.utms.controller.Teacher;
 
 
 import com.ecust.utms.mapper.DepartmentMapper;
@@ -9,15 +9,13 @@ import com.ecust.utms.model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.Collection;
 
 @Controller
+@RequestMapping("/teacher")
 public class TeacherController {
     @Autowired
     TeacherMapper teacherMapper;
