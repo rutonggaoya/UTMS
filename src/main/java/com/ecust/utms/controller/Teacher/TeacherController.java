@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import java.util.Collection;
 
 @Controller
-@RequestMapping("/teacher")
 public class TeacherController {
     @Autowired
     TeacherMapper teacherMapper;
@@ -48,10 +47,5 @@ public class TeacherController {
         return "redirect:/teachers";//重定向
     }
 
-//    @GetMapping("/subjects")
-//    public String toSubjectPage(Model model){
-//        Collection<Subject> all =
-//        return "";
-//    }
 
 }

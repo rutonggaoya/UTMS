@@ -1,0 +1,189 @@
+@charset "UTF-8";
+
+
+
+
+.bodybk {
+	margin: 0;
+	background: url(../img/background.png);
+}
+
+.bodybk1 {
+	margin: 0;
+	background: url(../img/background1.png);
+}
+
+.nav li a {
+	font-size: 18px;
+	font-weight: 3px;
+	color: #2e442f;
+}
+
+.nav li a:hover {
+	background-color: rgb(187, 189, 139);
+}
+
+.active {
+	background-color: rgba(187, 189, 139, 0.5);
+}
+
+
+.addbackgroundimg {
+	background: url(../img/on.png);
+	margin-left:35px;
+	margin-right:35px;
+
+}
+
+.Field {
+    padding-top:15px;
+    padding-bottom:15px;
+    border-bottom:1px solid white;
+  
+}
+
+.Field-label {
+	float:left;
+    font-size: 15px;
+    font-weight: 600;
+    font-synthesis: style; 
+    color: #444;
+}
+Field-content {
+    padding: 10px 64px 0 140px;
+   
+   
+}
+    
+.Field-content {
+    padding: 10px 64px 0 140px;
+  
+   
+}
+
+.Field-modify {
+    margin-left: 16px;
+    
+    -webkit-transition: opacity .1s;
+    transition: opacity .1s;
+}
+
+
+
+.Field-modify-hidden{
+    opacity: 0;
+}
+.ModifyButton {
+    font-size: 15px;
+}
+.Button--link {
+    color: #175199;
+}
+.Button--link {
+    height: auto;
+    padding: 0;
+  
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+.class1{
+	display:block;
+}
+
+.class2{
+	display:none;
+
+
+}
+
+
+#nameSet{
+	display:none;
+	margin-top:20px;
+	margin-bottom:20px;
+	
+	
+}
+
+#name{
+	display:block;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+.nameIB{
+	padding-top:18px;
+	margin-left:80px;
+	float:left;
+	
+}
+
+.h3name{
+	float:left;
+}
+
+.input{
+	width:300px;
+	float:left;
+}
+
+.IB{
+	float:left;
+	margin-left:80px;
+	
+}
+
+
+
+#nSaveBtn{
+	margin-left:10px;
+	margin-right:10px;
+	width:75px;
+}
+#nCancelBtn{
+	width:75px;
+	
+}
+.font1{
+	
+font-size: 15px;
+font-weight: 600;
+}
+
+.font2{
+	
+font-size: 25px;
+font-weight: 600;
+}
+
+#nameBtn{
+	float:left;
+	margin-left:25px;
+	margin-top:25px;
+
+}
+
+
+.generalSet{
+	float:left;
+	margin-left:16px;
+	margin-top:16px;
+	
+}
+
+.bottom-margin{
+	height:140px;
+}
+.bottom{
+	margin-top:20px;
+}
+.passwddiv{
+	padding-top:40px;
+	padding-right:10px;
+}
+.mymodaldiv{
+	width:400px;
+	top:100px !important;
+}

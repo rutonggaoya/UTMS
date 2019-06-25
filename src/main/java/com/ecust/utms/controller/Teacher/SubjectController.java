@@ -22,9 +22,6 @@ public class SubjectController {
     public String toSubjectPage(Model model, HttpSession session){
         Teacher user = (Teacher)session.getAttribute("loginuser");
         List<Subject> all = subjectMapper.getTeaSub(user.getTID());
-//        for(Subject s:all){
-//            System.out.println("当前老师拥有课题："+s.toString());
-//        }
         model.addAttribute("subs",all);
         return "Teacher/TeacherSubject";
     }

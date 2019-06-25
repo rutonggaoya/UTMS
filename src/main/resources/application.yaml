@@ -17,6 +17,8 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     initialization-mode: always
     type: com.alibaba.druid.pool.DruidDataSource
+file:
+  upload-folder: D:/programming/ideaworkplace/UTMS/src/main/resources/static/userfiles/
 
 mybatis:
   configuration:

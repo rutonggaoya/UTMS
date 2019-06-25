@@ -19,14 +19,14 @@
 </head>
 <body class="text-center">
 
-<div class="col-md-12 column" style="margin-top: 110px; font-family: 华文行楷">
+<div class="col-md-12 column" style="margin-top: 110px; font-family: 华文行楷; color:white">
     <h1>华东理工大学论文系统</h1>
 </div>
 
 
 <form class="form-signin" style="margin-top: 20px;" action="message.html" th:action="@{/login}" method="post" id="loginForm">
     <div align="center">
-        <h2 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h2>
+        <h2 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}" style="color:white">Please sign in</h2>
         <label class="sr-only col-md-5" for="username" th:text="#{login.username}">username</label>
         <input style="text-align:center;" class="form-control col-md-3" id="username" name="username" placeholder="Username" th:placeholder="#{login.username}" required="" autofocus="">
     </div>

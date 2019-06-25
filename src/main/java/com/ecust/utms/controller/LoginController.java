@@ -76,7 +76,7 @@ public class LoginController {
             }
             else if(ad.getTID().equals(username) && ad.getPasswd().equals(inputPassword)){
                 session.setAttribute("loginuser",ad);
-                return "redirect:/main_T.html";
+                return "redirect:/main_A.html";
             }else {
                 map.put("msg","用户名或密码错误");
                 return "login";

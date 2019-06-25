@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+
+.top{
+	margin-left: 2%;
+}
+
+
+.bodybk {
+	margin: 0;
+	background: url(../img/background.png);
+}
+
+.bodybk1 {
+	margin: 0;
+	background: url(../img/background1.png);
+}
+
+.nav li a {
+	font-size: 18px;
+	font-weight: 50px;
+	color: #2e442f;
+}
+
+.nav li a:hover {
+	background-color: rgb(187, 189, 139) !important;
+}
+
+.active {
+	background-color: rgba(187, 189, 139, 0.5) !important; 
+}
+.btn-green{
+	background-color:#bbce99;
+}
+
+.backBtn{
+	float:right;
+	margin-right:100px;
+	
+}
+

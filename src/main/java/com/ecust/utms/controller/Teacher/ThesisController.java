@@ -4,12 +4,15 @@ import com.ecust.utms.mapper.ThesisMapper;
 import com.ecust.utms.model.Teacher;
 import com.ecust.utms.model.Thesis;
 import com.ecust.utms.model.ThesisPageData;
+import com.ecust.utms.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -19,6 +22,8 @@ public class ThesisController {
 
     @Autowired
     ThesisMapper thesisMapper;
+    @Autowired
+    FileService fileService;
 
     @GetMapping("/thesises")
     public String toThesisPage(Model model, HttpSession session){
@@ -28,5 +33,8 @@ public class ThesisController {
         return "Teacher/TeacherThesis";
     }
 
-
+    @GetMapping("/Files/download")
+    public String download(@RequestParam("path") String path, HttpServletResponse response){
+        return fileService.downloadFile(path, response);
+    }
 }

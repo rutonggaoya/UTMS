@@ -18,6 +18,13 @@ public interface ThesisMapper {
             "and a.TID=#{TID}")
     List<ThesisPageData> getAllTPD(String TID);
 
+    @Select("select * from thesis where SID=#{SID} ")
+    List<Thesis> getThesisListByStuID(String SID);
 
+    @Delete("delete from thesis where TPath=#{TPath}")
+    Boolean deleteFileByPath(String TPath);
+
+    @Insert("insert into thesis (Name, TPath, DateTime, SID) values(#{Name}, #{TPath}, now(), #{SID})")
+    Boolean uploadStuFile(@Param("Name")String Name, @Param("TPath")String TPath, @Param("SID")String SID);
 
 }
