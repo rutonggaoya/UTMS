@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- jQuery Js -->
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+<!-- Bootstrap Js -->
+<script
+	src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+	media="screen">
+
+<!-- jquery.dataTables CSS -->
+<link href="../../static/plugins/DataTables/bootstrap-table.css"
+	rel="stylesheet" media="screen" />
+
+<!-- DATA TABLE JS -->
+<script type="text/javascript"
+	src="../../static/plugins/DataTables/bootstrap-table.js"></script>
+<script type="text/javascript"
+	src="../../static/plugins/DataTables/bootstrap-table-zh-CN.js"></script>
+
+<!-- datetimepicker CSS-->
+<link
+	href="../../static/plugins/datetimepicker/bootstrap-datetimepicker.min.css"
+	rel="stylesheet" media="screen">
+
+<!-- datetimepicke JS-->
+<script type="text/javascript"
+	src="../../static/plugins/datetimepicker/bootstrap-datetimepicker.js"
+	charset="UTF-8"></script>
+<script type="text/javascript"
+	src="../../static/plugins/datetimepicker/bootstrap-datetimepicker.fr.js"
+	charset="UTF-8"></script>
+
+<!-- superTopic.html CSS -->
+<link href="../../static/css/superBase.css" rel="stylesheet"
+	type="text/css">
+
+<link href="../../static/css/superUser.css" rel="stylesheet"
+	type="text/css">
+
+<title>课题</title>
+
+</head>
+<body class="bodybk text-center">
+	<div class="container-fluid">
+
+		<!-- title -->
+		<div class="row ">
+			<div class="col-md-12"
+				style="margin-top: 20px; font-family: 华文行楷; font-size: 25px;">
+				<h1>华东理工大学论文系统</h1>
+			</div>
+		</div>
+		<!-- title END -->
+
+		<!-- 导航栏 -->
+		<div class="row top">
+			<div class="col-md-12 ">
+				<ul class="nav nav-tabs " role="tablist">
+					<li role="presentation"><a href="superTopic.html">课题（Topic）</a></li>
+					<li role="presentation"><a href="superUserStu.html" class="active">用户（User）</a></li>
+					<li role="presentation"><a href="supermessage.html">消息（Message）</a></li>
+					<li role="presentation"><a href="superInfo.html"
+						><span>xxx</span>管理员（Person）</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- 导航栏END -->
+
+		<!--主体-->
+		<div class="main_pane row">
+		
+	<!--导航部分-->
+			<div class=" col-md-3">
+
+				<nav class="navbar navbar-default nav_my" role="navigation">
+					<div class="container-fluid">
+						
+						<div class="collapse navbar-collapse " id="navbar-collapse">
+							<ul class="nav navbar-nav" id="nav">
+								<li class="nav_li">
+									<a href="#" ><font color="black">学生管理</font></a>
+								</li>
+
+								<li class="nav_li">
+									<a href="superUserTea" ><font color="black">老师管理</font></a>
+								</li>
+								
+
+							</ul>
+						</div>
+					</div>
+				</nav>
+
+			</div>
+			
+
+			<!--用户列表-->
+			<div class="main_right col-md-9">
+				<div class="row main_table">
+					<div class="col-md-12">
+						<div class="panel panel-default ">
+							<div class="panel-heading">华东理工大学论文课题表</div>
+							<div class="panel-body">
+								<!--工具栏-->
+								<div class="main_search" id="toolbar">
+									<form class="form-inline" role="form" id="search_form">
+										<div class="form-group ">
+											<label class="sr-only" for="studentID">学号</label> <input
+												type="text" class="form-control main_s_input" id="studentIDu"
+												name="studentID" placeholder="学号查询"> 
+										</div>
+										<button type="button" id="query"
+											class="btn btn-info query mt-5">查询</button>
+
+									</form>
+								</div>
+								<!--工具栏END-->
+								<!--表格-->
+								<div class="table-responsive">
+									<table id="table"></table>
+								</div>
+								<!--表格END-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--用户列表END-->
+
+		</div>
+		<!--主体结束-->
+	</div>
+
+
+
+
+<div class="modal fade " id="checkModal" tabindex="-1" role="dialog"
+							aria-labelledby="myModalLabel">
+							<div class="modal-dialog mymodaldiv" style="margin-top:200px !important" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										<h4 class="modal-title" id="myModalLabel">审核</h4>
+									</div>
+									<div class="modal-footer">
+										<button class="btn btn-green float_left" onclick="pass()">通过</button>
+										<button class="btn btn-default float_left1"  onclick="failed()">驳回</button>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+<div class="modal fade " id="scoreModal" tabindex="-1" role="dialog"
+							aria-labelledby="myModalLabel">
+							<div class="modal-dialog mymaddmodal " style="margin-top:200px !important" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										<h4 class="modal-title" id="myModalLabel">登记成绩</h4>
+									</div>
+									<div class="modal-body">
+
+										<div class="form-group">
+											<label for="score">成绩</label> <input type="text" name="score"
+												class="form-control" id="scoreu" placeholder="成绩">
+										</div>
+										
+
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-green" id="scoreBtn">
+											登记</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal"
+											>关闭</button>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+</body>
+
+<script src="../../static/js/userTable.js"></script>
+<script src="../../static/js/superUserStu.js"></script>
+</html>

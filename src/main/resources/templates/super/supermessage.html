@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- jQuery Js -->
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+<!-- Bootstrap Js -->
+<script
+	src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+	media="screen">
+
+<!-- jquery.dataTables CSS -->
+<link href="../../static/plugins/DataTables/bootstrap-table.css"
+	rel="stylesheet" media="screen" />
+
+<!-- DATA TABLE JS -->
+<script type="text/javascript"
+	src="../../static/plugins/DataTables/bootstrap-table.js"></script>
+<script type="text/javascript"
+	src="../../static/plugins/DataTables/bootstrap-table-zh-CN.js"></script>
+
+<!-- datetimepicker CSS-->
+<link
+	href="../../static/plugins/datetimepicker/bootstrap-datetimepicker.min.css"
+	rel="stylesheet" media="screen">
+
+<!-- datetimepicke JS-->
+<script type="text/javascript"
+	src="../../static/plugins/datetimepicker/bootstrap-datetimepicker.js"
+	charset="UTF-8"></script>
+<script type="text/javascript"
+	src="../../static/plugins/datetimepicker/bootstrap-datetimepicker.fr.js"
+	charset="UTF-8"></script>
+
+<!-- superTopic.html CSS -->
+<link href="../../static/css/superBase.css" rel="stylesheet"
+	type="text/css">
+
+<link href="../../static/css/superMessage.css" rel="stylesheet"
+	type="text/css">
+
+<title>课题</title>
+
+</head>
+<body class="bodybk text-center">
+	<div class="container-fluid">
+
+		<!-- title -->
+		<div class="row ">
+			<div class="col-md-12"
+				style="margin-top: 20px; font-family: 华文行楷; font-size: 25px;">
+				<h1>华东理工大学论文系统</h1>
+			</div>
+		</div>
+		<!-- title END -->
+
+		<!-- 导航栏 -->
+		<div class="row top">
+			<div class="col-md-12 ">
+				<ul class="nav nav-tabs " role="tablist">
+					<li role="presentation"><a href="superTopic.html">课题（Topic）</a></li>
+					<li role="presentation"><a href="superUserStu.html">用户（User）</a></li>
+					<li role="presentation"><a href="supermessage.html"
+						class="active">消息（Message）</a></li>
+					<li role="presentation"><a href="superInfo.html"><span>xxx</span>管理员（Person）</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- 导航栏END -->
+
+		<!--主体-->
+		<div class="main_pane row  myMessage">
+
+			<table class="table table-striped">
+				<caption id="d1" style="font-size: 25px; color: rgb(62, 100, 47);"
+					class="text-center">
+					<b>系统公告</b>
+					<button class="btn btn-danger " type="button"
+						style="float: right;" id="btn_issue">
+						<span>公告</span>
+					</button>
+
+				</caption>
+
+
+				<thead class="theadcenter">
+					<tr>
+						<th>公告</th>
+						<th>时间</th>
+						<th colspan="3">附件</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>0001名称</td>
+						<td>2019/6/19 10：56</td>
+						<td>附件1</td>
+						<td>附件2</td>
+						<td>附件3</td>
+					</tr>
+					<tr>
+						<td>0002名称</td>
+						<td>2019/6/19 10：56</td>
+						<td colspan="3">附件2</td>
+					</tr>
+					<tr>
+						<td>0003名称</td>
+						<td>2019/6/19 10：56</td>
+						<td>附件3</td>
+						<td colspan="2">附件10</td>
+					</tr>
+					<tr>
+						<td>0004名称</td>
+						<td>2019/6/19 10：56</td>
+						<td colspan="3">附件4</td>
+					<tr>
+						<td>0005名称</td>
+						<td>2019/6/19 10：56</td>
+						<td colspan="3">附件5</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+		<nav aria-label="Page navigation">
+			<ul class="pagination1">
+				<li><a href="#" aria-label="Previous"> <span
+						aria-hidden="true">&laquo;</span>
+				</a></li>
+				<li><a href="#">1</a></li>
+				<li><a href="#" class="active">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+
+				<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+				</a></li>
+			</ul>
+		</nav>
+		<!--主体结束-->
+	</div>
+
+
+
+	<!-- 发布公告模态框 -->
+	<div class="modal fade " id="issueModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog mymaddmodal" style="margin-top:100px !important" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">发布公告</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="form-group">
+						<label for="title">名称</label> <input type="text" name="title"
+							class="form-control" id="titleu" placeholder="名称">
+					</div>
+					<div class="form-group">
+						<label for="content">内容</label> <input type="text" name="content"
+							class="form-control" id="contentu" placeholder="内容">
+					</div>
+
+					<form method="post" class="box-header with-border" action=""
+						th:object="${apkVersion}" id="dataFrom"
+						enctype="multipart/form-data">
+						<!--th:object 用于表单数据对象绑定，将表单绑定到后台controller的一个JavaBean参数。常与th:field一起使用进行表单数据绑定-->
+						<input type="hidden" name="id" id="id" /> <input type="hidden"
+							name="url" id="url" /> <input type="hidden" name="fileMd5"
+							id="fileMd5" /> <input type="hidden" name="version" id="version" />
+						<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">   -->
+						<div>
+							<div role="document">
+								<div>
+									<div class="form-group">
+
+										<input type="file" name="uploadfile" id="uploadfile"
+											multiple="multiple" class="file-loading" />
+									</div>
+									<div class="modal-footer">
+										<button class="btn btn-primary " type="button"
+											name="update1" id="inputFileBtn"
+											style="background-color: rgb(62, 100, 47);" >上传</button>
+
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-green" id="issueBtn">
+						确认</button>
+					<button type="button" class="btn btn-default" id="issueCancelBtn">关闭</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 自定义添加学生模态框 END-->
+
+
+
+</body>
+
+<script src="../../static/js/userTable.js"></script>
+<script src="../../static/js/superMessage.js"></script>
+</html>

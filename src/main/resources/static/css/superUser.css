@@ -1,0 +1,103 @@
+.theadcenter tr th {
+	text-align: center;
+	background-color: rgba(62, 100, 47, 0.8);
+}
+
+.table-striped tbody tr td {
+	background-color: rgba(185, 209, 157, 0.7);
+}
+
+.main_pane {
+	margin-top: 30px;
+	margin-left: 2%;
+	margin-right: 150px;
+}
+
+
+
+.main_search {
+	margin-left: 20px;
+	float: left;
+}
+
+.main_time {
+	margin-top: 10px;
+	margin-left:175px;
+}
+
+.main_time_button {
+	float: right;
+}
+
+#query {
+	margin-left: 10px;
+	width: 75px;
+}
+
+#delete {
+	margin-left: 10px width:75px;
+}
+
+#issue {
+	width: 75px;
+}
+
+.addbackgroundimg {
+	background: url(../img/on.png);
+}
+.bottom{
+	margin-top:20px;
+	margin-left:50px;
+	margin-right:50px;
+	
+}
+
+.col-1 {
+	float: left;
+	width: 30%;
+	margin-top: 5px;
+}
+
+.col-2 {
+	float: right;
+	width: 70%;
+	margin-top: 5px;
+}
+
+.buttonchange {
+	background-color: rgba(255, 255, 255, 1);
+	font-weight: 800;
+	color: rgba(62, 100, 47, 0.8);
+	border: none;
+}
+
+.buttonchange:hover {
+	background-color: rgba(62, 100, 47, 0.8);
+	border: none;
+	color: white;
+}
+
+
+.float_left{
+	float:left;
+	width:75px;
+	margin-left:50px ;
+}
+
+.float_left1{
+	float:left;
+	width:75px;
+	margin-left:30px !important;
+}
+
+
+.mymaddmodal{
+	width:300px;
+	
+	height:150px;
+}
+.mymodaldiv{
+	width:300px;
+	
+	height:150px;
+}
