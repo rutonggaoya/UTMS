@@ -75,9 +75,20 @@ public class StudentController {
 
         // 获取'我的课题'及指导老师
         Subject mySub = subjectMapper.getStuSub(sid);
-        map.put("mySub", mySub);
+        if(mySub != null)
+            map.put("mySub", mySub);
+        else {
+            mySub = new Subject(0, "暂未选定", "暂未选定", -1, -1, -1, "暂未选定");
+            map.put("mySub", mySub);
+        }
         Teacher teacher = teacherMapper.getTea(mySub.getTID());
-        map.put("myTeacher", teacher);
+        if(teacher != null)
+            map.put("myTeacher", teacher);
+        else {
+            teacher = new Teacher();
+            teacher.setName("暂未选定");
+            map.put("myTeacher", teacher);
+        }
         return "Student/topic";
     }
 
@@ -116,11 +127,26 @@ public class StudentController {
         logger.trace("--->Student: " + sid);
         map.put("loginuser", student);
 
+        // 查询已选中的课题
         Subject mySub = subjectMapper.getStuSub(sid);
-        map.put("mySub", mySub);
+        if(mySub != null)
+            map.put("mySub", mySub);
+        else {
+            mySub = new Subject(0, "暂未选定", "暂未选定", -1, -1, -1, "暂未选定");
+            map.put("mySub", mySub);
+        }
 
+        // 查询已上传的文档列表
         List<Thesis> thesisList = thesisMapper.getThesisListByStuID(sid);
         map.put("myThesisList", thesisList);
+
+        // 查询是否上传了最终版
+        String ThesisID = thesisMapper.checkFinalSubmit(sid);
+        if(ThesisID == null){
+            map.put("FinalThesisID",0);
+        } else{
+            map.put("FinalThesisID", ThesisID);
+        }
 
         return "Student/dissertation";
     }

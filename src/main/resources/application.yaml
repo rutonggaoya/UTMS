@@ -18,7 +18,8 @@ spring:
     initialization-mode: always
     type: com.alibaba.druid.pool.DruidDataSource
 file:
-  upload-folder: /Users/dddwj/IdeaProjects/UTMS/src/main/resources/static/userfiles/
+  upload-folder: /Users/dddwj/IdeaProjects/UTMS/src/main/resources/static/
+#  upload-folder: /root/utms/static/  # Linux服务器上路径
 
 mybatis:
   configuration:

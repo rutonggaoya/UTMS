@@ -38,11 +38,12 @@
             <th>文档名称</th>
             <th>上传时间</th>
             <th>操作</th>
+            <th>选择最终版</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="thesis: ${myThesisList}">
-            <td th:text="${thesis.getName()}">0001名称</td>
+            <td th:text="${thesis.getName()}"></td>
             <td th:text="${thesis.getDateTime()}">3</td>
             <td>
                 <!--<div class="btn-small btn-default"><a th:href=" '/Student/Files/download?path=' + ${thesis.getTPath()}">下载&nbsp;</a></div>-->
@@ -50,12 +51,22 @@
                 <a th:href=" '/Student/Files/download?path=' + ${thesis.getTPath()}">下载&nbsp;</a>
                 <a class="delete-files-button" th:name="'/Student/Files/delete?FilePath=' +  ${thesis.getTPath()}">删除</a>
             </td>
+            <td><input type="checkbox" name="checkbox" th:value="${thesis.getThesisID()}"/></td>
         </tr>
         </tbody>
     </table>
+    <h2 style="color: #ff8498;" th:text="${FinalThesisID}>0?'您已经上传了最终版文档。请按指定时间答辩、等待老师打分~':''"></h2>
 </div>
 
 <script type="text/javascript">
+
+    // 实现复选框checkbox的单选功能
+    $('input[name="checkbox"]').click(function() {    //选取同一name下的input
+        if($('input[name="checkbox"]').is(':checked')) {  //判断input是否选中
+            $('input[name="checkbox"]').prop('checked', false);  //清除所有的选中状态
+            $(this).prop('checked',true);               //设置点击的input为选中状态
+        }
+    });
 
     // 删除文件功能
     $(".delete-files-button").click(function (event) {
@@ -106,6 +117,41 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    // 选择最终版上传
+    $("#on2-btn").click(function (event) {
+        if(!confirm("上传为最终版后，将自动开始查重。请确认。"))
+            return;
+        var boxes = document.getElementsByName("checkbox");
+        var ThesisID;
+        for (var x = 0; x < boxes.length; x++){
+            if(boxes[x].checked)
+                ThesisID = boxes[x].value;
+        }
+        var url = "/Student/Files/chooseFinalVersion";
+        $.ajax({
+            url: url,
+            type: "GET",
+            data: {
+                "ThesisID": ThesisID,
+            },
+            success: function (response) {
+                if(response['status'] === 'ok'){
+                    alert("上传成功！查重率为：" + response['SimilarityRate']);
+                    alert("恭喜您通过查重！请等待老师打分～");
+                }
+                else {
+                    alert("上传/查重失败");
+                }
+            },
+            error: function (res) {
+                alert("连接失败！");
+                console.log(res);
+            }
+
+        })
+    })
+</script>
 
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>

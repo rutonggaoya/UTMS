@@ -16,10 +16,10 @@ public class FileService {
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @Value("${file.upload-folder}")
-    private String UPLOAD_FOLDER;
+    private String FILE_FOLDER;
 
     public Boolean deleteFile(String FilePath){
-        FilePath = "src/main/resources/static/" + FilePath;
+        FilePath = FILE_FOLDER + FilePath;
         try {
             File file = new File(FilePath);
             logger.info("=====Deleting:" + file.getAbsoluteFile());
@@ -33,7 +33,7 @@ public class FileService {
 
     public String downloadFile(String path, HttpServletResponse response){
         if (path != null) {
-            path = "src/main/resources/static/" + path;
+            path = FILE_FOLDER + path;
             File file = new File(path);
             String[] split = path.split("/");
             String fileName = split[split.length - 1];
@@ -92,7 +92,7 @@ public class FileService {
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
         logger.info("上传的后缀名为：" + suffixName);
         // 文件上传后的路径
-        String filePath = UPLOAD_FOLDER;
+        String filePath = FILE_FOLDER + "userfiles/";
         // 解决中文问题，liunx下中文路径，图片显示问题
         // fileName = UUID.randomUUID() + suffixName;
         File dest = new File(filePath + fileName);
