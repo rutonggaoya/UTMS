@@ -43,87 +43,42 @@
 
  <div class="col-md-9">
 
-    <h2 id="d1" style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>我的提问</b></h2>
+     <h2 id="d1" style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>我的提问</b></h2>
+     <div th:each="question: ${myQuestions}">
+         <hr class="featurette-divider">
+         <div class="row featurette">
+             <div class="col-md-3">
+                 <img  class="featurette-image img-responsive center-block round" src="../../static/img/yg.jpg" alt="Generic placeholder image">
+             </div>
+             <div class="col-md-9" >
+                 <h2 style="text-align:left; font-size: 25px;"th:text="${question.getContent()}"> </h2>
+                 <h4 class="overfl" th:text="${question.getDesc()}"></h4>
+                 <p style="text-align:left;">&nbsp;&nbsp;热度111 &nbsp;&nbsp;&nbsp; 分享</p>
+             </div>
+         </div>
+     </div>
 
-    <hr class="featurette-divider">
-    <div class="row featurette"> 
-         
-       <div class="col-md-3">
-          <img  class="featurette-image img-responsive center-block round" src="../../static/img/yg.jpg" alt="Generic placeholder image">
-       </div> 
-       <div class="col-md-9" >
-          <p style="text-align:left; font-size: 15px;"> 1、问题标题</p>
-          <p class="overfl">问题描述：问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述述.</p>
-          <p style="text-align:left;">&nbsp;&nbsp;热度111 &nbsp;&nbsp;&nbsp; 分享</p>
-       </div>    
-    </div>
-    <hr class="featurette-divider">
-    <div class="row featurette"> 
-         
-       <div class="col-md-3">
-          <img  class="featurette-image img-responsive center-block round" src="../../static/img/yg.jpg" alt="Generic placeholder image">
-       </div> 
-       <div class="col-md-9" >
-          <p style="text-align:left; font-size: 15px;"> 2、问题标题</p>
-           <p class="overfl">问题描述：问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述述.</p>
-          <p style="text-align:left;">&nbsp;&nbsp;热度222 &nbsp;&nbsp;&nbsp; 分享</p>
-       </div>    
-    </div>
-    <hr class="featurette-divider">
-    <div class="row featurette"> 
-         
-       <div class="col-md-3">
-          <img  class="featurette-image img-responsive center-block round" src="../../static/img/yg.jpg" alt="Generic placeholder image">
-       </div> 
-       <div class="col-md-9" >
-          <p style="text-align:left; font-size: 15px;"> 3、问题标题</p>
-           <p class="overfl">问题描述：问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述述.</p>
-          <p style="text-align:left;">&nbsp;&nbsp;热度111 &nbsp;&nbsp;&nbsp; 分享</p>
-       </div>    
-    </div>
- 
+     <br><br>
 
-   <h2 id="d2" style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>我的回答</b></h2>
+     <h2 id="d2" style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>我的回答</b></h2>
+     <div class="list-group" th:each="myans:${myanss}">
+         <div style="width:100%" class="col-md-9 list-group-item">
+             <div class="col-md-3" style="margin-top: 10px">
+                 <img class="featurette-image img-responsive center-block round" src="../../static/img/miao.jpg"
+                      alt="Generic placeholder image">
+             </div>
+             <div class="col-md-9" style="margin-top: 10px">
+                 <p style="text-align:left; font-size: 22px; font-weight: bold" th:text="${myans.QueContent}"> 1、问题标题</p>
+                 <p style="text-align:left" class="overfl" th:text="${'回答内容：'}+${myans.AnsContent}">
+                     回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容.</p>
+                 <p style="text-align:right;" th:text="${'回答时间：'}+${#dates.format(myans.DateTime,'yyyy-MM-dd HH:mm')}">热度111  分享</p>
+             </div>
+         </div>
+     </div>
 
-    <hr class="featurette-divider">
-    <div class="row featurette"> 
-         
-       <div class="col-md-3">
-          <img  class="featurette-image img-responsive center-block round" src="../../static/img/miao.jpg" alt="Generic placeholder image">
-       </div> 
-       <div class="col-md-9" >
-          <p style="text-align:left; font-size: 15px;"> 1、问题标题</p>
-          <p class="overfl">回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容.</p>
-          <p style="text-align:left;">&nbsp;&nbsp;热度111 &nbsp;&nbsp;&nbsp; 分享</p>
-       </div>    
-    </div>
-    <hr class="featurette-divider">
-    <div class="row featurette"> 
-         
-       <div class="col-md-3">
-          <img  class="featurette-image img-responsive center-block round" src="../../static/img/miao.jpg" alt="Generic placeholder image">
-       </div> 
-       <div class="col-md-9" >
-          <p style="text-align:left; font-size: 15px;"> 2、问题标题</p>
-           <p class="overfl">回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述述.</p>
-          <p style="text-align:left;">&nbsp;&nbsp;热度222 &nbsp;&nbsp;&nbsp; 分享</p>
-       </div>    
-    </div>
-    <hr class="featurette-divider">
-    <div class="row featurette"> 
-         
-       <div class="col-md-3">
-          <img  class="featurette-image img-responsive center-block round" src="../../static/img/miao.jpg" alt="Generic placeholder image">
-       </div> 
-       <div class="col-md-9" >
-          <p style="text-align:left; font-size: 15px;"> 3、问题标题</p>
-           <p class="overfl">回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回问题描述问题描述问题描述问题描述问题描述问题描述问题描述述.</p>
-          <p style="text-align:left;">&nbsp;&nbsp;热度333 &nbsp;&nbsp;&nbsp; 分享</p>
-       </div>    
-    </div>
+     <br><br>
 
-
-     <h2 id="d3" style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>问题热榜</b></h2>
+    <h2 id="d3" style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>问题热榜</b></h2>
 
     <hr class="featurette-divider">
     <div class="row featurette"> 
