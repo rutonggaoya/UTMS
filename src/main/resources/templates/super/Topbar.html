@@ -27,17 +27,17 @@
 <div class="row top">
     <div class="col-md-12 ">
         <ul class="nav nav-tabs " role="tablist">
-            <li role="presentation"><a href="/admin/topics" th:class="${activeurl=='superTopic'?'active':''}">
-                <i class="fa fa-book" aria-hidden="true"></i>课题（Topic）</a>
+            <li role="presentation"><a href="/admin/topics" th:class="${activeUri=='superTopic'?'active':''}">
+                <i class="fa fa-book" aria-hidden="true"></i>&nbsp;课题（Subject）</a>
             </li>
-            <li role="presentation"><a href="/admin/users" th:class="${activeurl=='Info'?'active':''}">
-                <i class="fa fa-book" aria-hidden="true"></i>用户（User）</a>
+            <li role="presentation"><a href="/admin/superInfos" th:class="${activeUri=='Admin'?'active':''}">
+                <i class="fa fa-book" aria-hidden="true"></i>&nbsp;用户（User）</a>
             </li>
-            <li role="presentation"><a href="/admin/messages" th:class="${activeurl=='superMessage'?'active':''}">
-                <i class="fa fa-comments" aria-hidden="true"></i>消息（Message）</a>
+            <li role="presentation"><a href="/admin/messages" th:class="${activeUri=='superMessage'?'active':''}">
+                <i class="fa fa-comments" aria-hidden="true"></i>&nbsp;公告（Announcement）</a>
             </li>
-            <li role="presentation"><a href="/admin/superInfos" th:class="${activeurl=='Admin'?'active':''}">
-                <i class="fa fa-user" aria-hidden="true"></i><span>xxx</span>管理员（Person）</a></li>
+            <li role="presentation"><a href="/admin/users" th:class="${activeUri=='Info'?'active':''}">
+                <i class="fa fa-user" aria-hidden="true"></i>&nbsp;管理员（Person）</a></li>
         </ul>
     </div>
 </div>
