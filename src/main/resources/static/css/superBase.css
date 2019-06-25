@@ -39,3 +39,12 @@
 	
 }
 
+.theadcenter tr th {
+	text-align: center;
+	background-color: rgba(62, 100, 47, 0.8);
+}
+
+.table-striped tbody tr td {
+	background-color: rgba(185, 209, 157, 0.7);
+}
+
