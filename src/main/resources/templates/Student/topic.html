@@ -65,6 +65,7 @@
         </div>
         <div class="tab-content vertical-tab-content col-xs-8">
             <div role="tabpanel" class="tab-pane active" id="tab1">
+                <form onsubmit="return false;" id="chooseSubForm">
                 <table class="table table-striped">
                     <caption style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>华东理工大学论文课题表</b>
                         <!-- Split button -->
@@ -100,16 +101,46 @@
                         <td th:text="${subject.getName()}"></td>
                         <td th:text="${subject.getLimitNum()}"></td>
                         <td th:text="${subject.getSelectNum()}"></td>
-                        <td><input type="radio" value="1" name="0001名称" th:name="${subject.getName()}"></td>
-                        <td><input type="radio" value="2" name="0001名称" th:name="${subject.getName()}"></td>
-                        <td><input type="radio" value="3" name="0001名称" th:name="${subject.getName()}"></td>
+                        <td><input type="radio" value="1" name="0001名称" th:name="${subject.getSubjID()}"></td>
+                        <td><input type="radio" value="2" name="0001名称" th:name="${subject.getSubjID()}"></td>
+                        <td><input type="radio" value="3" name="0001名称" th:name="${subject.getSubjID()}"></td>
                     </tr>
                     </tbody>
+
                 </table>
                 <button id="fat-btn" class="btn btn-primary" data-loading-text="Loading..."
                         type="button" style="background-color:rgb(62,100,47);"> 确定
                 </button>
+                </form>
+                <input name="SID" th:value="${loginuser.getSID()}" id="SID-hidden" hidden>
             </div>
+
+            <script type="text/javascript">
+                $("#fat-btn").click(function (event) {
+                    var url = "/Student/chooseSub";
+                    var data = {
+                        "choices": $("#chooseSubForm").serialize(),
+                        "SID": document.getElementById("SID-hidden").value
+                    };
+                    console.log(data);
+                    $.ajax({
+                        url:  url,
+                        type: "POST",
+                        data: data,
+                        success: function (response) {
+                            if(response["status"] === 'ok')
+                                alert("选择成功！请等待管理员审核～");
+                            else {
+                                alert("上传失败");
+                            }
+                        },
+                        error: function (response) {
+                            console.log(response);
+                            alert("连接失败！");
+                        }
+                    });
+                })
+            </script>
 
             <div role="tabpanel" class="tab-pane" id="tab2">
                 <table class="table table-striped">
