@@ -78,4 +78,15 @@ public class Subject {
                 ", TID='" + TID + '\'' +
                 '}';
     }
+
+
+    public Subject(Integer subjID, String name, String intro, Integer status, Integer limitNum, Integer selectNum, String TID) {
+        SubjID = subjID;
+        Name = name;
+        Intro = intro;
+        Status = status;
+        LimitNum = limitNum;
+        SelectNum = selectNum;
+        this.TID = TID;
+    }
 }

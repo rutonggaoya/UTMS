@@ -28,6 +28,7 @@ public interface StudentMapper {
             "and h.SID = b.SID\n" +
             "and h.ThesisID = e.ThesisID\n" +
             "and t2.TID = e.TID\n" +
+            "and b.Status = 1\n" +
             "and b.SID = #{SID};")
     StudentPersonalPageData getStudentPersonalPageData(String SID);
 }

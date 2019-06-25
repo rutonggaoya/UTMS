@@ -5,9 +5,12 @@ import com.ecust.utms.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -72,9 +75,20 @@ public class StudentController {
 
         // 获取'我的课题'及指导老师
         Subject mySub = subjectMapper.getStuSub(sid);
-        map.put("mySub", mySub);
+        if(mySub != null)
+            map.put("mySub", mySub);
+        else {
+            mySub = new Subject(0, "暂未选定", "暂未选定", -1, -1, -1, "暂未选定");
+            map.put("mySub", mySub);
+        }
         Teacher teacher = teacherMapper.getTea(mySub.getTID());
-        map.put("myTeacher", teacher);
+        if(teacher != null)
+            map.put("myTeacher", teacher);
+        else {
+            teacher = new Teacher();
+            teacher.setName("暂未选定");
+            map.put("myTeacher", teacher);
+        }
         return "Student/topic";
     }
 
@@ -113,17 +127,32 @@ public class StudentController {
         logger.trace("--->Student: " + sid);
         map.put("loginuser", student);
 
+        // 查询已选中的课题
         Subject mySub = subjectMapper.getStuSub(sid);
-        map.put("mySub", mySub);
+        if(mySub != null)
+            map.put("mySub", mySub);
+        else {
+            mySub = new Subject(0, "暂未选定", "暂未选定", -1, -1, -1, "暂未选定");
+            map.put("mySub", mySub);
+        }
 
+        // 查询已上传的文档列表
         List<Thesis> thesisList = thesisMapper.getThesisListByStuID(sid);
         map.put("myThesisList", thesisList);
+
+        // 查询是否上传了最终版
+        String ThesisID = thesisMapper.checkFinalSubmit(sid);
+        if(ThesisID == null){
+            map.put("FinalThesisID",0);
+        } else{
+            map.put("FinalThesisID", ThesisID);
+        }
 
         return "Student/dissertation";
     }
 
     @GetMapping("/StudentEditInfo")
-    public String StudentEditInfo(Map<String,Object> map, HttpSession session, HttpServletRequest request){
+    public String showStudentEditInfoPage(Map<String,Object> map, HttpSession session, HttpServletRequest request){
         Student student = (Student)session.getAttribute("loginuser");
         String sid = student.getSID();
         logger.trace("--->Student: " + sid);
@@ -138,6 +167,27 @@ public class StudentController {
         }
         map.put("person", person);
         return "Student/StudentEditInfo";
+    }
+
+    @ResponseBody
+    @PostMapping(value = "/chooseSub", produces = "application/json;charset=UTF-8")
+    public String chooseSubject(@RequestParam("choices") String choices,
+                                @RequestParam("SID") String SID,
+                                Map<String, Object> map, HttpSession session,
+                                HttpServletRequest request) throws JSONException {
+
+        JSONObject res = new JSONObject();
+
+        for( String str : choices.split("&") ) {
+            String[] split = str.split("=");
+            String SubjID = split[0];
+            String VOrder = split[1];
+            subjectMapper.setSubChoice(SubjID, VOrder, SID);
+        }
+
+        res.put("status", "ok");
+
+        return res.toString();
     }
 
 }

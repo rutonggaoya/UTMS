@@ -3,6 +3,7 @@ package com.ecust.utms.mapper;
 import com.ecust.utms.model.Subject;
 import org.apache.ibatis.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -33,6 +34,9 @@ public interface SubjectMapper {
     List<Subject> getSubListByDept(String DeptID);
 
     @Select("select s.SubjID, s.Name, s.Intro, s.LimitNum, s.SelectNum, s.Status, s.TID from subject as s, selectsubject as ss " +
-            "where ss.SID=#{SID} and ss.SubjID = s.SubjID")
+            "where ss.SID=#{SID} and ss.SubjID = s.SubjID and ss.Status = 1")
     Subject getStuSub(String SID);
+
+    @Insert("insert into selectsubject(`VOrder`, `Status`, `SubjID`, `SID`) values(#{SubjID}, 0, #{VOrder}, #{SID})")
+    Boolean setSubChoice(@Param("SubjID") String SubjID, @Param("VOrder") String VOrder,  @Param("SID") String SID);
 }

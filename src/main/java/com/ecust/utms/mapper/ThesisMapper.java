@@ -27,4 +27,11 @@ public interface ThesisMapper {
     @Insert("insert into thesis (Name, TPath, DateTime, SID) values(#{Name}, #{TPath}, now(), #{SID})")
     Boolean uploadStuFile(@Param("Name")String Name, @Param("TPath")String TPath, @Param("SID")String SID);
 
+    // 默认审核通过（Review取1） 默认审核人为张腾510100003
+    @Insert("insert into similarityratecheck(`ThesisID`, `Review`, `SimilarityRate`, `ReviewerID`) values(#{ThesisID}, 1, #{SimilarityRate}, 510100003)")
+    Boolean setSimilarityCheck(@Param("ThesisID") String ThesisID, @Param("SimilarityRate") String SimilarityRate);
+
+    @Select("select s.ThesisID from similarityratecheck as s, thesis as t\n" +
+            "where s.ThesisID = t.ThesisID and t.SID = #{SID};")
+    String checkFinalSubmit(String SID);
 }
