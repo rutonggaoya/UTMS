@@ -3,7 +3,9 @@ package com.ecust.utms.mapper;
 import com.ecust.utms.model.Answer;
 import com.ecust.utms.model.AnswerIntroData;
 import com.ecust.utms.model.Question;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -31,4 +33,7 @@ public interface QuestionMapper {
 
     @Select("select * from question where QID=#{QID} limit 1")
     Question getQuestionByQID(String QID);
+
+    @Insert("insert into question(`Content`, `Desc`, `DateTime`, `SID`) values(#{Content}, #{Desc}, now(), #{SID})")
+    Boolean insertQuestion(@Param("Content") String Content, @Param("Desc") String Desc, @Param("SID") String SID);
 }

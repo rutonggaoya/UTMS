@@ -55,13 +55,16 @@
                      </div>
 
                      <div class="modal-body">
+                         <form id="raiseQuestionForm" onsubmit="return false;">
+                             <input name="SID" th:value="${session.loginuser.SID}" hidden />
                         <div class="form-group ">
-                            <input type="text" class="form-control" id="txt_departmentname" placeholder="问题标题">
+                            <input type="text" name="QuestionContent" class="form-control" id="txt_departmentname" placeholder="问题标题">
                         </div>      
                         <div class="form-group ">    
-                            <textarea  type="text" class="form-control" id="txt_parentdepartment" rows="5"   placeholder="问题描述200字以内">
+                            <textarea  name="QuestionDesc" type="text" class="form-control" id="txt_parentdepartment" rows="5"   placeholder="问题描述200字以内">
                               </textarea>
                         </div>
+                         </form>
                     </div>
                     <div class="modal-footer ">
                         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
@@ -70,6 +73,30 @@
                 </div>
             </div>
         </div>
+
+  <script type="text/javascript">
+      $("#btn_submit").click(function (event) {
+          console.log($("#raiseQuestionForm").serialize());
+           $.ajax({
+              url: "/Student/raiseQuestion",
+              data: $("#raiseQuestionForm").serialize(),
+              type: "GET",
+              success: function (response) {
+                  if(response['status'] === 'ok'){
+                      alert("提问成功！");
+                      location.reload();
+                  } else {
+                      console.log(response);
+                      alert("提问失败！");
+                  }
+              },
+                error: function (response) {
+                    console.log(response);
+                    alert("提问失败！");
+                }
+           });
+      });
+  </script>
 
 
   <body class="text-center">       

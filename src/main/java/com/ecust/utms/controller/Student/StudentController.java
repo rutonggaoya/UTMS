@@ -163,6 +163,23 @@ public class StudentController {
         return "Student/questionDetail";
     }
 
+    @ResponseBody
+    @GetMapping(value = "/raiseQuestion", produces = "application/json;charset=UTF-8")
+    public String raiseQuestion(Map<String,Object> map, HttpSession session, @RequestParam("QuestionContent") String QuestionContent,
+                                @RequestParam("QuestionDesc") String QuestionDesc, @RequestParam("SID") String SID) throws JSONException{
+
+        Boolean success = questionMapper.insertQuestion(QuestionContent, QuestionDesc, SID);
+        if (!success)
+            return new JSONObject(){{
+                put("status", "failed");
+            }}.toString();
+        else
+            return new JSONObject(){{
+                put("status", "ok");
+            }}.toString();
+    }
+
+
     @GetMapping("/dissertation")
     public String showDissertationPage(Map<String,Object> map, HttpSession session, HttpServletRequest request){
         Student student = (Student)session.getAttribute("loginuser");

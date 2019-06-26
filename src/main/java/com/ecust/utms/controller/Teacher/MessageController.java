@@ -5,7 +5,6 @@ import com.ecust.utms.mapper.AttachmentMapper;
 import com.ecust.utms.model.Announcement;
 import com.ecust.utms.model.Attachment;
 import com.ecust.utms.model.Student;
-import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
