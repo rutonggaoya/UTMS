@@ -11,12 +11,12 @@ public interface AnnouncementMapper {
     @Select("select * from announcement")
     List<Announcement> getAllAn();
 
-    @Select("select * from announcement where AID={#AID}")
+    @Select("select * from announcement where AID=#{AID}")
     Announcement getAn(Integer AID);
 
-    @Options(useGeneratedKeys = true,keyProperty = "AID")
-    @Insert("insert into announcement values(#{Content},#{Title},#{DateTime},#{PubID},#{ReadNum})")
-    int insertAn(Announcement announcement);
+//    @Options(useGeneratedKeys = true,keyProperty = "AID")
+    @Insert("insert into announcement(`Content`, `Title`, `DateTime`, `PubID`, `ReadNum`) values(#{Content},#{Title},now(),#{PubID},0)")
+    int insertAn(@Param("Content") String Content, @Param("Title") String Title, @Param("PubID") String PubID);
 
     @Delete("delete from announcement where AID={#AID}")
     int deleteAn(Integer AID);

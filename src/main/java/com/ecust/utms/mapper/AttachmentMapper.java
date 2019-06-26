@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface AttachmentMapper {
 
-    @Select("select * from attachmen")
+    @Select("select * from attachment")
     List<Attachment> getAllAt();
 
     @Select("select * from attachment where AID=#{AID}")
