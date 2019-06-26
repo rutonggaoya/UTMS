@@ -5,8 +5,33 @@ public class SelectSubject {
     private Integer SSID;//选课题ID
     private Integer VOrder;//志愿顺序
     private Integer Status;//状态
+    private String StatusName;
     private Integer SubjID;//课题ID
     private String SID;//学生ID
+    private String StuName;
+
+    public String getStatusName() {
+        return StatusName;
+    }
+
+    public void setStatusName() {
+        if(this.Status==0){
+            this.StatusName="待审核";
+        }
+        else if(this.Status==1){
+            this.StatusName="已通过";
+        }else{
+            this.StatusName="已拒绝";
+        }
+    }
+
+    public String getStuName() {
+        return StuName;
+    }
+
+    public void setStuName(String stuName) {
+        StuName = stuName;
+    }
 
     public Integer getSSID() {
         return SSID;
@@ -46,5 +71,18 @@ public class SelectSubject {
 
     public void setSID(String SID) {
         this.SID = SID;
+    }
+
+    @Override
+    public String toString() {
+        return "SelectSubject{" +
+                "SSID=" + SSID +
+                ", VOrder=" + VOrder +
+                ", Status=" + Status +
+                ", StatusName='" + StatusName + '\'' +
+                ", SubjID=" + SubjID +
+                ", SID='" + SID + '\'' +
+                ", StuName='" + StuName + '\'' +
+                '}';
     }
 }

@@ -62,7 +62,7 @@
 			</div>
 		</div>
 		<!-- title END -->
-
+<!--		<p th:text="${msg}"></p>-->
 		<!-- 导航栏 -->
 		<div th:replace="super/Topbar :: top-bar(activeUri='superTopic')"></div>
 		<!-- 导航栏END -->
@@ -111,12 +111,11 @@
 								<div class="main_search" id="toolbar">
 									<form class="form-inline" role="form" id="search_form">
 										<div class="form-group ">
-											<label class="sr-only" for="submitTime">上传年份</label> <input
+											<label class="sr-only" for="submitTimeu">上传年份</label> <input
 												type="text" class="form-control main_s_input"
 												id="submitTimeu" name="submitTime" placeholder="根据上传年份查询">
 										</div>
-										<button type="button" id="query"
-											class="btn btn-info query mt-5">查询</button>
+										<button type="button" id="query" class="btn btn-info query mt-5">查询</button>
 										<button type="button" id="delete" class="btn btn-default mt-5">删除</button>
 
 									</form>
@@ -136,7 +135,9 @@
 		</div>
 		<!--主体结束-->
 
+
 		<!-- 模态框 查看报名情况 -->
+<!--		<form id="addSub" action="return false" method="post">-->
 		<div class="modal fade " id="myModal" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel">
 			<div class="modal-dialog mymodaldiv" role="document">
@@ -164,75 +165,63 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>10123434</td>
-										<td><a href="#">Anna</a></td>
-										<td>已允许</td>
+									<tr th:each="ssub:${session.ssubs}">
+										<td th:text="${ssub.getSID()}">10123434</td>
+										<td th:text="${ssub.getStuName()}">Anna</td>
+										<td th:text="${ssub.getStatusName()}" >已允许</td>
+<!--										<td th:name="${'status'}" th:id="${'status'}+${ssub.getSSID()}" th:text="${ssub.getStatusName()}" >已允许</td>-->
+<!--										<input type="hidden" id="sSID" name="SSID" th:value="${ssub.getSSID()}">-->
+<!--										<input type="hidden" id="vOrder" name="VOrder" th:value="${ssub.getVOrder()}">-->
+<!--										<input type="hidden" id="stuName" name="StuName" th:value="${ssub.getStuName()}">-->
 										<td><button class="btn  btn-green" onclick="apply(this)">允许申请</button> <button
 										class="btn btn-default" onclick="reject(this)">拒接申请</button></td>
-
-									</tr>
-									<tr>
-										<td>2131132</td>
-										<td><a href="#">John</a></td>
-										<td>已允许</td>
-										<td><button class="btn  btn-green" onclick="apply(this)">允许申请</button> <button
-										class="btn btn-default" onclick="reject(this)">拒接申请</button></td>
-
-									</tr>
-									<tr>
-										<td>3123233</td>
-										<td><a href="#">ada</a></td>
-										<td>已拒绝</td>
-										<td><button class="btn  btn-green" onclick="apply(this)">允许申请</button> <button
-										class="btn btn-default" onclick="reject(this)">拒接申请</button></td>
-
 									</tr>
 								</tbody>
 							</table>
 						</div>
+
 						<!-- 表单END -->
-						<button type="button" class="btn-default btn addBtn " onclick="">添加</button>
+<!--						<button type="button" class="btn-default btn addBtn ">添加</button>-->
 						<!-- 自定义添加学生模态框 -->
-						<div class="modal fade " id="addModal" tabindex="-1" role="dialog"
-							aria-labelledby="myModalLabel">
-							<div class="modal-dialog mymaddmodal" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-										<h4 class="modal-title" id="myModalLabel">添加学生</h4>
-									</div>
-									<div class="modal-body">
+<!--						<div class="modal fade " id="addModal" tabindex="-1" role="dialog"-->
+<!--							aria-labelledby="myModalLabel">-->
+<!--							<div class="modal-dialog mymaddmodal" role="document">-->
+<!--								<div class="modal-content">-->
+<!--									<div class="modal-header">-->
+<!--										<button type="button" class="close" data-dismiss="modal"-->
+<!--											aria-label="Close">-->
+<!--											<span aria-hidden="true">&times;</span>-->
+<!--										</button>-->
+<!--										<h4 class="modal-title" id="myModalLabel">添加学生</h4>-->
+<!--									</div>-->
+<!--									<div class="modal-body">-->
 
-										<div class="form-group">
-											<label for="stuID">学号</label> <input type="text" name="stuID"
-												class="form-control" id="stuIDu" placeholder="学号">
-										</div>
-										<div class="form-group">
-											<label for="stuName">姓名</label> <input type="text" name="stuName"
-												class="form-control" id="stuNameu" placeholder="姓名">
-										</div>
+<!--										<div class="form-group">-->
+<!--											<label>学号</label> <input type="text" name="stuID"-->
+<!--												class="form-control" id="stuIDu" placeholder="学号">-->
+<!--										</div>-->
+<!--										<div class="form-group">-->
+<!--											<label>姓名</label> <input type="text" name="stuName"-->
+<!--												class="form-control" id="stuNameu" placeholder="姓名">-->
+<!--										</div>-->
 
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-green" id="addStuBtn">
-											确认</button>
-										<button type="button" class="btn btn-default"
-											id="cancelStuBtn">关闭</button>
+<!--									</div>-->
+<!--									<div class="modal-footer">-->
+<!--										<button type="button" class="btn btn-green" id="addStuBtn">-->
+<!--											确认</button>-->
+<!--										<button type="button" class="btn btn-default"-->
+<!--											id="cancelStuBtn">关闭</button>-->
 
-									</div>
-								</div>
-							</div>
-						</div>
+<!--									</div>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
 						<!-- 自定义添加学生模态框 END-->
 
 					</div>
 					<div class="modal-footer">
 						<button type="button" id="btn_submit" class="btn btn-green"
-							data-dismiss="modal">确认</button>
+							data-dismiss="modal" onclick="update_status()">确认</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">
 							关闭</button>
 
@@ -240,9 +229,22 @@
 				</div>
 			</div>
 		</div>
+<!--		</form>-->
 		<!-- 模态框 查看报名情况 END-->
 	</div>
+
 </body>
+<script type="text/javascript">//模态框数据提交
+function update_status() {
+	var statusList = document.getElementsByName("status");
+	for(var i=0; i < statusList.length;i++){
+		console.log(statusList[i]);
+	}
+	$("#myModal").on("hidden.bs.modal", function () {
+		$(this).removeData("bs.modal");
+	});
+}
+</script>
 <script src="../../static/js/subjectTable.js"></script>
 <script src="../../static/js/superTopic.js"></script>
 

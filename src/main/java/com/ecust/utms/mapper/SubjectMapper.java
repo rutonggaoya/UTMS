@@ -1,20 +1,25 @@
 package com.ecust.utms.mapper;
 
+import com.ecust.utms.model.SelectSubject;
 import com.ecust.utms.model.Subject;
 import org.apache.ibatis.annotations.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Mapper
 public interface SubjectMapper {
 
+
     @Select("select * from subject")
     List<Subject> getAllSub();
 
     @Select("select * from subject where TID=#{TID}")
     List<Subject> getTeaSub(String TID);
+
+    @Select("select a.*,b.Name TeaName\n" +
+            "from `subject` a,teacher b\n" +
+            "where a.TID=b.TID ")
+    List<Subject> getAllSubAndTeaName();
 
     @Select("select * from subject where SubjID=#{SubjID}")
     Subject getSub(Integer SubjID);
