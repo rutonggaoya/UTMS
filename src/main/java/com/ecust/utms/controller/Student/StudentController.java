@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +38,12 @@ public class StudentController {
     @Autowired
     QuestionMapper questionMapper;
 
+    @Autowired
+    AnnouncementMapper announcementMapper;
+
+    @Autowired
+    AttachmentMapper attachmentMapper;
+
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @GetMapping("/message")
@@ -46,8 +53,22 @@ public class StudentController {
         logger.trace("--->Student: " + sid);
         map.put("loginuser", student);
 
-
+        List<Announcement> announcements = announcementMapper.getAllAn();
+        for (Announcement announcement : announcements){
+            List<Attachment> attachs = attachmentMapper.getAtByAID(announcement.getAID());
+            announcement.setAttachments(attachs);
+        }
+        map.put("anns",announcements);
         return "Student/message";
+    }
+
+    @GetMapping("/messageInfo")
+    public String toMessageInfoPage(@RequestParam(value = "AID") String AID, Model model, HttpSession session){
+        Announcement announcement = announcementMapper.getAn(Integer.valueOf(AID));
+        List<Attachment> attachs = attachmentMapper.getAtByAID(announcement.getAID());
+        announcement.setAttachments(attachs);
+        model.addAttribute("announcement", announcement);
+        return "Student/messageInfo";
     }
 
     @GetMapping("/topic")

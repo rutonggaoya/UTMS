@@ -73,46 +73,31 @@
 
  <div class="col-md-10">
 
-    <table class="table table-striped">
-        <caption id="d1" style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>系统公告</b></caption>
+     <div class="main_pane row  myMessage">
 
-         <thead class="theadcenter">
-           <tr>
-             <th>公告</th>
-             <th>时间</th>
-             <th colspan="3">附件</th>
-           </tr>
-         </thead>
-         <tbody>
-           <tr>
-             <td>0001名称</td>
-             <td>2019/6/19 10：56</td>
-              <td >附件1</td>
-             <td>附件2</td>
-             <td>附件3</td>
-           </tr>
-           <tr>
-             <td>0002名称</td>
-             <td>2019/6/19 10：56</td>
-             <td colspan="3">附件2</td>
-           </tr>
-           <tr>
-             <td>0003名称</td>
-             <td>2019/6/19 10：56</td>
-             <td > 附件3</td>
-             <td colspan="2"> 附件10</td>
-           </tr>
-            <tr>
-             <td>0004名称</td>
-             <td>2019/6/19 10：56</td>
-             <td colspan="3">附件4</td>
-              <tr>
-             <td>0005名称</td>
-             <td>2019/6/19 10：56</td>
-             <td colspan="3">附件5</td>
-           </tr>
-         </tbody>
-       </table>
+         <table class="table table-striped">
+             <caption id="d1" style="font-size: 25px; color: rgb(62, 100, 47);"
+                      class="text-center">
+                 <b>系统公告</b>
+             </caption>
+
+
+             <thead class="theadcenter">
+             <tr>
+                 <th>公告</th>
+                 <th>时间</th>
+                 <th>操作</th>
+             </tr>
+             </thead>
+             <tbody>
+             <tr th:each="ans : ${anns}">
+                 <td th:text="${ans.getTitle()}">0001名称</td>
+                 <td th:text="${#dates.format(ans.getDateTime(),'yyyy-MM-dd HH:mm:ss')}">2019/6/19 10：56</td>
+                 <td><a th:href="'/Student/messageInfo?AID='+${ans.getAID()}" target="_blank">查看详情</a></td>
+             </tr>
+             </tbody>
+         </table>
+     </div>
        <nav aria-label="Page navigation">
           <ul class="pagination1">
             <li>
@@ -120,8 +105,8 @@
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
-            <li><a href="#" >1</a></li>
-            <li><a href="#" class="active">2</a></li>
+            <li><a href="#" class="active">1</a></li>
+            <li><a href="#">2</a></li>
             <li><a href="#">3</a></li>
             <li><a href="#">4</a></li>
 

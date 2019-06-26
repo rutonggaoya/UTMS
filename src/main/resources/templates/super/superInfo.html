@@ -42,7 +42,7 @@
     <!-- title END -->
 
     <!-- 导航栏 -->
-    <div th:replace="super/Topbar :: top-bar(activeUri='Info')"></div>
+    <div th:replace="super/Topbar :: top-bar(activeUri='superInfo')"></div>
     <!-- 导航栏END -->
 
     <!-- 主体 -->
@@ -66,7 +66,7 @@
                     <form class="form-inline">
                         <div id="name">
                             <div class="h3name">
-                                <h3 class="font2">姓名XXX</h3>
+                                <h3 class="font2" th:text="${session.loginuser.Name}"></h3>
                             </div>
                             <button type="button"
                                     class="Button  Field-modify-hidden ModifyButton Button--link"
@@ -153,7 +153,7 @@
                         <h3 class="Field-label">职工号</h3>
                         <div class="Field-content">
                             <div id="ID" class="class1">
-                                <span>12382222</span>
+                                <span th:text="${session.loginuser.TID}">12382222</span>
                                 <button type="button" id="IDBtn"
                                         class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
                                         onclick="setID()">修改
@@ -195,9 +195,8 @@
                             </div>
                             <div>
                                 <div id="sexRadio" class="class2">
-                                    <input type="radio" name="gender" value="男"> 男 <input
-                                        type="radio" name="gender" style="margin-left: 30px;"
-                                        value="女" checked=""> 女
+                                    <input type="radio" name="gender" value="男" th:value="${session.loginuser.Gender==0?'男':'女'}"> 男
+                                    <input type="radio" name="gender" style="margin-left: 30px;" value="女" checked=""> 女
                                     <div class="ButtonGroup">
                                         <button type="button" class="btn btn-success mt-5"
                                                 onclick="sexSave()">保存
@@ -290,7 +289,7 @@
                         <h3 class="Field-label">手机号</h3>
                         <div class="Field-content">
                             <div id="phone" class="class1">
-                                <span>13189098842</span>
+                                <span th:text="${session.loginuser.Tel}">13189098842</span>
                                 <button type="button" id="phoneBtn"
                                         class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
                                         onclick="setPhone()">修改
@@ -324,7 +323,7 @@
                         <h3 class="Field-label">邮箱</h3>
                         <div class="Field-content">
                             <div id="mail" class="class1">
-                                <span>jtzhang@ecust.edu.cn</span>
+                                <span th:text="${session.loginuser.Email}">jtzhang@ecust.edu.cn</span>
                                 <button type="button" id="mailBtn"
                                         class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
                                         onclick="setMail()">修改

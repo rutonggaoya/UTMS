@@ -32,11 +32,11 @@ public class AdminController {
     @Autowired
     AttachmentMapper attachmentMapper;
 
-    @GetMapping("/users")
-    public String toPersonalCentre(HttpSession session){
-        Administrator user = (Administrator) session.getAttribute("loginuser");
-        Administrator admin = administratorMapper.getAd(user.getTID());
-        session.setAttribute("loginuser",admin);
+    @GetMapping("/superInfo")
+    public String toPersonalCentre(Model model, HttpSession session){
+//        Administrator user = (Administrator) session.getAttribute("loginuser");
+//        Administrator admin = administratorMapper.getAd(user.getTID());
+//        model.addAttribute("admin", admin);
         return "super/superInfo";
     }
 
@@ -67,7 +67,7 @@ public class AdminController {
         return "super/messageInfo";
     }
 
-    @GetMapping("/superInfos")
+    @GetMapping("/users")
     public String toSuperInfoPage(Model model, HttpSession session){
 
         return "super/superUserStu";

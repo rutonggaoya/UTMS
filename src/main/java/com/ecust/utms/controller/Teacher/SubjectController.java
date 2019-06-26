@@ -30,7 +30,7 @@ public class SubjectController {
     public String addSub(Subject subject){
         System.out.println("添加新课题:"+subject.toString());
         subjectMapper.insertSub(subject);
-        return "redirect:/subjects";//重定向
+        return "redirect:/teacher/subjects";//重定向
     }
 
     @DeleteMapping("/subject/{SubjID}")
