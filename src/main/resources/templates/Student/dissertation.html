@@ -105,7 +105,8 @@
         </tr>
     </table>
     <div style="margin-top: 25px;">
-        <form method="post" action="/Student/Files/upload" enctype="multipart/form-data" id="file-upload-form">
+        <form method="post" action="/Student/Files/upload" enctype="multipart/form-data" id="file-upload-form"
+        th:hidden="${FinalThesisID}>0?true:false">
             <input id="input-file" type="file" name="file" /><br/><br/>
             <button id="on-btn" class="btn btn-primary" data-loading-text="Loading..."
                     type="submit" style="background-color:rgb(62,100,47); margin-right: 20px;">上传

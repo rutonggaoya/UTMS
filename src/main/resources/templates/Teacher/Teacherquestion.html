@@ -51,7 +51,7 @@
                              alt="Generic placeholder image">
                     </div>
                     <div class="col-md-9" style="margin-top: 10px">
-                        <p style="text-align:left; font-size: 22px; font-weight: bold" th:text="${myans.QueContent}"> 1、问题标题</p>
+                        <a style="text-align:left; font-size: 22px; font-weight: bold" th:text="${myans.QueContent}" href="/teacher/questionDetail?AID=xxx" th:href="'/teacher/questionDetail?QID=' + ${myans.getAnswerID()}"> 1、问题标题</a>
                         <p style="text-align:left" class="overfl" th:text="${'回答内容：'}+${myans.AnsContent}">
                             回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容.</p>
                         <p style="text-align:right;" th:text="${'回答时间：'}+${#dates.format(myans.DateTime,'yyyy-MM-dd HH:mm')}">热度111  分享</p>
@@ -129,7 +129,7 @@
                              alt="Generic placeholder image">
                     </div>
                     <div class="col-md-9" style="margin-top: 10px">
-                        <p style="text-align:left; font-size: 22px; font-weight: bold" th:text="${que.Content}"> 1、问题标题</p>
+                        <a style="text-align:left; font-size: 22px; font-weight: bold" th:text="${que.Content}" th:href="'/teacher/questionDetail?QID=' + ${que.getQID()}"> 1、问题标题</a>
                         <p style="text-align:left" th:text="${que.Desc}">
                             回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容.</p>
                         <p style="text-align:right;" th:text="${'提问时间：'}+${#dates.format(que.DateTime,'yyyy-MM-dd HH:mm')}">热度111  分享</p>

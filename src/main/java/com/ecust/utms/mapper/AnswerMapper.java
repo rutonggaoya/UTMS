@@ -14,6 +14,9 @@ public interface AnswerMapper {
     @Select("select * from answer where AnswerId={#AnswerID}")
     Answer getAns(Integer AnswerID);
 
+    @Select("select * from answer where QID=#{QID}")
+    List<Answer> getAnsByQID(String QID);
+
     @Options(useGeneratedKeys = true,keyProperty = "id")
     @Insert("insert into answer values(#{DateTime},#{Content},#{QID},#{RespondentID})")
     int insertAns(Answer answer);

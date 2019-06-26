@@ -44,6 +44,9 @@ public class StudentController {
     @Autowired
     AttachmentMapper attachmentMapper;
 
+    @Autowired
+    AnswerMapper answerMapper;
+
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @GetMapping("/message")
@@ -148,6 +151,16 @@ public class StudentController {
         map.put("myQuestions", myQuestions);
 
         return "Student/question";
+    }
+
+    @GetMapping("/questionDetail")
+    public String showQuestionDetailPage(Map<String,Object> map, HttpSession session, @RequestParam("QID") String QID){
+        List<Answer> answers = answerMapper.getAnsByQID(QID);
+        map.put("answers", answers);
+
+        Question question = questionMapper.getQuestionByQID(QID);
+        map.put("question", question);
+        return "Student/questionDetail";
     }
 
     @GetMapping("/dissertation")

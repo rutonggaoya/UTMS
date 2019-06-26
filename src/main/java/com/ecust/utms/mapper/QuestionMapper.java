@@ -28,4 +28,7 @@ public interface QuestionMapper {
             "from question as q\n" +
             "where SID = #{SID}\n")
     List<Question> getMyQuestionBySID(String SID);
+
+    @Select("select * from question where QID=#{QID} limit 1")
+    Question getQuestionByQID(String QID);
 }
