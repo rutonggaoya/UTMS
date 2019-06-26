@@ -7,13 +7,10 @@ import com.ecust.utms.mapper.ThesisMapper;
 import com.ecust.utms.model.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -48,7 +45,7 @@ public class UtmsApplicationTests {
             System.out.println(t.toString());
         }
         //测试QuestionMapper
-        List<AnswerIntroData> list2 = questionMapper.getMyAnswer("510100003");
+        List<AnswerIntroData> list2 = questionMapper.getMyAnswerByTID("510100003");
         for(AnswerIntroData a:list2){
             System.out.println(a.toString());
         }

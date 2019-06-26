@@ -32,7 +32,7 @@ public class QuestionController {
         Teacher user = (Teacher)session.getAttribute("loginuser");
         List<Question> allQue = questionMapper.getAllQue();
         model.addAttribute("ques",allQue);
-        List<AnswerIntroData> all = questionMapper.getMyAnswer(user.getTID());
+        List<AnswerIntroData> all = questionMapper.getMyAnswerByTID(user.getTID());
         model.addAttribute("myanss",all);
         return "Teacher/Teacherquestion";
     }

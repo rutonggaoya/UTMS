@@ -62,7 +62,7 @@
 			</div>
 		</div>
 		<!-- title END -->
-<!--		<p th:text="${msg}"></p>-->
+
 		<!-- 导航栏 -->
 		<div th:replace="super/Topbar :: top-bar(activeUri='superTopic')"></div>
 		<!-- 导航栏END -->
@@ -135,9 +135,7 @@
 		</div>
 		<!--主体结束-->
 
-
 		<!-- 模态框 查看报名情况 -->
-<!--		<form id="addSub" action="return false" method="post">-->
 		<div class="modal fade " id="myModal" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel">
 			<div class="modal-dialog mymodaldiv" role="document">
@@ -175,11 +173,11 @@
 <!--										<input type="hidden" id="stuName" name="StuName" th:value="${ssub.getStuName()}">-->
 										<td><button class="btn  btn-green" onclick="apply(this)">允许申请</button> <button
 										class="btn btn-default" onclick="reject(this)">拒接申请</button></td>
+
 									</tr>
 								</tbody>
 							</table>
 						</div>
-
 						<!-- 表单END -->
 <!--						<button type="button" class="btn-default btn addBtn ">添加</button>-->
 						<!-- 自定义添加学生模态框 -->
@@ -232,7 +230,6 @@
 <!--		</form>-->
 		<!-- 模态框 查看报名情况 END-->
 	</div>
-
 </body>
 <script type="text/javascript">//模态框数据提交
 function update_status() {

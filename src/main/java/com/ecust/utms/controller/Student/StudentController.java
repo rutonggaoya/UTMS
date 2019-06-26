@@ -7,10 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -36,6 +35,15 @@ public class StudentController {
     @Autowired
     ThesisMapper thesisMapper;
 
+    @Autowired
+    QuestionMapper questionMapper;
+
+    @Autowired
+    AnnouncementMapper announcementMapper;
+
+    @Autowired
+    AttachmentMapper attachmentMapper;
+
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @GetMapping("/message")
@@ -45,8 +53,22 @@ public class StudentController {
         logger.trace("--->Student: " + sid);
         map.put("loginuser", student);
 
-
+        List<Announcement> announcements = announcementMapper.getAllAn();
+        for (Announcement announcement : announcements){
+            List<Attachment> attachs = attachmentMapper.getAtByAID(announcement.getAID());
+            announcement.setAttachments(attachs);
+        }
+        map.put("anns",announcements);
         return "Student/message";
+    }
+
+    @GetMapping("/messageInfo")
+    public String toMessageInfoPage(@RequestParam(value = "AID") String AID, Model model, HttpSession session){
+        Announcement announcement = announcementMapper.getAn(Integer.valueOf(AID));
+        List<Attachment> attachs = attachmentMapper.getAtByAID(announcement.getAID());
+        announcement.setAttachments(attachs);
+        model.addAttribute("announcement", announcement);
+        return "Student/messageInfo";
     }
 
     @GetMapping("/topic")
@@ -112,10 +134,18 @@ public class StudentController {
 
     @GetMapping("/question")
     public String showQuestionPage(Map<String,Object> map, HttpSession session, HttpServletRequest request){
-        String loginuser = "" + session.getAttribute("loginuser");
-        logger.trace("--->Student: " + loginuser);
-        map.put("loginuser", loginuser);
+        Student student = (Student)session.getAttribute("loginuser");
+        String sid = student.getSID();
+        logger.trace("--->Student: " + sid);
+        map.put("loginuser", student);
 
+        // 查询我的所有回答
+        List<AnswerIntroData> myanss = questionMapper.getMyAnswerBySID(sid);
+        map.put("myanss", myanss);
+
+        // 查询我的所有提问
+        List<Question> myQuestions = questionMapper.getMyQuestionBySID(sid);
+        map.put("myQuestions", myQuestions);
 
         return "Student/question";
     }
