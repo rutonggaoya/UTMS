@@ -42,11 +42,27 @@
     </table>
     <div style="margin-top: 18px; font-size: 18px;">
 
-        <div style=" margin-bottom: 10px;" class="text-center">
-            <p> [[${person.Name}]] </p>
-            <p> [[${person.SID}]] </p>
-        </div>
+<!--        <div style=" margin-bottom: 10px;" class="text-center">-->
+<!--            <p> [[${person.Name}]] </p>-->
+<!--            <p> [[${person.SID}]] </p>-->
+<!--        </div>-->
         <div style="margin-left: 25%;">
+            <div class="row col2-1">
+                <div class="col-sm-2">
+                    <p> 姓名</p>
+                </div>
+                <div class="col-sm-5 input-group">
+                    <input disabled type="text" class="form-control" th:value="${person.Name}">
+                </div>
+            </div>
+            <div class="row col2-1">
+                <div class="col-sm-2">
+                    <p> 学号</p>
+                </div>
+                <div class="col-sm-5 input-group">
+                    <input disabled type="text" class="form-control" th:value="${person.SID}">
+                </div>
+            </div>
             <div class="row col2-1">
                 <div class="col-sm-2 "><p> 性别</p></div>
                 <div class="col-sm-1">
@@ -67,40 +83,38 @@
                     <p> 院系</p>
                 </div>
                 <div class="col-sm-5 input-group">
-                    <input type="text" class="form-control" th:placeholder="${person.DeptName}">
+                    <input disabled type="text" class="form-control" th:value="${session.dept.Name}" th:placeholder="${person.DeptID}">
                 </div>
             </div>
             <div class="row col2-1">
                 <div class="col-sm-2"><p> 专业</p></div>
                 <div class="col-sm-5 input-group">
-                    <input type="text" class="form-control" aria-describedby="basic-addon1"
+                    <input disabled type="text" class="form-control" aria-describedby="basic-addon1"
                            th:placeholder="${person.getMajor()}">
                 </div>
             </div>
-            <hr class="featurette-divider ">
-            <div class="row col2-1">
-                <div class="col-sm-2"><p> 评价老师</p></div>
+<!--            <hr class="featurette-divider ">-->
+<!--            <div class="row col2-1">-->
+<!--                <div class="col-sm-2"><p> 评价老师</p></div>-->
 
-                <div class="col-sm-5 input-group">
-                    <input type="text" class="form-control" aria-describedby="basic-addon1"
-                           th:placeholder="${person.getGrader()}">
-                    <textarea class="col2-3"></textarea>
-                </div>
+<!--                <div class="col-sm-5 input-group">-->
+<!--                    <textarea class="col2-3"></textarea>-->
+<!--                </div>-->
 
-            </div>
+<!--            </div>-->
             <hr class="featurette-divider ">
             <div class="row col2-1">
                 <div class="col-sm-2"><p> 手机号</p></div>
 
                 <div class="col-sm-5 input-group">
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" th:placeholder="${person.getTel()}">
+                    <input type="text" class="form-control" aria-describedby="basic-addon1" th:value="${person.getTel()}">
                 </div>
             </div>
             <div class="row col2-1">
                 <div class="col-sm-2"><p> 邮箱</p></div>
                 <div class="col-sm-5 input-group">
                     <input type="text" class="form-control" aria-describedby="basic-addon1"
-                           th:placeholder="${person.getEmail()}">
+                           th:value="${person.getEmail()}">
                 </div>
             </div>
             <div class="row col2-1">
@@ -111,7 +125,8 @@
                 </button>
             </div>
         </div>
-        <div class="center-block" style="text-align: center;">
+
+        <div class="center-block" style="text-align: center; margin-bottom: 20px" >
             <button class="btn btn-default buttonchange " type="button"
                     onclick="alert('保存成功！');// window.location.href = 'person.html'" style="margin-top:30px;display: inline-block;">
                 <span>保存</span>

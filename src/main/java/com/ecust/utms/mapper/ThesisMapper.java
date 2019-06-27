@@ -12,9 +12,9 @@ public interface ThesisMapper {
     @Select("select d.* from teacher a,subject b,selectsubject c,thesis d where a.TID=b.TID and b.SubjID=c.SubjID and c.SID=d.SID and a.TID=#{TID}")
     List<Thesis> getAllTeaThesis(String TID);
 
-    @Select("select d.ThesisID,b.Name SubName,d.Name ThesisName,e.Name StuName,d.DateTime,d.TPath\n" +
+    @Select("select c.SSID,d.ThesisID,b.Name SubName,d.Name ThesisName,e.Name StuName,d.DateTime,d.TPath\n" +
             "from teacher a,subject b,selectsubject c,thesis d,student e\n" +
-            "where a.TID=b.TID and b.SubjID=c.SubjID and c.SID=d.SID and d.SID=e.SID\n" +
+            "where a.TID=b.TID and b.SubjID=c.SubjID and c.SID=d.SID and c.SID=e.SID and c.`Status`=1\n" +
             "and a.TID=#{TID}")
     List<ThesisPageData> getAllTPD(String TID);
 

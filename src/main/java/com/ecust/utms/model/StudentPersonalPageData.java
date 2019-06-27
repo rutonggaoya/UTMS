@@ -7,7 +7,7 @@ public class StudentPersonalPageData {
     private String Name;
     private Integer Gender;
     private String Major;
-    private String DeptName;
+    private Integer DeptID;
     private String Passwd;
     private String Tel;
     private String Email;
@@ -17,7 +17,7 @@ public class StudentPersonalPageData {
     private String Instructor;  // 指导老师
     private String ThesisName;  // 论文题目
     private String EGrade;      // 论文成绩
-    private String Grader;      // 评价老师
+//    private String Grade;      // 评价老师
 
 
     // Getter & Setter
@@ -30,12 +30,12 @@ public class StudentPersonalPageData {
         ThesisName = thesisName;
     }
 
-    public String getDeptName() {
-        return DeptName;
+    public Integer getDeptID() {
+        return DeptID;
     }
 
-    public void setDeptName(String deptName) {
-        DeptName = deptName;
+    public void setDeptID(Integer deptID) {
+        DeptID = deptID;
     }
 
     public String getSID() {
@@ -118,20 +118,20 @@ public class StudentPersonalPageData {
         this.EGrade = EGrade;
     }
 
-    public String getGrader() {
-        return Grader;
-    }
-
-    public void setGrader(String grader) { Grader = grader; }
+//    public String getGrader() {
+//        return Grader;
+//    }
+//
+//    public void setGrader(String grader) { Grader = grader; }
 
     @Override
     public String toString() {
         return "StudentPersonalPageData{" +
-                "SID=" + SID +
+                "SID='" + SID + '\'' +
                 ", Name='" + Name + '\'' +
                 ", Gender=" + Gender +
                 ", Major='" + Major + '\'' +
-                ", DeptName=" + DeptName +
+                ", DeptID=" + DeptID +
                 ", Passwd='" + Passwd + '\'' +
                 ", Tel='" + Tel + '\'' +
                 ", Email='" + Email + '\'' +
@@ -139,16 +139,15 @@ public class StudentPersonalPageData {
                 ", Instructor='" + Instructor + '\'' +
                 ", ThesisName='" + ThesisName + '\'' +
                 ", EGrade='" + EGrade + '\'' +
-                ", Grader='" + Grader + '\'' +
                 '}';
     }
 
-    public StudentPersonalPageData(String SID, String name, Integer gender, String major, String deptName, String passwd, String tel, String email, String subjName, String instructor, String thesisName, String EGrade, String grader) {
+    public StudentPersonalPageData(String SID, String name, Integer gender, String major, Integer deptID, String passwd, String tel, String email, String subjName, String instructor, String thesisName, String EGrade) {
         this.SID = SID;
         Name = name;
         Gender = gender;
         Major = major;
-        DeptName = deptName;
+        DeptID = deptID;
         Passwd = passwd;
         Tel = tel;
         Email = email;
@@ -156,6 +155,9 @@ public class StudentPersonalPageData {
         Instructor = instructor;
         ThesisName = thesisName;
         this.EGrade = EGrade;
-        Grader = grader;
+//        Grader = grader;
+    }
+
+    public StudentPersonalPageData() {
     }
 }

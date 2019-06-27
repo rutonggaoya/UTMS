@@ -219,4 +219,6 @@ function content() {
 
 }
 
-
+function check() {
+    confirm("审核是否合格？")
+}

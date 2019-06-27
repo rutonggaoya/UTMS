@@ -60,7 +60,7 @@
                 <div class="col-md-12 col-xs-12"></div>
                 <div class="col-1"><p> 院系</p></div>
                 <div class="col-2">
-                    <p><span th:text=" ${person.DeptName} + '学院'"></span></p>
+                    <p><span th:text=" ${session.dept.Name} + '学院'"></span></p>
                 </div>
                 <div class="col-1"><p> 专业</p></div>
                 <div class="col-2">
@@ -88,11 +88,15 @@
                 <div class="col-2">
                     <p><span th:text="${person.getEGrade()} "></span></p>
                 </div>
-                <div class="col-1"><p> 评价老师</p></div>
-                <div class="col-2"><p><span th:text="${person.getGrader()} "></span></p></div>
-                <textarea readonly class="col-3">该老师评价认真负责...........................................
-      .......................................对我的毕业论文提供了非常大的帮助。。。。。。。。。。。。。。。。。。。。。。。。。。。
-    </textarea>
+                <form method="post" th:action="@{/Student/evaluateteacher}">
+                    <input name="SID" type="hidden" th:value="${person.SID}">
+                    <input name="EGrade" type="hidden" th:value="${person.SID}">
+                    <div class="col-1"><p> 评价老师</p></div>
+                    <div class="col-2">
+                        <button type="submit" id="btn_submit" class="btn btn-default" th:disabled="${et!=null}?'true':'false'">提交评论</button>
+                    </div>
+                    <textarea th:disabled="${et!=null}?'true':'false'" name="EContent" th:text="${et!=null}?${et.EContent}:'该学生未评论'"  class="col-1">    </textarea>
+                </form>
             </div>
 
             <hr class="featurette-divider col-md-6 col-md-push-3">
