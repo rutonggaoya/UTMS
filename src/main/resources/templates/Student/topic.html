@@ -66,51 +66,51 @@
         <div class="tab-content vertical-tab-content col-xs-8">
             <div role="tabpanel" class="tab-pane active" id="tab1">
                 <form onsubmit="return false;" id="chooseSubForm">
-                <table class="table table-striped">
-                    <caption style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>华东理工大学论文课题表</b>
-                        <!-- Split button -->
-                        <div class="btn-group" style="float: right;">
-                            <button type="button" class="btn btn-danger" th:text="${currentDept} + '学院'">请选择学院</button>
-                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li th:each="dept: ${allDept}">
-                                    <a href="#" th:text="${dept.getName()} + '学院'"
-                                       th:href="'topic?DeptID=' + ${dept.getDeptID()}">信息学院</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </caption>
+                    <table class="table table-striped">
+                        <caption style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>华东理工大学论文课题表</b>
+                            <!-- Split button -->
+                            <div class="btn-group" style="float: right;">
+                                <button type="button" class="btn btn-danger" th:text="${currentDept} + '学院'">请选择学院</button>
+                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li th:each="dept: ${allDept}">
+                                        <a href="#" th:text="${dept.getName()} + '学院'"
+                                           th:href="'topic?DeptID=' + ${dept.getDeptID()}">信息学院</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </caption>
 
 
-                    <thead class="theadcenter">
-                    <tr>
-                        <th>课题名称</th>
-                        <th>限制人数</th>
-                        <th>已选人数</th>
-                        <th>第一志愿</th>
-                        <th>第二志愿</th>
-                        <th>第三志愿</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="subject: ${allSub}">
-                        <td th:text="${subject.getName()}"></td>
-                        <td th:text="${subject.getLimitNum()}"></td>
-                        <td th:text="${subject.getSelectNum()}"></td>
-                        <td><input type="radio" value="1" name="0001名称" th:name="${subject.getSubjID()}"></td>
-                        <td><input type="radio" value="2" name="0001名称" th:name="${subject.getSubjID()}"></td>
-                        <td><input type="radio" value="3" name="0001名称" th:name="${subject.getSubjID()}"></td>
-                    </tr>
-                    </tbody>
+                        <thead class="theadcenter">
+                        <tr>
+                            <th>课题名称</th>
+                            <th>限制人数</th>
+                            <th>已选人数</th>
+                            <th>第一志愿</th>
+                            <th>第二志愿</th>
+                            <th>第三志愿</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="subject: ${allSub}">
+                            <td th:text="${subject.getName()}"></td>
+                            <td th:text="${subject.getLimitNum()}"></td>
+                            <td th:text="${subject.getSelectNum()}"></td>
+                            <td><input class="first" type="radio" value="1" name="0001名称" th:name="${subject.getSubjID()}"></td>
+                            <td><input class="second" type="radio" value="2" name="0001名称" th:name="${subject.getSubjID()}"></td>
+                            <td><input class="third" type="radio" value="3" name="0001名称" th:name="${subject.getSubjID()}"></td>
+                        </tr>
+                        </tbody>
 
-                </table>
-                <button id="fat-btn" class="btn btn-primary" data-loading-text="Loading..."
-                        type="button" style="background-color:rgb(62,100,47);"> 确定
-                </button>
+                    </table>
+                    <button id="fat-btn" class="btn btn-primary" data-loading-text="Loading..."
+                            type="button" style="background-color:rgb(62,100,47);"> 确定
+                    </button>
                 </form>
                 <input name="SID" th:value="${loginuser.getSID()}" id="SID-hidden" hidden>
             </div>
@@ -201,6 +201,39 @@
 
 
 </div>
+
+
+<script type="text/javascript">
+    $(':radio').click(function(){
+        var row= $(this).parent().parent().parent().find("tr").index($(this).parent().parent()[0]);//第几行
+        var column=$(this).parent().index();//第几列
+        var columnName=["first","second","third"];
+
+        dict = []; //or dict = new Array()
+        dict["first"] = -1;
+        dict["second"] = -1;
+        dict["third"] = -1;
+
+//console.info("列"+column+"行"+row);
+        for(var key in dict)
+        {
+            if(columnName[column-3]==key&&row!=dict[key]){
+
+                dict[key]=row;
+                // console.info(key+dict[key]);
+                if(key=="first")
+                    $(this).parent().parent().parent().find('.first').not(this).attr("checked", false);
+                if(key=="second")
+                    $(this).parent().parent().parent().find('.second').not(this).attr("checked", false);
+                if(key=="third")
+                    $(this).parent().parent().parent().find('.third').not(this).attr("checked", false);
+
+            }
+        }
+
+    });
+
+</script>
 
 </body>
 </html>

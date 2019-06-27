@@ -11,10 +11,95 @@
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
      <link rel="stylesheet" type="text/css" href="../../static/css/my1.css">
     <title>问题</title>
-  </head>
-  <body class="text-center">
-
+    <style type="text/css">
+   
+    .round {
+      padding:0px; width:80px; height:80px;
+      border: 0px solid #dedede;
+      -moz-border-radius: 5px; 
+      -webkit-border-radius: 10px; 
+      border-radius:15px; 
+    }
+    .overfl{
         
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+    } 
+ 
+
+    </style>
+
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  
+    <script >
+      $(document).ready(function(){
+      $("#question_add").click(function () {
+      $("#myModalLabel").text("新增提问");
+      $('#myModal').modal();
+      });
+      });
+    </script>
+
+  </head>
+
+
+     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+             <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                          </button>
+                         <h2 class="modal-title" id="myModalLabel">提问</h2>
+                     </div>
+
+                     <div class="modal-body">
+                         <form id="raiseQuestionForm" onsubmit="return false;">
+                             <input name="SID" th:value="${session.loginuser.SID}" hidden />
+                        <div class="form-group ">
+                            <input type="text" name="QuestionContent" class="form-control" id="txt_departmentname" placeholder="问题标题">
+                        </div>      
+                        <div class="form-group ">    
+                            <textarea  name="QuestionDesc" type="text" class="form-control" id="txt_parentdepartment" rows="5"   placeholder="问题描述200字以内">
+                              </textarea>
+                        </div>
+                         </form>
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                        <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>发布</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+  <script type="text/javascript">
+      $("#btn_submit").click(function (event) {
+          console.log($("#raiseQuestionForm").serialize());
+           $.ajax({
+              url: "/Student/raiseQuestion",
+              data: $("#raiseQuestionForm").serialize(),
+              type: "GET",
+              success: function (response) {
+                  if(response['status'] === 'ok'){
+                      alert("提问成功！");
+                      location.reload();
+                  } else {
+                      console.log(response);
+                      alert("提问失败！");
+                  }
+              },
+                error: function (response) {
+                    console.log(response);
+                    alert("提问失败！");
+                }
+           });
+      });
+  </script>
+
+
+  <body class="text-center">       
    <div class="col-md-12 column" style="margin-top: 20px; font-family: 华文行楷; font-size:25px;"> 
      <h1>华东理工大学论文系统</h1>
    </div>
@@ -24,62 +109,75 @@
   
 
  <div class="container" style="margin-top: 20px;">
- <div class="col-md-3" style="margin-top: 20px;">
-   <ul  class="nav nav-pills nav-stacked" style="position:fixed;">
-    <li role="presentation" style="font-size: 20px; float: right;"> <a href="#d1">我的提问</a> </li>
-    <li role="presentation" style="font-size: 20px;">
-    <button class="btn btn-outline-success " type="submit" style="background:rgba(0,0,0,0); font-size: 18px; color:#2e442f;">新增提问</button></li>  
-    <li role="presentation" style="font-size: 20px;"> <a href="#d2">我的回答</a></li>
-    <li role="presentation" style="font-size: 20px;"> <a href="#d3">提问热榜</a></li>
-    <li role="presentation" style="font-size: 20px;"> 
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-0" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-    </li>
-   
-   </ul>
- </div >
+     <div class="col-md-3" style="margin-top: 20px;">
+         <ul   class="nav nav-tab vertical-tab" role="tablist" id="vtab" style="position:fixed;">
+             <li role="presentation" style="font-size: 20px;">
+                 <button id="question_add" class="btn btn-outline-success " type="submit" style="background:rgba(0,0,0,0); font-size: 18px; color:#2e442f;" > <span class="dialog" >新增提问</span></button>
+             </li>
 
- <div class="col-md-9">
 
-     <h2 id="d1" style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>我的提问</b></h2>
-     <div th:each="question: ${myQuestions}">
-         <hr class="featurette-divider">
-         <div class="row featurette">
-             <div class="col-md-3">
-                 <img  class="featurette-image img-responsive center-block round" src="../../static/img/yg.jpg" alt="Generic placeholder image">
-             </div>
-             <div class="col-md-9" >
-                 <h2 style="text-align:left; font-size: 25px;"th:text="${question.getContent()}"> </h2>
-                 <h4 class="overfl" th:text="${question.getDesc()}"></h4>
-                 <p style="text-align:left;">&nbsp;&nbsp;热度111 &nbsp;&nbsp;&nbsp; 分享</p>
-             </div>
-         </div>
+             <li role="presentation" style="font-size: 20px;" >
+                 <a href="#d1" aria-controls="outbox" role="tab" data-toggle="tab">我的提问</a>
+             </li>
+             <li role="presentation" style="font-size: 20px;">
+                 <a href="#d2" aria-controls="outbox" role="tab" data-toggle="tab">我的回答</a>
+             </li>
+             <li role="presentation" style="font-size: 20px;">
+                 <a href="#d3" aria-controls="outbox" role="tab" data-toggle="tab">提问热榜</a>
+             </li>
+             <li role="presentation" >
+                 <a href="#d4" aria-controls="outbox" role="tab" data-toggle="tab">提问动态</a>
+             </li>
+             <li role="presentation" style="font-size: 20px;">
+                 <form class="form-inline my-2 my-lg-0">
+                     <input class="form-control mr-sm-0" type="search" placeholder="Search" aria-label="Search">
+                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                 </form>
+             </li>
+
+         </ul>
      </div>
 
-     <br><br>
 
-     <h2 id="d2" style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>我的回答</b></h2>
-     <div class="list-group" th:each="myans:${myanss}">
-         <div style="width:100%" class="col-md-9 list-group-item">
-             <div class="col-md-3" style="margin-top: 10px">
-                 <img class="featurette-image img-responsive center-block round" src="../../static/img/miao.jpg"
-                      alt="Generic placeholder image">
-             </div>
-             <div class="col-md-9" style="margin-top: 10px">
-                 <p style="text-align:left; font-size: 22px; font-weight: bold" th:text="${myans.QueContent}"> 1、问题标题</p>
-                 <p style="text-align:left" class="overfl" th:text="${'回答内容：'}+${myans.AnsContent}">
-                     回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容.</p>
-                 <p style="text-align:right;" th:text="${'回答时间：'}+${#dates.format(myans.DateTime,'yyyy-MM-dd HH:mm')}">热度111  分享</p>
-             </div>
-         </div>
-     </div>
 
-     <br><br>
+ <div class="col-md-9 tab-content vertical-tab-content" >
 
-    <h2 id="d3" style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>问题热榜</b></h2>
+    <div role="tabpanel" class="tab-pane active" id="d1">
+    <h2 style="font-size: 25px; color:rgb(62,100,47); padding-top: 20px" class="text-center"><b>我的提问</b></h2>
 
+    <div class="row featurette" th:each="myQuestion:${myQuestions}">
+       <hr class="featurette-divider">
+       <div class="col-md-3">
+          <img  class="featurette-image img-responsive center-block round" src="../../static/img/yg.jpg" alt="Generic placeholder image">
+       </div>
+       <div class="col-md-9">
+          <p style="text-align:left; font-size: 25px;"><i class="fa fa-quote-left" aria-hidden="true"></i><a th:href="'/Student/questionDetail?QID=' + ${myQuestion.getQID()}" th:text="' '+${myQuestion.getContent()}"> 1、问题标题 </a></p>
+          <p style="text-align:left" class="overfl" th:text="${myQuestion.getDesc()}">问题描述：问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述述.</p>
+           <p style="text-align:left;"><i class="fa fa-fire" aria-hidden="true"></i>&nbsp;热度111 &nbsp;&nbsp;&nbsp; <a href="#"><i class="fa fa-share-square-o" aria-hidden="true"></i>&nbsp; 分享</a></p>
+       </div>
+    </div>
+    </div>
+
+
+
+    <div role="tabpanel" class="tab-pane active" id="d2">
+   <h2  style="font-size: 25px; color:rgb(62,100,47); padding-top: 20px" class="text-center"><b>我的回答</b></h2>
+
+    <div class="row featurette" th:each="myans : ${myanss}">
+        <hr class="featurette-divider">
+       <div class="col-md-3">
+          <img  class="featurette-image img-responsive center-block round" src="../../static/img/miao.jpg" alt="Generic placeholder image">
+       </div>
+       <div class="col-md-9" >
+           <p style="text-align:left; font-size: 25px;"><i class="fa fa-quote-left" aria-hidden="true"></i><a th:href="'/Student/questionDetail?QID=' + ${myans.getAnswerID()}" th:text="' ' + ${myans.getQueContent()}">1、问题标题</a></p>
+          <p class="overfl" style="text-align: left;" th:text="${myans.getAnsContent()}">回答内容：回答内容回答回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容回答内容.</p>
+          <p style="text-align:left;"><i class="fa fa-fire" aria-hidden="true"></i>&nbsp;热度111 &nbsp;&nbsp;&nbsp; <a href="#"><i class="fa fa-share-square-o" aria-hidden="true"></i>&nbsp; 分享</a></p>
+       </div>
+    </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane active" id="d3">
+    <h2  style="font-size: 25px; color:rgb(62,100,47); padding-top: 20px" class="text-center"><b>提问热榜</b></h2>
     <hr class="featurette-divider">
     <div class="row featurette"> 
          
@@ -116,9 +214,51 @@
           <p style="text-align:left;">&nbsp;&nbsp;热度1101 &nbsp;&nbsp;&nbsp; 分享</p>
        </div>    
     </div>
+    </div>
 
 
- </div>
+
+  <div role="tabpanel" class="tab-pane active" id="d4">
+    <h2  style="font-size: 25px; color:rgb(62,100,47); padding-top: 20px" class="text-center"><b>提问动态</b></h2>
+
+    <hr class="featurette-divider">
+    <div class="row featurette"> 
+         
+       <div class="col-md-3">
+          <img  class="featurette-image img-responsive center-block round" src="../../static/img/yg.jpg" alt="Generic placeholder image">
+       </div> 
+       <div class="col-md-9" >
+          <p style="text-align:left; font-size: 15px;"> 1、问题标题</p>
+          <p class="overfl">问题描述：问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述述.</p>
+          <p style="text-align:left;">&nbsp;&nbsp;热度111 &nbsp;&nbsp;&nbsp; 分享</p>
+       </div>    
+    </div>
+
+    <hr class="featurette-divider">
+    <div class="row featurette"> 
+         
+       <div class="col-md-3">
+          <img  class="featurette-image img-responsive center-block round" src="../../static/img/yg.jpg" alt="Generic placeholder image">
+       </div> 
+       <div class="col-md-9" >
+          <p style="text-align:left; font-size: 15px;"> 2、问题标题</p>
+           <p class="overfl">问题描述：问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述述.</p>
+          <p style="text-align:left;">&nbsp;&nbsp;热度222 &nbsp;&nbsp;&nbsp; 分享</p>
+       </div>    
+    </div>
+    <hr class="featurette-divider">
+    <div class="row featurette"> 
+         
+       <div class="col-md-3">
+          <img  class="featurette-image img-responsive center-block round" src="../../static/img/yg.jpg" alt="Generic placeholder image">
+       </div> 
+       <div class="col-md-9" >
+          <p style="text-align:left; font-size: 15px;"> 3、问题标题</p>
+           <p class="overfl">问题描述：问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述述.</p>
+          <p style="text-align:left;">&nbsp;&nbsp;热度111 &nbsp;&nbsp;&nbsp; 分享</p>
+       </div>    
+    </div>
+   </div>
  </div>
 
 
