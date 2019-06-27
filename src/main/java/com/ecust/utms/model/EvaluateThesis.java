@@ -47,4 +47,15 @@ public class EvaluateThesis {
     public void setTID(String TID) {
         this.TID = TID;
     }
+
+    @Override
+    public String toString() {
+        return "EvaluateThesis{" +
+                "EThesisID=" + EThesisID +
+                ", EGrade=" + EGrade +
+                ", EContent='" + EContent + '\'' +
+                ", ThesisID=" + ThesisID +
+                ", TID='" + TID + '\'' +
+                '}';
+    }
 }

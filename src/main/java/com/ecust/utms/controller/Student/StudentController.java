@@ -118,18 +118,18 @@ public class StudentController {
     }
 
     @GetMapping("/person")
-    public String showPersonPage(Map<String,Object> map, HttpSession session, HttpServletRequest request){
+    public String showPersonPage(Map<String,Object> map, HttpSession session, HttpServletRequest request,Model model){
         Student student = (Student)session.getAttribute("loginuser");
         String sid = student.getSID();
         logger.trace("--->Student: " + sid);
         map.put("loginuser", student);
 
         // 查询个人信息 + 课题信息
-        StudentPersonalPageData person = studentMapper.getStudentPersonalPageData(sid);
+        StudentPersonalPageData person = studentMapper.getSPPD(sid);
         if (person==null){
             person = new StudentPersonalPageData(student.getSID(), student.getName(), student.getGender(), student.getMajor(),
-                    student.getDeptID().toString(), student.getPasswd(), student.getTel(), student.getEmail(),
-                    "N/A", "N/A","N/A","N/A", "N/A");
+                    student.getDeptID(), student.getPasswd(), student.getTel(), student.getEmail(),
+                    "N/A", "N/A","N/A","N/A");
         }
         map.put("person", person);
         return "Student/person";
@@ -222,8 +222,8 @@ public class StudentController {
         StudentPersonalPageData person = studentMapper.getStudentPersonalPageData(sid);
         if (person==null){
             person = new StudentPersonalPageData(student.getSID(), student.getName(), student.getGender(), student.getMajor(),
-                    student.getDeptID().toString(), student.getPasswd(), student.getTel(), student.getEmail(),
-                    "N/A", "N/A","N/A","N/A", "N/A");
+                    student.getDeptID(), student.getPasswd(), student.getTel(), student.getEmail(),
+                    "N/A", "N/A","N/A","N/A");
         }
         map.put("person", person);
         return "Student/StudentEditInfo";
@@ -248,6 +248,13 @@ public class StudentController {
         res.put("status", "ok");
 
         return res.toString();
+    }
+
+    @PostMapping("/evaluateteacher")
+    public String evaluateteacher(EvaluateTeacher et){
+        System.out.println(et.toString());
+        studentMapper.insertETBbySID(et);
+        return "redirect:/Student/person";
     }
 
 }

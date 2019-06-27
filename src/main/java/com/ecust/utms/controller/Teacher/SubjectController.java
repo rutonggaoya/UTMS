@@ -36,6 +36,6 @@ public class SubjectController {
     @DeleteMapping("/subject/{SubjID}")
     public String deleteSub(@PathVariable("SubjID") Integer SubjID){
         subjectMapper.deleteSub(SubjID);
-        return "redirect:/subjects";//重定向
+        return "redirect:/teacher/subjects";//重定向
     }
 }

@@ -1,9 +1,6 @@
 package com.ecust.utms;
 
-import com.ecust.utms.mapper.AdministratorMapper;
-import com.ecust.utms.mapper.QuestionMapper;
-import com.ecust.utms.mapper.TeacherMapper;
-import com.ecust.utms.mapper.ThesisMapper;
+import com.ecust.utms.mapper.*;
 import com.ecust.utms.model.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,6 +22,8 @@ public class UtmsApplicationTests {
     ThesisMapper thesisMapper;
     @Autowired
     QuestionMapper questionMapper;
+    @Autowired
+    StudentMapper studentMapper;
 
     @Test
     public void contextLoads() {
@@ -40,15 +39,17 @@ public class UtmsApplicationTests {
 //        teacherMapper.updateTea(tea);
 //        System.out.println(teacherMapper.getTea("111").toString());
         //测试ThesisMapper
-        List<ThesisPageData> list1 = thesisMapper.getAllTPD("510100003");
-        for(ThesisPageData t:list1){
-            System.out.println(t.toString());
-        }
-        //测试QuestionMapper
-        List<AnswerIntroData> list2 = questionMapper.getMyAnswerByTID("510100003");
-        for(AnswerIntroData a:list2){
-            System.out.println(a.toString());
-        }
+//        List<ThesisPageData> list1 = thesisMapper.getAllTPD("510100003");
+//        for(ThesisPageData t:list1){
+//            System.out.println(t.toString());
+//        }
+//        //测试QuestionMapper
+//        List<AnswerIntroData> list2 = questionMapper.getMyAnswerByTID("510100003");
+//        for(AnswerIntroData a:list2){
+//            System.out.println(a.toString());
+//        }
+        StudentPersonalPageData sppd = studentMapper.getSPPD("110161870");
+        System.out.println(sppd.toString());
     }
 
 //    Logger logger = LoggerFactory.getLogger(getClass());

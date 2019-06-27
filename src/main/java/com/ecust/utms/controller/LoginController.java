@@ -40,12 +40,15 @@ public class LoginController {
                         Map<String,Object> map, HttpSession session){
         if("Student".equals(usertype)){
             Student stu = studentMapper.getStu(username);
+            System.out.println(stu==null);
             if(stu==null){
                 map.put("msg","用户名为空");
                 return "login";
             }
             else if(stu.getSID().equals(username) && stu.getPasswd().equals(inputPassword)){
                 session.setAttribute("loginuser",stu);
+                Department dept = departmentMapper.getDept(stu.getDeptID());//放到里面防止空指针
+                session.setAttribute("dept",dept);
                 return "redirect:/Student/message";
             }else {
                 map.put("msg","用户名或密码错误");
@@ -61,7 +64,7 @@ public class LoginController {
             }
             else if(tea.getTID().equals(username) && tea.getPasswd().equals(inputPassword)){
                 session.setAttribute("loginuser",tea);
-                Department dept = departmentMapper.getDept(tea.getDeptID());
+                Department dept = departmentMapper.getDept(tea.getDeptID());//放到里面防止空指针
                 session.setAttribute("dept",dept);
                 return "redirect:/main_T.html";
             }else {

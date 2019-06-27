@@ -48,8 +48,8 @@
             <td th:text="${sub.SelectNum}">1</td>
             <td th:text="${sub.Status}==0?'待审核':'已发布'">待审核</td> <!--管理员通过后统一发布，方便学生同一时间选课题——Sijar-->
             <td>
-                <button type="button" class="btn cancel deleteBtn" th:attr="del_uri=${'/subject/'}+${sub.SubjID}">
-                    <span lass="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                <button type="button" class="btn cancel deleteBtn" th:attr="del_uri=${'/teacher/subject/'}+${sub.SubjID}">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
             </td>
         </tr>
@@ -63,7 +63,6 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
