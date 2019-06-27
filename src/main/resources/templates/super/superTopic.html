@@ -162,7 +162,8 @@
 										<th>操作</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody id="modal_tbody">
+
 									<tr th:each="ssub:${session.ssubs}">
 										<td th:text="${ssub.getSID()}">10123434</td>
 										<td th:text="${ssub.getStuName()}">Anna</td>
@@ -172,7 +173,7 @@
 <!--										<input type="hidden" id="vOrder" name="VOrder" th:value="${ssub.getVOrder()}">-->
 <!--										<input type="hidden" id="stuName" name="StuName" th:value="${ssub.getStuName()}">-->
 										<td><button class="btn  btn-green" onclick="apply(this)">允许申请</button> <button
-										class="btn btn-default" onclick="reject(this)">拒接申请</button></td>
+										class="btn btn-default" onclick="reject(this)">拒绝申请</button></td>
 
 									</tr>
 								</tbody>
@@ -233,10 +234,34 @@
 </body>
 <script type="text/javascript">//模态框数据提交
 function update_status() {
-	var statusList = document.getElementsByName("status");
-	for(var i=0; i < statusList.length;i++){
-		console.log(statusList[i]);
-	}
+    var lines = document.getElementsByName("line");
+
+    for(var i = 0; i < lines.length; i++){
+        console.log(lines[i]);
+        var SID = lines[i].childNodes[1].innerText;
+        var SubjID = lines[i].id.split("_")[1];
+        var StatusStr = lines[i].childNodes[5].innerText;
+        console.log(SID);
+        console.log(SubjID);
+        console.log(StatusStr);
+        $.ajax({
+            url: "/admin/setSelectSubject",
+            data: {
+                "SID": SID,
+                "SubjID": SubjID,
+                "Status": StatusStr
+            },
+            type: "GET",
+            success: function (response) {
+                // alert("成功！");
+                console.log(response);
+            },
+            erroe: function (response) {
+                console.log(response);
+            }
+        })
+    }
+
 	$("#myModal").on("hidden.bs.modal", function () {
 		$(this).removeData("bs.modal");
 	});

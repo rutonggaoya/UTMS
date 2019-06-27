@@ -79,7 +79,7 @@
 						<form class="form-inline">
 							<div id="name">
 								<div class="h3name">
-									<h3 class="font2">姓名XXX</h3>
+									<h3 class="font2" th:text="${student.getName()}">姓名XXX</h3>
 								</div>
 								<button type="button"
 									class="Button  Field-modify-hidden ModifyButton Button--link"
@@ -94,7 +94,7 @@
 									<div class="form-group  ">
 										<label class="sr-only" for="userName">用户名</label> <input
 											type="text" class="form-control input " id="userNameu"
-											name="userName">
+											name="userName" th:text="${student.getSID()}">
 									</div>
 									<button type="button" class="btn btn-success mt-5"
 										id="nSaveBtn" onclick="nameSave()">保存</button>
@@ -158,7 +158,7 @@
 							<h3 class="Field-label">学号</h3>
 							<div class="Field-content">
 								<div id="ID" class="class1">
-									<span>12382222</span>
+									<span th:text="${student.getSID()}">12382222</span>
 									<button type="button" id="IDBtn"
 										class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
 										onclick="setID()">修改</button>
@@ -189,16 +189,15 @@
 							<h3 class="Field-label">性别</h3>
 							<div class="Field-content">
 								<div id="sex" class="class1">
-									<span>女</span>
+									<span th:text="${student.getGender()==0?'男':'女'}">女</span>
 									<button type="button" id="sexBtn"
 										class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
 										onclick="setSex()">修改</button>
 								</div>
 								<div>
 									<div id="sexRadio" class="class2">
-										<input type="radio" name="gender" value="男"> 男 <input
-											type="radio" name="gender" style="margin-left: 30px;"
-											value="女" checked=""> 女
+										<input type="radio" name="gender" value="男" th:checked="${student.getGender()==0?true:false}"> 男
+										<input type="radio" name="gender" style="margin-left: 30px;" value="女" th:checked="${student.getGender()==1?true:false}"> 女
 										<div class="ButtonGroup">
 											<button type="button" class="btn btn-success mt-5"
 												onclick="sexSave()">保存</button>
@@ -250,7 +249,7 @@
 							<h3 class="Field-label">专业</h3>
 							<div class="Field-content">
 								<div id="title" class="class1">
-									<span>软件工程</span>
+									<span th:text="${student.getMajor()}">软件工程</span>
 									<button type="button" id="titleBtn"
 										class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
 										onclick="setTitle()">修改</button>
@@ -281,7 +280,7 @@
 							<h3 class="Field-label">手机号</h3>
 							<div class="Field-content">
 								<div id="phone" class="class1">
-									<span>13189098842</span>
+									<span th:text="${student.getTel()}">13189098842</span>
 									<button type="button" id="phoneBtn"
 										class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
 										onclick="setPhone()">修改</button>
@@ -312,7 +311,7 @@
 							<h3 class="Field-label">邮箱</h3>
 							<div class="Field-content">
 								<div id="mail" class="class1">
-									<span>jtzhang@ecust.edu.cn</span>
+									<span th:text="${student.getEmail()}">jtzhang@ecust.edu.cn</span>
 									<button type="button" id="mailBtn"
 										class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
 										onclick="setMail()">修改</button>

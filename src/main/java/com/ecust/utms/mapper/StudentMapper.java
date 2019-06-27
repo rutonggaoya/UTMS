@@ -2,8 +2,12 @@ package com.ecust.utms.mapper;
 
 import com.ecust.utms.model.Student;
 import com.ecust.utms.model.StudentPersonalPageData;
+import com.ecust.utms.model.StudentSubject;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+
+import java.sql.ResultSet;
+import java.util.List;
 
 @Mapper
 public interface StudentMapper {
@@ -31,4 +35,7 @@ public interface StudentMapper {
             "and b.Status = 1\n" +
             "and b.SID = #{SID};")
     StudentPersonalPageData getStudentPersonalPageData(String SID);
+
+    @Select("select * from student order by SID desc")
+    List<Student> getAllStudent();
 }

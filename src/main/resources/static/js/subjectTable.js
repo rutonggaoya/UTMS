@@ -198,22 +198,47 @@ function InitMainTable() {
 
 function detail(SubjID) {  //根据项目ID跳转到选择学生页面
     var data={SubjID:SubjID};
-    console.log(data.SubjID);
+    var tbody = document.getElementById("modal_tbody");
+    tbody.innerHTML="";
     $.ajax({
         type : "get",
         url : "/admin/topic",
         data: data,
         success : function(response) {
-            //
-            return false;
+            $('#myModal').modal({backdrop: "static"});
+            console.log(response);
+            for (var i = 0; i < response.length; i++){
+                var ss = response[i];
+                var status = ss.status;
+                if(ss.status === 0)
+                    addLine(ss.sid, ss.stuName, '未审核', tbody, ss.subjID, i);
+                if(ss.status === 1)
+                    addLine(ss.sid, ss.stuName, '已允许', tbody, ss.subjID, i);
+                if(ss.status === 2)
+                    addLine(ss.sid, ss.stuName, '已拒绝', tbody, ss.subjID, i);
+            }
         },
         error : function() {
             alert("請求失敗");
         }
     });
-    $('#myModal').modal({backdrop: "static"});
 
 };
+
+function addLine(SID, Name, Status, tbody, SubjID, index) {
+    var $line = '<tr '+ "name='line' id='Subject_" + SubjID + "'>\n" +
+        '<td>'+ SID +'</td>\n' +
+        '<td>'+ Name +'</td>\n' +
+        '<td>'+ Status +'</td>\n' +
+        '<td>' +
+        '<button class=\'btn  btn-green\' onclick=\'apply(this)\'>允许申请</button> ' +
+        '<button class=\'btn btn-default\' onclick=\'reject(this)\'>拒接申请</button> ' +
+        '</td>\n' +
+        '</tr>';
+
+    $("#modal_tbody").append($line);
+    console.log(tbody);
+}
 
 function content() {
 

@@ -54,7 +54,6 @@ public class LoginController {
         }
         else if("Teacher".equals(usertype)){
             Teacher tea = teacherMapper.getTea(username);
-            Department dept = departmentMapper.getDept(tea.getDeptID());
 //            System.out.println(dept.getName());
             if(tea==null){
                 map.put("msg","用户名为空");
@@ -62,6 +61,7 @@ public class LoginController {
             }
             else if(tea.getTID().equals(username) && tea.getPasswd().equals(inputPassword)){
                 session.setAttribute("loginuser",tea);
+                Department dept = departmentMapper.getDept(tea.getDeptID());
                 session.setAttribute("dept",dept);
                 return "redirect:/main_T.html";
             }else {

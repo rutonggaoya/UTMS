@@ -42,6 +42,6 @@ public interface SubjectMapper {
             "where ss.SID=#{SID} and ss.SubjID = s.SubjID and ss.Status = 1")
     Subject getStuSub(String SID);
 
-    @Insert("insert into selectsubject(`VOrder`, `Status`, `SubjID`, `SID`) values(#{SubjID}, 0, #{VOrder}, #{SID})")
+    @Insert("insert into selectsubject(`SubjID`, `Status`, `VOrder`, `SID`) values(#{SubjID}, 0, #{VOrder}, #{SID})")
     Boolean setSubChoice(@Param("SubjID") String SubjID, @Param("VOrder") String VOrder,  @Param("SID") String SID);
 }
