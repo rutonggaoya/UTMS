@@ -1,4 +1,5 @@
 <!doctype html>
+<<<<<<< HEAD
 <html lang="en">
 <head>
 <!-- Required meta tags -->
@@ -214,6 +215,185 @@
 	</div>
 	<!-- 自定义添加学生模态框 END-->
 
+=======
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- jQuery Js -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- Bootstrap Js -->
+    <script
+            src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+          media="screen">
+
+    <!-- jquery.dataTables CSS -->
+    <link href="../../static/plugins/DataTables/bootstrap-table.css"
+          rel="stylesheet" media="screen"/>
+
+    <!-- DATA TABLE JS -->
+    <script type="text/javascript"
+            src="../../static/plugins/DataTables/bootstrap-table.js"></script>
+    <script type="text/javascript"
+            src="../../static/plugins/DataTables/bootstrap-table-zh-CN.js"></script>
+
+    <!-- datetimepicker CSS-->
+    <link
+            href="../../static/plugins/datetimepicker/bootstrap-datetimepicker.min.css"
+            rel="stylesheet" media="screen">
+
+    <!-- datetimepicke JS-->
+    <script type="text/javascript"
+            src="../../static/plugins/datetimepicker/bootstrap-datetimepicker.js"
+            charset="UTF-8"></script>
+    <script type="text/javascript"
+            src="../../static/plugins/datetimepicker/bootstrap-datetimepicker.fr.js"
+            charset="UTF-8"></script>
+
+    <!-- superTopic.html CSS -->
+    <link href="../../static/css/superBase.css" rel="stylesheet"
+          type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="../../static/css/superMessage.css" rel="stylesheet"
+          type="text/css">
+
+    <title>课题</title>
+
+</head>
+<body class="bodybk text-center">
+<div class="container-fluid">
+
+    <!-- title -->
+    <div class="row ">
+        <div class="col-md-12"
+             style="margin-top: 20px; font-family: 华文行楷; font-size: 25px;">
+            <h1>华东理工大学论文系统</h1>
+        </div>
+    </div>
+    <!-- title END -->
+
+    <!-- 导航栏 -->
+    <div th:replace="super/Topbar :: top-bar(activeUri='superMessage')"></div>
+    <!-- 导航栏END -->
+
+    <!--主体-->
+    <div class="main_pane row  myMessage">
+
+        <table class="table table-striped">
+            <caption id="d1" style="font-size: 25px; color: rgb(62, 100, 47);"
+                     class="text-center">
+                <b>系统公告</b>
+                <button class="btn btn-danger " type="button"
+                        style="float: right;" id="btn_issue">
+                    <span>发布公告</span>
+                </button>
+
+            </caption>
+
+
+            <thead class="theadcenter">
+            <tr>
+                <th>公告</th>
+                <th>时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ans : ${anns}">
+                <td th:text="${ans.getTitle()}">0001名称</td>
+                <td th:text="${#dates.format(ans.getDateTime(),'yyyy-MM-dd HH:mm:ss')}">2019/6/19 10：56</td>
+                <td><a th:href="'/admin/messageInfo?AID='+${ans.getAID()}" target="_blank">查看详情</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination1">
+            <li><a href="#" aria-label="Previous"> <span
+                    aria-hidden="true">&laquo;</span>
+            </a></li>
+            <li><a href="#" class="active">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+
+            <li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+            </a></li>
+        </ul>
+    </nav>
+    <!--主体结束-->
+</div>
+
+
+<!-- 发布公告模态框 -->
+<div class="modal fade " id="issueModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog mymaddmodal"
+         style="margin-top: 100px !important" role="document">
+        <form method="post" class="box-header with-border" action="/admin/announce" target="_blank"
+              th:object="${apkVersion}" id="dataFrom" enctype="multipart/form-data">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">发布公告</h4>
+            </div>
+            <div class="modal-body">
+                    <div class="form-group">
+                        <label for="title">名称</label>
+                        <input type="text" name="Title" class="form-control"
+                               id="titleu" placeholder="名称">
+                    </div>
+                    <div class="form-group">
+						<textarea type="text" class="form-control" name="Content"
+                                  id="txt_parentdepartment" rows="5" placeholder="内容300字以内">
+                        </textarea>
+                    </div>
+                    <input type="hidden" name="TID" th:value="${session.loginuser.getTID()}"/>
+                    <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">   -->
+                    <div>
+                        <div role="document">
+                            <div class="form-group">
+                                <input type="file" name="uploadfile" id="uploadfile"
+                                       multiple="multiple" class="file-loading" style="float: left"/>
+                                <button class="btn btn-primary " type="button" name="update1"
+                                        id="inputFileBtn"
+                                        style="float: left; margin-left: 30px;margin-top:-5px;width:100px;background-color: rgb(62, 100, 47)">
+                                    上传
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+            </div>
+            <div class="modal-footer" style="border-top:1px solid white !important">
+                <button type="submit" class="btn btn-green" id="issueBtn">
+                    确认
+                </button>
+                <button type="button" class="btn btn-default" id="issueCancelBtn">关闭</button>
+
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+<!-- 自定义添加学生模态框 END-->
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 
 
 </body>

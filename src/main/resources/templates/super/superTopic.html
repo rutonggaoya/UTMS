@@ -1,5 +1,9 @@
 <!doctype html>
+<<<<<<< HEAD
 <html lang="en">
+=======
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 <head>
 <!-- Required meta tags -->
 <meta charset="UTF-8">
@@ -46,6 +50,10 @@
 	type="text/css">
 <link href="../../static/css/superTopic.css" rel="stylesheet"
 	type="text/css">
+<<<<<<< HEAD
+=======
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 
 <title>课题</title>
 
@@ -63,6 +71,7 @@
 		<!-- title END -->
 
 		<!-- 导航栏 -->
+<<<<<<< HEAD
 		<div class="row top">
 			<div class="col-md-12">
 				<ul class="nav nav-tabs" role="tablist">
@@ -74,6 +83,9 @@
 				</ul>
 			</div>
 		</div>
+=======
+		<div th:replace="super/Topbar :: top-bar(activeUri='superTopic')"></div>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 		<!-- 导航栏END -->
 
 		<!--主体-->
@@ -120,12 +132,20 @@
 								<div class="main_search" id="toolbar">
 									<form class="form-inline" role="form" id="search_form">
 										<div class="form-group ">
+<<<<<<< HEAD
 											<label class="sr-only" for="submitTime">上传年份</label> <input
 												type="text" class="form-control main_s_input"
 												id="submitTimeu" name="submitTime" placeholder="根据上传年份查询">
 										</div>
 										<button type="button" id="query"
 											class="btn btn-info query mt-5">查询</button>
+=======
+											<label class="sr-only" for="submitTimeu">上传年份</label> <input
+												type="text" class="form-control main_s_input"
+												id="submitTimeu" name="submitTime" placeholder="根据上传年份查询">
+										</div>
+										<button type="button" id="query" class="btn btn-info query mt-5">查询</button>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 										<button type="button" id="delete" class="btn btn-default mt-5">删除</button>
 
 									</form>
@@ -172,6 +192,7 @@
 										<th>操作</th>
 									</tr>
 								</thead>
+<<<<<<< HEAD
 								<tbody>
 									<tr>
 										<td>10123434</td>
@@ -195,12 +216,27 @@
 										<td>已拒绝</td>
 										<td><button class="btn  btn-green" onclick="apply(this)">允许申请</button> <button
 										class="btn btn-default" onclick="reject(this)">拒接申请</button></td>
+=======
+								<tbody id="modal_tbody">
+
+									<tr th:each="ssub:${session.ssubs}">
+										<td th:text="${ssub.getSID()}">10123434</td>
+										<td th:text="${ssub.getStuName()}">Anna</td>
+										<td th:text="${ssub.getStatusName()}" >已允许</td>
+<!--										<td th:name="${'status'}" th:id="${'status'}+${ssub.getSSID()}" th:text="${ssub.getStatusName()}" >已允许</td>-->
+<!--										<input type="hidden" id="sSID" name="SSID" th:value="${ssub.getSSID()}">-->
+<!--										<input type="hidden" id="vOrder" name="VOrder" th:value="${ssub.getVOrder()}">-->
+<!--										<input type="hidden" id="stuName" name="StuName" th:value="${ssub.getStuName()}">-->
+										<td><button class="btn  btn-green" onclick="apply(this)">允许申请</button> <button
+										class="btn btn-default" onclick="reject(this)">拒绝申请</button></td>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 
 									</tr>
 								</tbody>
 							</table>
 						</div>
 						<!-- 表单END -->
+<<<<<<< HEAD
 						<button type="button" class="btn-default btn addBtn " onclick="">添加</button>
 						<!-- 自定义添加学生模态框 -->
 						<div class="modal fade " id="addModal" tabindex="-1" role="dialog"
@@ -236,12 +272,53 @@
 								</div>
 							</div>
 						</div>
+=======
+<!--						<button type="button" class="btn-default btn addBtn ">添加</button>-->
+						<!-- 自定义添加学生模态框 -->
+<!--						<div class="modal fade " id="addModal" tabindex="-1" role="dialog"-->
+<!--							aria-labelledby="myModalLabel">-->
+<!--							<div class="modal-dialog mymaddmodal" role="document">-->
+<!--								<div class="modal-content">-->
+<!--									<div class="modal-header">-->
+<!--										<button type="button" class="close" data-dismiss="modal"-->
+<!--											aria-label="Close">-->
+<!--											<span aria-hidden="true">&times;</span>-->
+<!--										</button>-->
+<!--										<h4 class="modal-title" id="myModalLabel">添加学生</h4>-->
+<!--									</div>-->
+<!--									<div class="modal-body">-->
+
+<!--										<div class="form-group">-->
+<!--											<label>学号</label> <input type="text" name="stuID"-->
+<!--												class="form-control" id="stuIDu" placeholder="学号">-->
+<!--										</div>-->
+<!--										<div class="form-group">-->
+<!--											<label>姓名</label> <input type="text" name="stuName"-->
+<!--												class="form-control" id="stuNameu" placeholder="姓名">-->
+<!--										</div>-->
+
+<!--									</div>-->
+<!--									<div class="modal-footer">-->
+<!--										<button type="button" class="btn btn-green" id="addStuBtn">-->
+<!--											确认</button>-->
+<!--										<button type="button" class="btn btn-default"-->
+<!--											id="cancelStuBtn">关闭</button>-->
+
+<!--									</div>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 						<!-- 自定义添加学生模态框 END-->
 
 					</div>
 					<div class="modal-footer">
 						<button type="button" id="btn_submit" class="btn btn-green"
+<<<<<<< HEAD
 							data-dismiss="modal">确认</button>
+=======
+							data-dismiss="modal" onclick="update_status()">确认</button>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 						<button type="button" class="btn btn-default" data-dismiss="modal">
 							关闭</button>
 
@@ -249,9 +326,51 @@
 				</div>
 			</div>
 		</div>
+<<<<<<< HEAD
 		<!-- 模态框 查看报名情况 END-->
 	</div>
 </body>
+=======
+<!--		</form>-->
+		<!-- 模态框 查看报名情况 END-->
+	</div>
+</body>
+<script type="text/javascript">//模态框数据提交
+function update_status() {
+    var lines = document.getElementsByName("line");
+
+    for(var i = 0; i < lines.length; i++){
+        console.log(lines[i]);
+        var SID = lines[i].childNodes[1].innerText;
+        var SubjID = lines[i].id.split("_")[1];
+        var StatusStr = lines[i].childNodes[5].innerText;
+        console.log(SID);
+        console.log(SubjID);
+        console.log(StatusStr);
+        $.ajax({
+            url: "/admin/setSelectSubject",
+            data: {
+                "SID": SID,
+                "SubjID": SubjID,
+                "Status": StatusStr
+            },
+            type: "GET",
+            success: function (response) {
+                // alert("成功！");
+                console.log(response);
+            },
+            erroe: function (response) {
+                console.log(response);
+            }
+        })
+    }
+
+	$("#myModal").on("hidden.bs.modal", function () {
+		$(this).removeData("bs.modal");
+	});
+}
+</script>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 <script src="../../static/js/subjectTable.js"></script>
 <script src="../../static/js/superTopic.js"></script>
 

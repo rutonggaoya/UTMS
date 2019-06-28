@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- jQuery Js -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- Bootstrap Js -->
+    <script
+            src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+          media="screen">
+
+    <!-- superInfo.html CSS -->
+    <link href="../../static/css/superBase.css" rel="stylesheet"
+          type="text/css">
+
+
+    <title>课题</title>
+</head>
+<body class="bodybk text-center">
+
+<div class="container-fluid">
+
+    <!-- title -->
+    <div class="row top">
+        <div class="col-md-12"
+             style="margin-top: 20px; font-family: 华文行楷; font-size: 25px;">
+            <h1>华东理工大学论文系统</h1>
+
+        </div>
+    </div>
+    <!-- title END -->
+
+
+    <div class="row" style="margin-top:30px">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <form role="form">
+                <div class="form-group">
+
+                    <label for="title" class="form-inline"> 标题</label> <input
+                        type="text" class="form-control" id="titleu" name="title" onclick="set()"
+                        value="关于开展2016届本科生毕业论文格式规范性检测工作的通知 "
+                        th:value="${announcement.getTitle()}"/>
+                </div>
+                <div class="form-group">
+
+                    <label for="content"> 内容 </label>
+                    <textarea type="text" class="form-control" style="overflow-y:scorll"
+                              id="txt_parentdepartment" rows="10" placeholder="私信内容300字以内"
+                              th:text="${announcement.getContent()}">各学院（系）：
+
+毕业论文撰写需遵循《华东理工大学本科毕业设计（论文）撰写规范》及相关国家标准，如《GB7713学位论文撰写格式》，《GB7714参考文献著录规则》，《GB7714参考文献著录规则》等。仅依靠指导教师人工评阅论文规范符合性，不仅工作量大，而且容易疏漏。为进一步提高我校本科生毕业设计（论文）质量，端正学生论文写作态度，提高指导教师工作效率，根据教高函〔2018〕8号《教育部关于狠抓新时代全国高等学校本科教育工作会议精神落实的通知》等文件精神和规定要求，学校将使用论文格式规范自动检测系统对2016届毕业生论文（设计）进行规范符合性检测。该系统可以自动检测毕业论文格式是否符合学校的撰写规范以及相关的国家标准，支持文本，插图，表格，代码，算法等近百个检测项；并将发现的不符合项以Word批注的形式在原稿中自动标注，方便学生修订错误。
+                         </textarea>
+
+                </div>
+                <div class="form-group">
+
+                    <input type="file" class="form-control-file" id="exampleInputFile"/>
+                    <div style="margin-top: 20px"></div>
+                    <p class="MsoNormal"
+                       style="margin: 0cm 8px 0px 0cm; text-align: left; line-height: 150%; font-ze: 16px; -ms-layout-grid-mode: char; mso-pagination: widow-orphan; mso-layout-grid-align: none;">
+                        附件：
+                    <p th:each="atk, iStat : ${announcement.getAttachments()}">
+                        <a th:href="'/admin/Files/download?path=' + ${atk.getATPath()}"
+                           th:text="'附件'+${iStat.count} + ${atk.getATName()}"></a>
+                    </p>
+                    </p>
+                </div>
+
+                <button type="submit" class="btn btn-sucess">提交修改</button>
+                <button class="btn btn-default" onclick="back()" style="width:75px"> 返回</button>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+
+</div>
+<!-- container  END-->
+</body>
+
+<script>
+    function back() {
+        // window.location.href="/admin/messages";  //跳转到具体页面
+        window.close();
+    }
+</script>
+
+</html>

@@ -1,15 +1,17 @@
 package com.ecust.utms.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Announcement {
 
     private Integer AID;//公告ID
     private String Content;//公告内容
     private String Title;//公告标题
-    private Date DateTime;//公告时间
+    private Date DateTime = null;//公告时间
     private String PubID;//管理员ID
     private Integer ReadNum;//阅读数
+    private List<Attachment> attachments = null;
 
     public Integer getAID() {
         return AID;
@@ -59,4 +61,11 @@ public class Announcement {
         ReadNum = readNum;
     }
 
+    public List<Attachment> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(List<Attachment> attachments) {
+        this.attachments = attachments;
+    }
 }

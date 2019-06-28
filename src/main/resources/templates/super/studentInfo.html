@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 
 
 
 <!doctype html>
 <html lang="en">
+=======
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 <head>
 <!-- Required meta tags -->
 <meta charset="UTF-8">
@@ -20,14 +25,27 @@
 <link rel="stylesheet"
 	href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
 	media="screen">
+<<<<<<< HEAD
+=======
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 
 <!-- superInfo.html CSS -->
 <link href="../../static/css/superBase.css" rel="stylesheet"
 	type="text/css">
 
+<<<<<<< HEAD
 	<link href="../../static/css/superInfo.css" rel="stylesheet"
 	type="text/css">
 
+=======
+<link href="../../static/css/superInfo.css" rel="stylesheet"
+	type="text/css">
+
+<link href="../../static/css/main.css" rel="stylesheet" type="text/css">
+
+
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 
 
 
@@ -42,11 +60,22 @@
 			<div class="col-md-12"
 				style="margin-top: 20px; font-family: 华文行楷; font-size: 25px;">
 				<h1>华东理工大学论文系统</h1>
+<<<<<<< HEAD
+=======
+				<div class="three-clean-buttons backBtn">
+					<div class="clean-button">
+						<span class="text" onclick="back()">返回</span>
+					</div>
+				</div>
+
+
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 			</div>
 		</div>
 		<!-- title END -->
 
 		<!-- 导航栏 -->
+<<<<<<< HEAD
 		<div class="row top">
 			<div class="col-md-12 ">
 				<ul class="nav nav-tabs " role="tablist">
@@ -58,6 +87,9 @@
 				</ul>
 			</div>
 		</div>
+=======
+		<div th:replace="super/Topbar :: top-bar(activeUri='Info')"></div>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 		<!-- 导航栏END -->
 
 		<!-- 主体 -->
@@ -67,7 +99,11 @@
 			<div class="col-md-3 bottom">
 				<img src="../../static/img/qx.jpg" class="img-circle center-block"
 					style="margin-top: 30px;" width=150;>
+<<<<<<< HEAD
 				
+=======
+
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 			</div>
 			<!-- 图片END -->
 
@@ -81,7 +117,11 @@
 						<form class="form-inline">
 							<div id="name">
 								<div class="h3name">
+<<<<<<< HEAD
 									<h3 class="font2">姓名XXX</h3>
+=======
+									<h3 class="font2" th:text="${student.getName()}">姓名XXX</h3>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 								</div>
 								<button type="button"
 									class="Button  Field-modify-hidden ModifyButton Button--link"
@@ -96,7 +136,11 @@
 									<div class="form-group  ">
 										<label class="sr-only" for="userName">用户名</label> <input
 											type="text" class="form-control input " id="userNameu"
+<<<<<<< HEAD
 											name="userName">
+=======
+											name="userName" th:text="${student.getSID()}">
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 									</div>
 									<button type="button" class="btn btn-success mt-5"
 										id="nSaveBtn" onclick="nameSave()">保存</button>
@@ -141,6 +185,7 @@
 									</div>
 									<div class="modal-footer">
 										<button type="button" id="btn_submit" class="btn btn-green"
+<<<<<<< HEAD
 											data-dismiss="modal" onclick="savePwd()">
 											确认
 										</button>
@@ -148,6 +193,11 @@
 											data-dismiss="modal">
 											关闭
 										</button>
+=======
+											data-dismiss="modal" onclick="savePwd()">确认</button>
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">关闭</button>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 
 									</div>
 								</div>
@@ -164,7 +214,11 @@
 							<h3 class="Field-label">学号</h3>
 							<div class="Field-content">
 								<div id="ID" class="class1">
+<<<<<<< HEAD
 									<span>12382222</span>
+=======
+									<span th:text="${student.getSID()}">12382222</span>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 									<button type="button" id="IDBtn"
 										class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
 										onclick="setID()">修改</button>
@@ -195,16 +249,25 @@
 							<h3 class="Field-label">性别</h3>
 							<div class="Field-content">
 								<div id="sex" class="class1">
+<<<<<<< HEAD
 									<span>女</span>
+=======
+									<span th:text="${student.getGender()==0?'男':'女'}">女</span>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 									<button type="button" id="sexBtn"
 										class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
 										onclick="setSex()">修改</button>
 								</div>
 								<div>
 									<div id="sexRadio" class="class2">
+<<<<<<< HEAD
 										<input type="radio" name="gender" value="男"> 男 <input
 											type="radio" name="gender" style="margin-left: 30px;"
 											value="女" checked=""> 女
+=======
+										<input type="radio" name="gender" value="男" th:checked="${student.getGender()==0?true:false}"> 男
+										<input type="radio" name="gender" style="margin-left: 30px;" value="女" th:checked="${student.getGender()==1?true:false}"> 女
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 										<div class="ButtonGroup">
 											<button type="button" class="btn btn-success mt-5"
 												onclick="sexSave()">保存</button>
@@ -256,7 +319,11 @@
 							<h3 class="Field-label">专业</h3>
 							<div class="Field-content">
 								<div id="title" class="class1">
+<<<<<<< HEAD
 									<span>软件工程</span>
+=======
+									<span th:text="${student.getMajor()}">软件工程</span>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 									<button type="button" id="titleBtn"
 										class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
 										onclick="setTitle()">修改</button>
@@ -287,7 +354,11 @@
 							<h3 class="Field-label">手机号</h3>
 							<div class="Field-content">
 								<div id="phone" class="class1">
+<<<<<<< HEAD
 									<span>13189098842</span>
+=======
+									<span th:text="${student.getTel()}">13189098842</span>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 									<button type="button" id="phoneBtn"
 										class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
 										onclick="setPhone()">修改</button>
@@ -318,7 +389,11 @@
 							<h3 class="Field-label">邮箱</h3>
 							<div class="Field-content">
 								<div id="mail" class="class1">
+<<<<<<< HEAD
 									<span>jtzhang@ecust.edu.cn</span>
+=======
+									<span th:text="${student.getEmail()}">jtzhang@ecust.edu.cn</span>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 									<button type="button" id="mailBtn"
 										class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
 										onclick="setMail()">修改</button>
@@ -341,14 +416,25 @@
 					</div>
 				</div>
 				<!-- 邮箱END-->
+<<<<<<< HEAD
 
 			</div>
 			<!-- 右侧个人信息END -->
 
+=======
+			</div>
+			<!-- 右侧个人信息END -->
+
+
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 		</div>
 		<!-- 主体END -->
 	</div>
 	<!-- container  END-->
 </body>
 <script src="../../static/js/superInfo.js"></script>
+<<<<<<< HEAD
+=======
+<script src="../../static/js/superUserStu.js"></script>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 </html>

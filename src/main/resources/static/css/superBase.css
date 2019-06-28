@@ -32,3 +32,22 @@
 .btn-green{
 	background-color:#bbce99;
 }
+<<<<<<< HEAD
+=======
+
+.backBtn{
+	float:right;
+	margin-right:100px;
+	
+}
+
+.theadcenter tr th {
+	text-align: center;
+	background-color: rgba(62, 100, 47, 0.8);
+}
+
+.table-striped tbody tr td {
+	background-color: rgba(185, 209, 157, 0.7);
+}
+
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88

@@ -5,6 +5,7 @@ public class Attachment {
     private Integer ATID;//附件ID
     private String ATPath;//附件路径
     private Integer AID;//公告ID
+    private String ATName; //附件名称
 
     public String getATPath() {
         return ATPath;
@@ -30,4 +31,11 @@ public class Attachment {
         this.ATID = ATID;
     }
 
+    public String getATName() {
+        return ATName;
+    }
+
+    public void setATName(String ATName) {
+        this.ATName = ATName;
+    }
 }

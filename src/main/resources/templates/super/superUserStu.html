@@ -1,5 +1,9 @@
 <!doctype html>
+<<<<<<< HEAD
 <html lang="en">
+=======
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 <head>
 <!-- Required meta tags -->
 <meta charset="UTF-8">
@@ -47,6 +51,10 @@
 
 <link href="../../static/css/superUser.css" rel="stylesheet"
 	type="text/css">
+<<<<<<< HEAD
+=======
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 
 <title>课题</title>
 
@@ -64,6 +72,7 @@
 		<!-- title END -->
 
 		<!-- 导航栏 -->
+<<<<<<< HEAD
 		<div class="row top">
 			<div class="col-md-12 ">
 				<ul class="nav nav-tabs " role="tablist">
@@ -75,6 +84,9 @@
 				</ul>
 			</div>
 		</div>
+=======
+		<div th:replace="super/Topbar :: top-bar(activeUri='Admin')"></div>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 		<!-- 导航栏END -->
 
 		<!--主体-->
@@ -89,11 +101,19 @@
 						<div class="collapse navbar-collapse " id="navbar-collapse">
 							<ul class="nav navbar-nav" id="nav">
 								<li class="nav_li">
+<<<<<<< HEAD
 									<a href="#" ><font color="black">学生管理</font></a>
 								</li>
 
 								<li class="nav_li">
 									<a href="superUserTea" ><font color="black">老师管理</font></a>
+=======
+									<a href="/admin/UserStu" ><font color="black">学生管理</font></a>
+								</li>
+
+								<li class="nav_li">
+									<a href="/admin/UserTea" ><font color="black">老师管理</font></a>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 								</li>
 								
 
@@ -179,9 +199,16 @@
 									<div class="modal-body">
 
 										<div class="form-group">
+<<<<<<< HEAD
 											<label for="score">成绩</label> <input type="text" name="score"
 												class="form-control" id="scoreu" placeholder="成绩">
 										</div>
+=======
+											<label for="EGrade">成绩</label> <input type="text" name="EGrade"
+												class="form-control" id="scoreu" placeholder="成绩">
+										</div>
+										<input name="SID" value="" hidden />
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 										
 
 									</div>

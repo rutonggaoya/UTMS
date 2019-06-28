@@ -1,4 +1,4 @@
-package com.ecust.utms.controller;
+package com.ecust.utms.controller.Teacher;
 
 import com.ecust.utms.mapper.SubjectMapper;
 import com.ecust.utms.model.Subject;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @Controller
+@RequestMapping("/teacher")
 public class SubjectController {
 
     @Autowired
@@ -21,9 +22,6 @@ public class SubjectController {
     public String toSubjectPage(Model model, HttpSession session){
         Teacher user = (Teacher)session.getAttribute("loginuser");
         List<Subject> all = subjectMapper.getTeaSub(user.getTID());
-//        for(Subject s:all){
-//            System.out.println("当前老师拥有课题："+s.toString());
-//        }
         model.addAttribute("subs",all);
         return "Teacher/TeacherSubject";
     }
@@ -32,12 +30,12 @@ public class SubjectController {
     public String addSub(Subject subject){
         System.out.println("添加新课题:"+subject.toString());
         subjectMapper.insertSub(subject);
-        return "redirect:/subjects";//重定向
+        return "redirect:/teacher/subjects";//重定向
     }
 
     @DeleteMapping("/subject/{SubjID}")
     public String deleteSub(@PathVariable("SubjID") Integer SubjID){
         subjectMapper.deleteSub(SubjID);
-        return "redirect:/subjects";//重定向
+        return "redirect:/teacher/subjects";//重定向
     }
 }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>消息</title>
+    <!-- jQuery Js -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1 id="alert" th:text="${alert}" hidden></h1>
+    <script type="text/javascript">
+        console.log($("#alert").text());
+        alert($("#alert").text());
+        // if(window.Notification && Notification.permission !== "denied") {
+        //     Notification.requestPermission(function(status) {
+        //         var n = new Notification('通知', { body: $("#alert").text()});
+        //     });}
+        window.close();
+    </script>
+</body>
+</html>

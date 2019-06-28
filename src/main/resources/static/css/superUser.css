@@ -35,7 +35,11 @@
 }
 
 #delete {
+<<<<<<< HEAD
 	margin-left: 10px width:75px;
+=======
+	margin-left: 10px; width:75px;
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 }
 
 #issue {
@@ -101,3 +105,7 @@
 	
 	height:150px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88

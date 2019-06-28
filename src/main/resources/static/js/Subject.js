@@ -4,9 +4,15 @@ $(document).ready(function(){
   $('#myModal').modal();
   });
   //查看修改课题
-  $("tr.change_subj *").not(".no").click(function () {
-    //$("#ModalLabel_info").text("查看");
-  $('#Modal_info').modal();
+  $("#change_subj").mouseleave(function(){
+    $(this).css('font-weight','normal');
+  });
+  $("#change_subj").mouseenter(function () {
+    $(this).css('font-weight','bold');
+  });
+  $("#change_subj").click(function () {
+    $("#ModalLabel_info").text("查看");
+    $('#Modal_info').modal();
   });
   document.getElementById("btn_change").onclick = function() {
     var txt_name = document.getElementById("txt_subjname");

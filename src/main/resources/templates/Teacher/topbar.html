@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<div th:fragment="bar">
+<div class="container" th:fragment="bar">
 <div class="col-md-12 column" style="margin-top: 20px; font-family: 华文行楷; font-size:25px;">
     <h1 class="text-center">华东理工大学论文系统</h1>
 </div>
@@ -14,11 +14,31 @@
 
 <div style="margin-left: 2%;">
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" ><a href="TeacherSubject.html" th:href="@{/subjects}" th:class="${activeurl=='subjects'?'active':''}">课题（Topic）</a></li>
-        <li role="presentation"><a href="TeacherThesis.html" th:href="@{/thesises}" th:class="${activeurl=='thesises'?'active':''}">论文（Thesis）</a></li>
-        <li role="presentation"><a href="Teachermessage.html">消息（Messages）</a></li>
-        <li role="presentation"><a href="Teacherquestion.html" >问题（Question）</a></li>
-        <li role="presentation"><a href="TeacherPerson.html" th:href="@{/main_T.html}" class="active" th:class="${activeurl=='teachers'?'active':''}">个人中心（Personal Center）</a></li>
+        <li role="presentation" >
+            <a href="TeacherSubject.html" th:href="@{/teacher/subjects}" th:class="${activeurl=='subjects'?'active':''}">
+                <i class="fa fa-book" aria-hidden="true"></i> 课题(Topic)
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="TeacherThesis.html" th:href="@{/teacher/thesises}" th:class="${activeurl=='thesises'?'active':''}">
+                <i class="fa fa-pencil" aria-hidden="true"></i> 论文(Thesis)
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="Teachermessage.html" th:href="@{/teacher/messages}" th:class="${activeurl=='messages'?'active':''}">
+                <i class="fa fa-comments" aria-hidden="true"></i> 消息(Messages)
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="Teacherquestion.html" th:href="@{/teacher/questions}" th:class="${activeurl=='questions'?'active':''}">
+                <i class="fa fa-question-circle" aria-hidden="true"></i> 问题(Question)
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="TeacherPerson.html" th:href="@{/main_T.html}" class="active" th:class="${activeurl=='teachers'?'active':''}">
+                <i class="fa fa-user" aria-hidden="true"></i> [[${session.loginuser.Name}]]老师(Personal Center)
+            </a>
+        </li>
     </ul>
 </div>
 </div>

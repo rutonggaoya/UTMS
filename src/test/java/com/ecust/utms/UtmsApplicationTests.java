@@ -1,21 +1,13 @@
 package com.ecust.utms;
 
-import com.ecust.utms.mapper.AdministratorMapper;
-import com.ecust.utms.mapper.TeacherMapper;
-import com.ecust.utms.mapper.ThesisMapper;
-import com.ecust.utms.model.Administrator;
-import com.ecust.utms.model.Teacher;
-import com.ecust.utms.model.Thesis;
-import com.ecust.utms.model.ThesisPageData;
+import com.ecust.utms.mapper.*;
+import com.ecust.utms.model.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -28,6 +20,10 @@ public class UtmsApplicationTests {
     TeacherMapper teacherMapper;
     @Autowired
     ThesisMapper thesisMapper;
+    @Autowired
+    QuestionMapper questionMapper;
+    @Autowired
+    StudentMapper studentMapper;
 
     @Test
     public void contextLoads() {
@@ -43,10 +39,17 @@ public class UtmsApplicationTests {
 //        teacherMapper.updateTea(tea);
 //        System.out.println(teacherMapper.getTea("111").toString());
         //测试ThesisMapper
-        List<ThesisPageData> list1 = thesisMapper.getAllTPD("510100003");
-        for(ThesisPageData t:list1){
-            System.out.println(t.toString());
-        }
+//        List<ThesisPageData> list1 = thesisMapper.getAllTPD("510100003");
+//        for(ThesisPageData t:list1){
+//            System.out.println(t.toString());
+//        }
+//        //测试QuestionMapper
+//        List<AnswerIntroData> list2 = questionMapper.getMyAnswerByTID("510100003");
+//        for(AnswerIntroData a:list2){
+//            System.out.println(a.toString());
+//        }
+        StudentPersonalPageData sppd = studentMapper.getSPPD("110161870");
+        System.out.println(sppd.toString());
     }
 
 //    Logger logger = LoggerFactory.getLogger(getClass());

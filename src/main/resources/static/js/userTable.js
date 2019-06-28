@@ -24,7 +24,12 @@ function InitMainTable() {
 	$('#table')
 			.bootstrapTable(
 					{
+<<<<<<< HEAD
 						url : '../../static/js/data2.json',// 请求后台的URL，数据传输需注意中文乱码问题
+=======
+						// url : '../../static/js/data2.json',// 请求后台的URL，数据传输需注意中文乱码问题
+						url : '/admin/getStudentsSubject',// 请求后台的URL，数据传输需注意中文乱码问题
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 					//	method : 'get', // 请求方式（*）
 						 dataType: "json",
 						// contentType : "application/x-www-form-urlencoded",
@@ -72,20 +77,33 @@ function InitMainTable() {
 								// 是否显示复选框
 								},
 								{
+<<<<<<< HEAD
 									field : 'studentID',  //需与model 一致
+=======
+									field : 'sid',  //需与model 一致
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 									title : '学号',
 									sortable : true
 								},
 								{
+<<<<<<< HEAD
 									field : 'studentName', //需与model 一致
 									title : '姓名'
 								},
 								{
 									field : 'subjectName', //需与model 一致
+=======
+									field : 'name', //需与model 一致
+									title : '姓名'
+								},
+								{
+									field : 'subjName', //需与model 一致
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 									title : '课题',
 									sortable : true
 								},
 								
+<<<<<<< HEAD
 								{
 									field : 'submitTime', //需与model 一致  
 									title : '提交时间',
@@ -98,16 +116,41 @@ function InitMainTable() {
 								},
 								{
 									field : 'score', //需与model 一致  
+=======
+								// {
+								// 	field : 'submitTime', //需与model 一致
+								// 	title : '提交时间',
+								// 	sortable : true
+								// },
+								{
+									field : 'similarityRate', //需与model 一致
+									title : '查重率',
+									sortable : true
+								},
+								{
+									field : 'grade', //需与model 一致
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 									title : '答辩成绩',
 									sortable : true
 								},
 								{
 									title : '操作',
+<<<<<<< HEAD
 									field : 'fuction',
 									align : 'center',
 									formatter : function(value, row, index) {// 自定义显示可以写标签哦~
 										//var ID = row.ID+"";   //该行的项目ID,可做参数传递
 										var mya = '<a href="#" onclick="check()" >审核 </a>'+'<a href="#" onclick="register()" >登记 </a>'+'<a href="#" onclick="detail()" >学生详情 </a>'+'<a href="#" onclick="thesis()" >附件 </a>'
+=======
+									field : 'function',
+									align : 'center',
+									formatter : function(value, row, index) {// 自定义显示可以写标签哦~
+										//var ID = row.ID+"";   //该行的项目ID,可做参数传递
+										var mya = '<a href="#" onclick="check()" >审核&nbsp;</a>' +
+											'<a href="#" onclick="register('+ row.sid +')" >登记成绩&nbsp;</a>' +
+											'<a href="#" onclick="detail('+ row.sid +')" >学生详情&nbsp;</a>'+
+											'<a href="#" onclick="thesis()" >附件 </a>';
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 										return mya;
 									}
 								}, ],
@@ -134,9 +177,15 @@ function InitMainTable() {
 }
 
 
+<<<<<<< HEAD
 function detail(){  //根据项目ID跳转到选择学生页面
-	window.location.href="../../templates/super/studentInfo.html";  //跳转到具体页面
+	window.location.href="../../template/super/studentInfo.html";  //跳转到具体页面
 	
+=======
+function detail(SID){  //根据项目ID跳转到选择学生页面
+	// window.location.href="/admin/studentInfo";  //跳转到具体页面
+	window.open("/admin/studentInfo?SID="+SID);
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 };
 
 
@@ -146,10 +195,17 @@ function check(){  //根据项目ID跳转到选择学生页面
 	
 };
 
+<<<<<<< HEAD
 function register(){  //根据项目ID跳转到选择学生页面
 	$('input[name="score"]').val("");
 	 $('#scoreModal').modal({backdrop:"static"});
 	
+=======
+function register(SID){  //根据项目ID跳转到选择学生页面
+	$('input[name="score"]').val("");
+	$('input[name="SID"]').val(""+SID);
+	$('#scoreModal').modal({backdrop:"static"});
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 };
 
 

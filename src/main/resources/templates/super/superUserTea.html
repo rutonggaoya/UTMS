@@ -1,5 +1,9 @@
 <!doctype html>
+<<<<<<< HEAD
 <html lang="en">
+=======
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 <head>
 <!-- Required meta tags -->
 <meta charset="UTF-8">
@@ -47,6 +51,10 @@
 
 <link href="../../static/css/superUser.css" rel="stylesheet"
 	type="text/css">
+<<<<<<< HEAD
+=======
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 
 <title>课题</title>
 
@@ -64,6 +72,7 @@
 		<!-- title END -->
 
 		<!-- 导航栏 -->
+<<<<<<< HEAD
 		<div class="row top">
 			<div class="col-md-12 ">
 				<ul class="nav nav-tabs " role="tablist">
@@ -75,6 +84,9 @@
 				</ul>
 			</div>
 		</div>
+=======
+		<div th:replace="super/Topbar :: top-bar(activeUri='Admin')"></div>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 		<!-- 导航栏END -->
 
 		<!--主体-->
@@ -89,11 +101,19 @@
 						<div class="collapse navbar-collapse " id="navbar-collapse">
 							<ul class="nav navbar-nav" id="nav">
 								<li class="nav_li">
+<<<<<<< HEAD
 									<a href="#" ><font color="black">学生管理</font></a>
 								</li>
 
 								<li class="nav_li">
 									<a href="superUserTea" ><font color="black">老师管理</font></a>
+=======
+									<a href="/admin/UserStu" ><font color="black">学生管理</font></a>
+								</li>
+
+								<li class="nav_li">
+									<a href="/admin/UserTea" ><font color="black">老师管理</font></a>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 								</li>
 								
 
@@ -103,7 +123,11 @@
 				</nav>
 
 			</div>
+<<<<<<< HEAD
 			
+=======
+			<!--导航部分END-->
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 
 			<!--用户列表-->
 			<div class="main_right col-md-9">
@@ -116,9 +140,15 @@
 								<div class="main_search" id="toolbar">
 									<form class="form-inline" role="form" id="search_form">
 										<div class="form-group ">
+<<<<<<< HEAD
 											<label class="sr-only" for="studentID">学号</label> <input
 												type="text" class="form-control main_s_input" id="studentIDu"
 												name="studentID" placeholder="学号查询"> 
+=======
+											<label class="sr-only" for="teacherID">职工号</label> <input
+												type="text" class="form-control main_s_input" id="teacherIDu"
+												name="teacherID" placeholder="职工号查询"> 
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 										</div>
 										<button type="button" id="query"
 											class="btn btn-info query mt-5">查询</button>
@@ -145,6 +175,7 @@
 
 
 
+<<<<<<< HEAD
 <div class="modal fade " id="checkModal" tabindex="-1" role="dialog"
 							aria-labelledby="myModalLabel">
 							<div class="modal-dialog mymodaldiv" style="margin-top:200px !important" role="document">
@@ -200,4 +231,10 @@
 
 <script src="../../static/js/userTable.js"></script>
 <script src="../../static/js/superUserStu.js"></script>
+=======
+</body>
+
+<script src="../../static/js/userTeaTable.js"></script>
+<script src="../../static/js/superUserTea.js"></script>
+>>>>>>> 7023bd6cc812e63a75e81623e4f4e9da93ac9c88
 </html>

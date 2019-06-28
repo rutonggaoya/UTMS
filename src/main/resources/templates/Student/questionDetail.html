@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../static/css/my1.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("span").toggleClass("up");
+            });
+        });
+    </script>
+
+    <title>问题</title>
+    <style type="text/css">
+
+        .round {
+            padding: 0px;
+            width: 80px;
+            height: 80px;
+            border: 0px solid #dedede;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 10px;
+            border-radius: 15px;
+        }
+
+        .overfl {
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .up {
+            padding-right: 8px;
+            padding-left: 8px;
+            background-color: rgba(255, 80, 80, 0.8);
+
+        }
+
+    </style>
+</head>
+<body class="text-center">
+
+
+<div class="col-md-12 column" style="margin-top: 20px; font-family: 华文行楷; font-size:25px;">
+    <h1>华东理工大学论文系统</h1>
+</div>
+
+
+<!--引入top-bar-->
+<div th:replace="Student/components :: top-bar(activeUri='Student/question')"></div>
+
+
+<div class="container" style="margin-top: 20px;">
+    <div class="col-md-3" style="margin-top: 20px;">
+        <ul class="nav nav-tab vertical-tab" role="tablist" id="vtab" style="position:fixed;">
+            <li role="presentation" style="font-size: 20px;">
+                <button class="btn btn-outline-success " type="submit"
+                        style="background:rgba(0,0,0,0); font-size: 18px; color:#2e442f;">新增提问
+                </button>
+            </li>
+
+            <li role="presentation" style="font-size: 20px;"><a href="/Student/question#d1">我的提问</a></li>
+
+            <li role="presentation" style="font-size: 20px;"><a href="/Student/question#d2">我的回答</a></li>
+            <li role="presentation" style="font-size: 20px;"><a href="/Student/question#d3">提问热榜</a></li>
+
+            <li role="presentation" style="font-size: 20px;"><a href="/Student/question#d4">提问动态</a></li>
+
+            <li role="presentation" style="font-size: 20px;">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-0" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </li>
+
+        </ul>
+    </div>
+
+
+    <div class="col-md-9">
+
+        <div style=" background-color: rgba(205,235,197,0.3);text-align: left; padding-left: 20px;padding-right: 20px ;color:#2e442f;">
+
+            <h2 style=" font-family: 华文行楷; padding-top: 20px;padding-bottom: 5px;">
+                <i class="fa fa-quote-left" aria-hidden="true"></i><p th:text="${question.getContent()}">从大学退学复读是怎样的体验</p>
+            </h2>
+
+            <p style="font-size: 15px ;padding-bottom:8px" th:text="${question.getDesc()}">
+                问题描述：希望听听亲历者的感受，比如当时有着怎样的心路历程，现在回过头看，又作何评价？</p>
+
+
+        </div>
+
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" th:each="answer, iStat : ${answers}">
+
+            <div class="panel panel-default">
+
+
+                <div id="collapseOne" 9class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body" th:text="${answer.getContent()}">
+
+                        16年高考，去了邻省某211，大二上申请退学。准备考临床。<br>
+                        今天是2018年1月2日，在高中一个半月了。<br>
+                        嗯……读的高二。
+
+                        感觉还不错啊~
+                        因为是有目的的学习，不会再像以前一样只知道高考是最终目标。<br>
+                        我的时间轴，现在就真的像是前路有光，<br>
+                        雾气散尽后，能一眼就看清我接下来十年要走的方向，而我只需要一步一步踏实的往前走就好。<br><br>
+                        （……语言水平有限看看就好，但真的是这种感觉，就像……一个深度近视的人突然戴上了适合的眼镜？）<br>
+
+                        虽然刚回来的时候很担心都过了近一年半，高中知识会捡不起来，不过现在还挺好，尤其做数学的时候总有种在仗着高三经验欺负他们的感觉~ （不过也明白越往后优势会越弱啦）<br>
+                        因为浙江高考改革，现在是七选三+语数外，因为我原来理科里物理不算好，和家里商议过后，决定选了化生地三门，所以现在地理是相当于从零学起的……
+                        毕竟高一学考完就扔了(。_。)<br>
+
+                        现在最担心的是语文和英语。
+                        谁来告诉我英语为什么要改成写两篇作文啊啊啊啊啊！！！！！<br>
+                        虽然这两门从分数来说应该算作我的强项，但天知道考语文我就没有心里有底的时候！英语虽然好，但一篇作文我连草稿都要打半小时啊！！！
+                        (ノ-_-)ノ~┻━┻
+                        （内心咆哮一万遍还是要围笑）<br>
+
+                        ————————下面有点正经————————
+                        ◆开头我说，我现在读的高二。<br>
+                        跟着高二读也是商量过的。因为报名时间以及政策问题（化生地是十一月和四月考的），我跟着高三读并没有信心能考好，所以选择了高二。<br>
+                        也意味着从下定决心开始，我就晚了同龄人三年。
+                        也担心过，害怕过，毕竟我下一次读大一的时候，以前的同学都大四了，在找工作了。<br>
+                        但既然选了，就不能后悔。
+                        当初和家里在商量这件事的时候，我说，如果重来一次，结果我可能会后悔；但如果不重来，我以后肯定会后悔。
+                        回来之后在聊天时，我说，我现在自己把所有退路都断了。我只有一条路能走了。
+                        这是我以三年时间为代价换来一次重来的机会啊。
+                        也是我曾经心心念念一直想走的那条路啊。
+
+                        ◆回来之前有找关系好的老师谈过，都跟我说了复读很重要的就是要做好准备，尤其心理上的。
+                        这一点我万分庆幸在大学混日子的时候看到的某个采访，被采访者说了一句话：<br>
+                        『我非常认可我自己』
+                        当时看到这句话，就真的，脑子里炸了一下。<br>
+                        就是那种，你做了很久的主旨归纳题，别人一句话就表达了出来，又精炼又准确。
+                        这不就是我想要的样子吗？
+                        我希望有一天，我能底气十足的说出“我非常认可我自己”。
+                        实力即底气。
+
+                        越努力，越幸运。
+                        越强大，越自由。
+                        要加油啊。
+
+                        ——————————2018.1.7——————————
+                        真的谢谢你们。真的。
+                        评论我都看了。原本只是把这篇回答当作一个阶段性的小回顾，没想到这么多人为我加油。真的很感动。
+                        （第一次收到这么多赞，其实有点吓到我了 ）
+                        谢谢你们的加油（尤其谢谢让我地理别虚的小天使~ 有前人的经验我多少能安心一点~）
+
+                    </div>
+                </div>
+
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+
+                        <button style="margin-right: 60px" type="button" class="btn btn-success btn-sm"><span>赞同</span>
+                        </button>
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                           aria-expanded="true" aria-controls="collapseOne">
+                            收起
+                        </a>
+                    </h4>
+                </div>
+
+            </div>
+
+            <!--<div class="panel panel-default">-->
+
+
+                <!--<div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">-->
+                    <!--<div class="panel-body">-->
+
+                        <!--17年11月份退学，回来两个多月了，最近的模拟勉强660吧。<br>-->
+                        <!--在大学的两年里，还算是有收获的。大一的时候社团学生会，但大二的时候开始情况就不对了，被几门课虐得不知所措。看着竞赛党的同学们如饥似渴的学习，高考党的同学们虽然有些吃力却也在坚持，那时候真的很想知道大家的动力都是来自哪里。<br>-->
+                        <!--之后的日子一天比一天down，不愿意为了自己的梦想和兴趣付出相应的努力，那时候很害怕听到自己的名字，每天起来的时候对镜子里的那个人越来越陌生。-->
+                        <!--这学期初曾经甚至想过转到普通一本学校，也去那个学校看了，漫步在校园里的时候，真的切身体会到学校平台和同学资源的差距之大。曾萌生过的重新开始的想法便愈渐清晰了起来。想到就算真的混到毕业证可能此生的上限也就这样了吧，我必须要重新找回那个弄丢了的自己。<br>-->
+                        <!--刚回来的时候，真的是什么都不记得了，两个月的时间，生物从刚回来的50几分到最近一次的年组最高分，虽然其他的科目和目标还有一定的差距，可把自己推到绝境之时，自然会有跃崖之勇，这次重新开始的机会，真是用三年的青春换来的，感觉都像是半条命了₍-->
+                        <!--ඡ·̯ඡ₎<br>-->
+                        <!--回来的感想还是蛮大的，感觉这三年像是一个轮回，坐在教室的时候仿佛回到三年前的三年一班，又仿佛置身于三个月前的大三教室，恍惚中顿觉命运的捉弄，上帝的调皮。熟悉的年级校长，原来的各科老师，甚至同学里还有我补过课的学弟学妹。。。<br>-->
+
+                        <!--作者：尚且温热八条半<br>-->
+                        <!--链接：https://www.zhihu.com/question/24845533/answer/300100384<br>-->
+                        <!--来源：知乎<br>-->
+                        <!--著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。<br>-->
+
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="panel-heading" role="tab" id="headingTwo">-->
+                    <!--<h4 class="panel-title">-->
+                        <!--<button style="margin-right: 60px" type="button" class="btn btn-success btn-sm"><span>赞同</span>-->
+                        <!--</button>-->
+                        <!--<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"-->
+                           <!--href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">-->
+                            <!--收起-->
+                        <!--</a>-->
+                    <!--</h4>-->
+                <!--</div>-->
+
+
+            <!--</div>-->
+
+            <!--<div class="panel panel-default">-->
+
+
+                <!--<div id="collapseThree" class="panel-collapse collapse in" role="tabpanel"-->
+                     <!--aria-labelledby="headingThree">-->
+                    <!--<div class="panel-body">-->
+                        <!--019年6月2日更：<br>-->
+                        <!--不知不觉又是一年高考了，回想起去年今天，我还在绵阳的网咖上网来着。现在离2019欧冠决赛还有40分钟，想想上次看欧冠决赛，已经是16年的时候了。中间两次没看都是因为高考……<br>-->
+                        <!--这里贴上一首当初的歪诗，今年要参加高考的同学们加油！（顺便说一句DC冲鸭~）<br>-->
+                        <!--《赠龙儿》<br>-->
+                        <!--关山难越何必哀，敢校陈帅破泉台。<br>-->
+                        <!--君且行路不须顾，鸣蜩剑淬便随来。<br>-->
+                        <!--——2018.2 前往绵阳前夜 于家中<br>-->
+                        <!--——————————<br>-->
+                        <!--2019年4月4日更：<br>-->
+                        <!--时隔一年重新看这篇文章，我发现其实很多细节我自己都已经淡忘了。其实当初退学之前，我就在这个问题下面翻着一个又一个回答，从其中汲取力量。当时我一篇一篇的看，但是没有私信一位答主，因为我心里很清楚自己的决定，没有人能改变我的想法。所以，我自己写这篇文章的目的，其实不是为了给面临同样抉择的人提供建议，只是为了分享我个人的经历。如果能让选择了这条路的人，多一分期冀和希望，我就觉得这么多字没有白敲。<br>-->
+                        <!--无论什么时候，没有任何一个人能为你选择未来的路，你可以考虑其他人的想法和意见，但是最终你还是要自己做出决定。<br>-->
+
+
+                        <!--作者：塞尔琳芃-郭莫斯<br>-->
+                        <!--链接：https://www.zhihu.com/question/24845533/answer/427092617<br>-->
+                        <!--来源：知乎-->
+                        <!--著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。<br>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="panel-heading" role="tab" id="headingThree">-->
+                    <!--<h4 class="panel-title">-->
+                        <!--<button style="margin-right: 60px" type="button" class="btn btn-success btn-sm"><span>赞同</span>-->
+                        <!--</button>-->
+
+                        <!--<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"-->
+                           <!--href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">-->
+                            <!--收起-->
+                        <!--</a>-->
+                    <!--</h4>-->
+                <!--</div>-->
+
+            <!--</div>-->
+        </div>
+    </div>
+
+
+</div>
+
+
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+

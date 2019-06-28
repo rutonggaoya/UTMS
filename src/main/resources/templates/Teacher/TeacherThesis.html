@@ -8,11 +8,13 @@
 
     <!-- Bootstrap CSS -->
 
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-     <link rel="stylesheet" type="text/css" href="../../static/css/my1.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../static/css/my1.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
     <title>论文</title>
-  </head>
-  <body class="text-center">
+</head>
+<body class="text-center">
 
 <!--引入TOPBAR-->
 <div th:replace="~{Teacher/topbar::bar(activeurl='thesises')}"></div>
@@ -33,12 +35,13 @@
         </thead>
         <tbody>
         <tr th:each="tpd:${tpds}">
+            <input id="thesisID" type="hidden" th:value="${tpd.ThesisID}">
             <td th:text="${tpd.SubName}">基于机器学习的XXX</td>
             <td th:text="${tpd.ThesisName}">0001名称</td>
             <td th:text="${tpd.StuName}">蒋小花</td>
-            <td th:text="${#dates.format(tpd.DateTime,'yyyy-MM-dd')}">1</td>
-            <td th:href="${tpd.TPath}">下载</td>
-            <td>评论</td>
+            <td th:text="${#dates.format(tpd.DateTime,'yyyy-MM-dd HH:mm:ss')}">1</td>
+            <td><a th:href=" '/teacher/Files/download?path=' + ${tpd.TPath}">下载</a></td>
+            <td><a onclick="comment()">评论</a></td>
         </tr>
         </tbody>
     </table>
@@ -63,6 +66,27 @@
     </ul>
 </nav>
 
+<script type="text/javascript">//模态框数据提交
+function comment(){
+    var comment = prompt("对学生此次论文情况进行点评：");
+    var ThesisID = $("#thesisID").val();
+    var data = {'comment':comment,'thesisID':ThesisID};
+    $.ajax({
+        type : "get",
+        url : "/teacher/comment",
+        contentType: "application/json",
+        // data: JSON.stringify({'comment':comment,'thesisID':ThesisID}),
+        data: data,
+        success : function(response) {
+            alert("点评成功");
+            return false;
+        },
+        error : function() {
+            alert("請求失敗");
+        }
+    });
+}
+</script>
 
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>

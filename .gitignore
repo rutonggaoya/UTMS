@@ -27,3 +27,9 @@ hs_err_pid*
 utms.iml
 
 target
+
+src/main/resources/static/userfiles/*
+
+application-dwj.properties
+application-win.yaml
+application-linux.yaml

@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- jQuery Js -->
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+<!-- Bootstrap Js -->
+<script
+	src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+	media="screen">
+
+<!-- superInfo.html CSS -->
+<link href="../../static/css/superBase.css" rel="stylesheet"
+	type="text/css">
+
+	<link href="../../static/css/superInfo.css" rel="stylesheet"
+	type="text/css">
+<link href="../../static/css/main.css" rel="stylesheet" type="text/css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+
+
+<title>课题</title>
+</head>
+<body class="bodybk text-center">
+
+	<div class="container-fluid">
+
+		<!-- title -->
+		<div class="row top">
+			<div class="col-md-12"
+				style="margin-top: 20px; font-family: 华文行楷; font-size: 25px;">
+				<h1>华东理工大学论文系统</h1>
+				<div class="three-clean-buttons backBtn">
+					<div class="clean-button">
+						<span class="text" onclick="back()">返回</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- title END -->
+
+		<!-- 导航栏 -->
+		<div th:replace="super/Topbar :: top-bar(activeUri='Info')"></div>
+		<!-- 导航栏END -->
+
+		<!-- 主体 -->
+		<div class="row  addbackgroundimg ">
+
+			<!-- 左侧图片 -->
+			<div class="col-md-3 bottom">
+				<img src="../../static/img/qx.jpg" class="img-circle center-block"
+					style="margin-top: 30px;" width=150;>
+				
+			</div>
+			<!-- 图片END -->
+
+			<!-- 右侧个人信息 -->
+			<div class="col-md-9 bottom">
+
+				<!-- 姓名 +信息修改-->
+				<div class="row">
+
+					<div class="col-md-7">
+						<form class="form-inline">
+							<div id="name">
+								<div class="h3name">
+									<h3 class="font2">姓名XXX</h3>
+								</div>
+								<button type="button"
+									class="Button  Field-modify-hidden ModifyButton Button--link"
+									id="nameBtn" onclick="setName()">修改</button>
+
+							</div>
+							<div id="nameSet">
+								<div class="h3name">
+									<h3 class="font1">姓名</h3>
+								</div>
+								<div class="nameIB">
+									<div class="form-group  ">
+										<label class="sr-only" for="userName">用户名</label> <input
+											type="text" class="form-control input " id="userNameu"
+											name="userName">
+									</div>
+									<button type="button" class="btn btn-success mt-5"
+										id="nSaveBtn" onclick="nameSave()">保存</button>
+									<button type="button" class="btn btn-default mt-5"
+										id="nCancelBtn" onclick="nameCancel()">取消</button>
+
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<div class="col-md-5 passwddiv">
+						<button type="button" class="btn btn-default mt-5" id="passwdBtn"
+							onclick="setPasswd()">修改密码</button>
+
+						<div class="modal fade " id="myModal" tabindex="-1" role="dialog"
+							aria-labelledby="myModalLabel">
+							<div class="modal-dialog mymodaldiv" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										<h4 class="modal-title" id="myModalLabel">修改密码</h4>
+									</div>
+									<div class="modal-body">
+
+										<div class="form-group">
+											<label for="newPasswd">新密码</label> <input type="password"
+												name="newPasswd" class="form-control" id="newPasswdu"
+												placeholder="新密码">
+										</div>
+
+										<div class="form-group">
+											<label for="txt_parentdepartment">确认密码</label> <input
+												type="password" name="checkpwd" class="form-control"
+												id="checkpwdu" placeholder="确认密码">
+										</div>
+
+
+									</div>
+									<div class="modal-footer">
+										<button type="button" id="btn_submit" class="btn btn-green"
+											data-dismiss="modal" onclick="savePwd()">
+											确认
+										</button>
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">
+											关闭
+										</button>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 姓名END -->
+
+				<!-- 职工号 -->
+				<div class="row ">
+					<div class="col-md-12">
+						<form class="Field">
+							<h3 class="Field-label">职工号</h3>
+							<div class="Field-content">
+								<div id="ID" class="class1">
+									<span>12382222</span>
+									<button type="button" id="IDBtn"
+										class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
+										onclick="setID()">修改</button>
+								</div>
+								<div>
+									<div id="IDset" class="class2">
+										<div class="IB">
+											<label class="sr-only" for="userID">职工号</label> <input
+												type="text" class=" form-control input " id="userIDu"
+												name="userID">
+										</div>
+										<button type="button" class="btn btn-success mt-5"
+											id="nSaveBtn" onclick="idSave()">保存</button>
+										<button type="button" class="btn btn-default mt-5"
+											id="nCancelBtn" onclick="idCancel()">取消</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- 职工号END -->
+
+				<!-- 性别 -->
+				<div class="row">
+					<div class="col-md-12">
+						<form class="Field">
+							<h3 class="Field-label">性别</h3>
+							<div class="Field-content">
+								<div id="sex" class="class1">
+									<span>女</span>
+									<button type="button" id="sexBtn"
+										class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
+										onclick="setSex()">修改</button>
+								</div>
+								<div>
+									<div id="sexRadio" class="class2">
+										<input type="radio" name="gender" value="男"> 男 <input
+											type="radio" name="gender" style="margin-left: 30px;"
+											value="女" checked=""> 女
+										<div class="ButtonGroup">
+											<button type="button" class="btn btn-success mt-5"
+												onclick="sexSave()">保存</button>
+											<button type="button" class="btn btn-default mt-5"
+												onclick="sexCancel()">取消</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- 性别END -->
+
+				<!-- 院系 -->
+				<div class="row">
+					<div class="col-md-12">
+						<form class="Field">
+							<h3 class="Field-label">院系</h3>
+							<div class="Field-content">
+								<div id="department" class="class1">
+									<span>信息科学与工程</span>
+									<button type="button" id="dpBtn"
+										class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
+										onclick="setDP()">修改</button>
+								</div>
+								<div>
+									<div id="departmentSet" class="class2">
+										<div class="IB">
+											<label class="sr-only" for="dp">院系</label> <input type="text"
+												class=" form-control input " id="dpu" name="dp">
+										</div>
+										<button type="button" class="btn btn-success mt-5"
+											id="nSaveBtn" onclick="dpSave()">保存</button>
+										<button type="button" class="btn btn-default mt-5"
+											id="nCancelBtn" onclick="dpCancel()">取消</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- 院系END-->
+
+				<!-- 职称 -->
+				<div class="row">
+					<div class="col-md-12">
+						<form class="Field">
+							<h3 class="Field-label">职称</h3>
+							<div class="Field-content">
+								<div id="title" class="class1">
+									<span>副教授</span>
+									<button type="button" id="titleBtn"
+										class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
+										onclick="setTitle()">修改</button>
+								</div>
+								<div>
+									<div id="titleSet" class="class2">
+										<div class="IB">
+											<label class="sr-only" for="ititle">职称</label> <input
+												type="text" class=" form-control input " id="titleu"
+												name="ititle">
+										</div>
+										<button type="button" class="btn btn-success mt-5"
+											id="nSaveBtn" onclick="titleSave()">保存</button>
+										<button type="button" class="btn btn-default mt-5"
+											id="nCancelBtn" onclick="titleCancel()">取消</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- 院系END -->
+
+				<!-- 手机号 -->
+				<div class="row">
+					<div class="col-md-12">
+						<form class="Field">
+							<h3 class="Field-label">手机号</h3>
+							<div class="Field-content">
+								<div id="phone" class="class1">
+									<span>13189098842</span>
+									<button type="button" id="phoneBtn"
+										class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
+										onclick="setPhone()">修改</button>
+								</div>
+								<div>
+									<div id="phoneSet" class="class2">
+										<div class="IB">
+											<label class="sr-only" for="iphone">职称</label> <input
+												type="text" class=" form-control input " id="phoneu"
+												name="iphone">
+										</div>
+										<button type="button" class="btn btn-success mt-5"
+											id="nSaveBtn" onclick="phoneSave()">保存</button>
+										<button type="button" class="btn btn-default mt-5"
+											id="nCancelBtn" onclick="phoneCancel()">取消</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- 手机号END -->
+
+				<!-- 邮箱 -->
+				<div class="row bottom-margin">
+					<div class="col-md-12">
+						<form class="Field">
+							<h3 class="Field-label">邮箱</h3>
+							<div class="Field-content">
+								<div id="mail" class="class1">
+									<span>jtzhang@ecust.edu.cn</span>
+									<button type="button" id="mailBtn"
+										class="Button ModifyButton Field-modify-hidden Field-modify Button--link"
+										onclick="setMail()">修改</button>
+								</div>
+								<div>
+									<div id="mailSet" class="class2">
+										<div class="IB">
+											<label class="sr-only" for="imail">职称</label> <input
+												type="text" class=" form-control input " id="mailu"
+												name="imail">
+										</div>
+										<button type="button" class="btn btn-success mt-5"
+											id="nSaveBtn" onclick="mailSave()">保存</button>
+										<button type="button" class="btn btn-default mt-5"
+											id="nCancelBtn" onclick="mailCancel()">取消</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- 邮箱END-->
+
+			</div>
+			<!-- 右侧个人信息END -->
+
+		</div>
+		<!-- 主体END -->
+	</div>
+	<!-- container  END-->
+</body>
+<script src="../../static/js/superInfo.js"></script>
+<script src="../../static/js/superUserTea.js"></script>
+</html>
