@@ -135,7 +135,7 @@ function InitMainTable() {
 
 
 function detail(){  //根据项目ID跳转到选择学生页面
-	window.location.href="../../template/super/studentInfo.html";  //跳转到具体页面
+	window.location.href="../../templates/super/studentInfo.html";  //跳转到具体页面
 	
 };
 
